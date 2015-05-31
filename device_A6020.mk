@@ -231,7 +231,8 @@ PRODUCT_PACKAGES += \
     tcpdump \
     wcnss_service
 
-
+PRODUCT_PACKAGES += \
+    IMSEnabler
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_A6020
