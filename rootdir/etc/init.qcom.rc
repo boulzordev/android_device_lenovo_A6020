@@ -458,7 +458,7 @@ service vm_bms /system/bin/vm_bms
 
 service charger /charger
     class charger
-    critical
+    group system graphics
     seclabel u:r:charger:s0
 
 service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
