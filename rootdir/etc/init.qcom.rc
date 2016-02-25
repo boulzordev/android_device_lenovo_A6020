@@ -203,6 +203,8 @@ on boot
     chmod 0664 /sys/class/leds/charging/trigger
 
 on fs
+    wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
     mount_all fstab.qcom
     mkdir /persist/data 0700  system system
     restorecon_recursive /persist
