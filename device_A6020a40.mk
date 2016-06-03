@@ -9,18 +9,15 @@ DEVICE_PACKAGE_OVERLAYS += device/lenovo/A6020a40/overlay
 
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/lenovo/A6020a40/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+	PRODUCT_COPY_FILES += \
+		device/lenovo/A6020a40/dt.img:dt.img
+	PRODUCT_COPY_FILES += \
+    	$(LOCAL_KERNEL):kernel
 endif
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
 $(call inherit-product, build/target/product/full.mk)
-
-PRODUCT_COPY_FILES += \
-    device/lenovo/A6020a40/dt.img:dt.img
 
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
