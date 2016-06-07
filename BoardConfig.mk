@@ -26,8 +26,6 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 # Bootloader
 
 TARGET_NO_BOOTLOADER := true
-TARGET_BOARD_PLATFORM := msm8916
-
 TARGET_BOOTLOADER_BOARD_NAME := A6020a40
 
 # Kernel
@@ -42,16 +40,67 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 
+# Platform
+TARGET_BOARD_PLATFORM := msm8916
+
 # fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216 # 32768 * 512 # mmcblk0p22
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216 # 32768 * 512 # mmcblk0p26
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1342177280 # 2621440 * 512 # mmcblk0p23
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 6105849344 # 11925487 * 512 # mmcblk0p30
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 16777216 # 32768 * 512 # mmcblk0p24
-BOARD_FLASH_BLOCK_SIZE := 4096
-
+BOARD_HAS_NO_SELECT_BUTTON := true
 
 # TARGET_PREBUILT_KERNEL := device/lenovo/A6020a40/kernel
 # BOARD_KERNEL_PREBUILT_DT := true
 
+# Audio
+
+# Bluetooth
+
+# Camera
+
+# CMHW
+BOARD_USES_CYANOGEN_HARDWARE := true
+BOARD_HARDWARE_CLASS += \
+    $(LOCAL_PATH)/cmhw \
+    hardware/cyanogen/cmhw
+
+# Crypto
+
+# Display
+
+# FM
+
+# Init
+
+# Lights
+
+# Partitions
+BOARD_FLASH_BLOCK_SIZE := 131072  # Just default value. Not sure
+
+# Properties
+
+# Qualcomm support
+BOARD_USES_QCOM_HARDWARE := true
+
+# Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+
+# SELinux
+include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+
+# Wifi
+BOARD_HAS_QCOM_WLAN := true
+BOARD_WLAN_DEVICE := qcwcn
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
+WIFI_DRIVER_MODULE_NAME := "wlan"
+WPA_SUPPLICANT_VERSION := VER_0_8_X

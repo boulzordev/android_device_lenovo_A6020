@@ -1,9 +1,24 @@
+#
+# Copyright (C) 2015 The CyanogenMod Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/lenovo/A6020a40/A6020a40-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/lenovo/A6020a40/overlay
 
@@ -17,9 +32,31 @@ else
     	$(LOCAL_KERNEL):kernel
 endif
 
-$(call inherit-product, build/target/product/full.mk)
+# Overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
+
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
+# CM
+
+PRODUCT_PACKAGES += \
+	org.cyanogenmod.platform \
+	org.cyanogenmod.platform-res
+
+# Ramdisk
+
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    ueventd.qcom.rc
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_A6020a40
 PRODUCT_DEVICE := A6020a40
+
+$(call inherit-product-if-exists, vendor/lenovo/A6020a40/A6020a40-vendor.mk)
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
