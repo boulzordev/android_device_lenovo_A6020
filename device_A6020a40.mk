@@ -40,6 +40,28 @@ PRODUCT_AAPT_CONFIG := normal
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
+
+# Audio
+PRODUCT_PACKAGES += \
+    audiod \
+    audio.a2dp.default \
+	audio.primary.msm8916 \
+    audio.r_submix.default \
+    audio.usb.default \
+    libaudio-resampler \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libqcompostprocbundle \
+    tinymix
+
+# Display
+PRODUCT_PACKAGES += \
+    gralloc.msm8916 \
+    copybit.msm8916 \
+    hwcomposer.msm8916 \
+    memtrack.msm8916
+
+
 # CM
 
 PRODUCT_PACKAGES += \
