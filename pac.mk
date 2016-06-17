@@ -18,13 +18,19 @@ $(call inherit-product, device/lenovo/A6020/full_A6020.mk)
 TARGET_SCREEN_WIDTH := 720
 TARGET_SCREEN_HEIGHT := 1280
 
+PAC_BOOTANIMATION_NAME := 720
+
+# Inherit some common PAC stuff.
+$(call inherit-product, vendor/pac/config/common_full_phone.mk)
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := A6020
-PRODUCT_NAME := cm_A6020
+PRODUCT_NAME := pac_A6020
+PRODUCT_BRAND := Lenovo
+PRODUCT_MANUFACTURER := Lenovo
 PRODUCT_RELEASE_NAME := A6020
-PRODUCT_BRAND := lenovo
-PRODUCT_MANUFACTURER := lenovo
 
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="Lenovo Vibe K5"
