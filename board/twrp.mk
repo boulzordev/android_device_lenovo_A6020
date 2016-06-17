@@ -1,4 +1,4 @@
-# Copyright (C) 2015 The CyanogenMod Project
+# Copyright (C) 2017, The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,19 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/lenovo/A6020/full_A6020.mk)
+# TWRP (Optional)
+ifeq ($(WITH_TWRP),true)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product-if-exists, vendor/cm/config/common_full_phone.mk)
+TARGET_USERIMAGES_USE_EXT4 := true
+RECOVERY_VARIANT := twrp
 
-# Boot animation
-TARGET_SCREEN_WIDTH := 1080
-TARGET_SCREEN_HEIGHT := 1920
+# TWRP Crypto
+TARGET_HW_DISK_ENCRYPTION := true
+TW_INCLUDE_CRYPTO := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
-# Time Zone data for recovery
-PRODUCT_COPY_FILES += \
-    bionic/libc/zoneinfo/tzdata:root/system/usr/share/zoneinfo/tzdata
+# TWRP
+TW_THEME := portrait_hdpi
+TARGET_RECOVERY_PIXEL_FORMAT := RGB_565
+TW_NEW_ION_HEAP := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_SCREEN_BLANK_ON_BOOT := true
 
-## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := A6020
-PRODUCT_NAME := lineage_A6020
+TW_DEVICE_VERSION := A6020
+
+endif
