@@ -13,12 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+#include <limits.h>
 void RIL_register_socket(void *Init, int socketType, int argc, char **argv)  {
 }
 
 /* status_t Parcel::writeString16 */
+#if ( __WORDSIZE == 64 )
+int _ZN7android6Parcel13writeString16EPKDsm(void *addr, unsigned int size);
+int _ZN7android6Parcel13writeString16EPKtm(void *addr, unsigned int size) {
+    return _ZN7android6Parcel13writeString16EPKDsm(addr, size);
+}
+#else
 int _ZN7android6Parcel13writeString16EPKDsj(void *addr, unsigned int size);
 int _ZN7android6Parcel13writeString16EPKtj(void *addr, unsigned int size) {
     return _ZN7android6Parcel13writeString16EPKDsj(addr, size);
 }
+#endif

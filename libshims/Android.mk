@@ -14,8 +14,6 @@
 
 LOCAL_PATH := $(call my-dir)
 
-include $(CLEAR_VARS)
-
 # RIL
 
 include $(CLEAR_VARS)
