@@ -7,10 +7,9 @@
 
 #<src>                                      <mnt_point>         <type>  <mnt_flags and options>                                              <fs_mgr_flags>
 /dev/block/bootdevice/by-name/system         /system             ext4    ro,barrier=1                                                         wait
-/dev/block/bootdevice/by-name/userdata       /data               ext4    rw,nosuid,nodev,noatime,nodiratime,inline_xattr,inline_data          wait,check,formattable,encryptable=/dev/block/bootdevice/by-name/metadata
+/dev/block/bootdevice/by-name/userdata       /data               ext4    nosuid,nodev,barrier=1,noauto_da_alloc,discard                       wait,check,encryptable=footer
 /dev/block/bootdevice/by-name/cache          /cache              ext4    rw,nosuid,nodev,noatime,barrier=1,data=ordered                       wait,check,formattable
-/dev/block/bootdevice/by-name/fsg            /fsg                ext4    ro,nosuid,nodev,barrier=0,context=u:object_r:fsg_file:s0             wait
-/dev/block/bootdevice/by-name/modem          /firmware           ext4    ro,nosuid,nodev,barrier=0,context=u:object_r:firmware_file:s0        wait
+/dev/block/bootdevice/by-name/modem          /firmware           vfat    ro,nosuid,nodev,context=u:object_r:firmware_file:s0                  wait
 /dev/block/bootdevice/by-name/persist        /persist            ext4    nosuid,nodev,barrier=1,noatime,noauto_da_alloc                       wait
 /dev/block/bootdevice/by-name/boot           /boot               emmc    defaults                                                             recoveryonly
 /dev/block/bootdevice/by-name/recovery       /recovery           emmc    defaults                                                             recoveryonly
