@@ -20,14 +20,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 
-DEVICE_PACKAGE_OVERLAYS += device/lenovo/A6020a40/overlay
+DEVICE_PACKAGE_OVERLAYS += device/lenovo/A6020/overlay
 
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 	PRODUCT_COPY_FILES += \
-		device/lenovo/A6020a40/dt.img:dt.img
+		device/lenovo/A6020/dt.img:dt.img
 	PRODUCT_COPY_FILES += \
     	$(LOCAL_KERNEL):kernel
 endif
@@ -45,7 +45,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 PRODUCT_PACKAGES += \
     audiod \
     audio.a2dp.default \
-	audio.primary.msm8916 \
+    audio.primary.msm8916 \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
@@ -75,10 +75,10 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_A6020a40
-PRODUCT_DEVICE := A6020a40
+PRODUCT_NAME := full_A6020
+PRODUCT_DEVICE := A6020
 
-$(call inherit-product-if-exists, vendor/lenovo/A6020a40/A6020a40-vendor.mk)
+$(call inherit-product-if-exists, vendor/lenovo/A6020/A6020-vendor.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product-if-exists, vendor/cm/config/common_full_phone.mk)

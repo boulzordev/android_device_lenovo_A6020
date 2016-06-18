@@ -1,9 +1,9 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/lenovo/A6020a40/BoardConfigVendor.mk
+-include vendor/lenovo/A6020/BoardConfigVendor.mk
 
-LOCAL_PATH := device/lenovo/A6020a40
+LOCAL_PATH := device/lenovo/A6020
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
@@ -29,7 +29,7 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 # Bootloader
 
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := A6020a40
+TARGET_BOOTLOADER_BOARD_NAME := A6020
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/lenovo/msm8929
@@ -54,7 +54,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 6105849344 # 11925487 * 512 # mmcblk0p30
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 16777216 # 32768 * 512 # mmcblk0p24
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-# TARGET_PREBUILT_KERNEL := device/lenovo/A6020a40/kernel
+# TARGET_PREBUILT_KERNEL := device/lenovo/A6020/kernel
 # BOARD_KERNEL_PREBUILT_DT := true
 
 # Audio
