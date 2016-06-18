@@ -74,6 +74,11 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     ueventd.qcom.rc
 
+# Shim
+
+PRODUCT_PACKAGES += \
+	libshim_ril
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_A6020
 PRODUCT_DEVICE := A6020
