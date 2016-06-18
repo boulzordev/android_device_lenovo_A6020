@@ -7,6 +7,9 @@ LOCAL_PATH := device/lenovo/A6020a40
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
+# Asserts
+TARGET_OTA_ASSERT_DEVICE := A6020a40,A6020a46,A6020l36,K32c36,k5,k5_plus,vibe_k5
+
 # Architecture
 
 TARGET_ARCH := arm64
