@@ -74,6 +74,11 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     ueventd.qcom.rc
 
+# RIL
+
+PRODUCT_PACKAGES += \
+    libcnefeatureconfig
+
 # Shim
 
 PRODUCT_PACKAGES += \
