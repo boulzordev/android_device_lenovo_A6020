@@ -15,8 +15,8 @@
 $(call inherit-product, device/lenovo/A6020/full_A6020.mk)
 
 # Boot animation
-TARGET_SCREEN_WIDTH := 1080
-TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 720
+TARGET_SCREEN_HEIGHT := 1280
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := A6020
@@ -27,5 +27,5 @@ PRODUCT_MANUFACTURER := lenovo
 
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME="Lenovo K5"
+    PRODUCT_NAME="Lenovo Vibe K5"
 
