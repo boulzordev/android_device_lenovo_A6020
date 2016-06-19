@@ -79,6 +79,10 @@ PRODUCT_PACKAGES += \
 	org.cyanogenmod.platform \
 	org.cyanogenmod.platform-res
 
+# Gello
+PRODUCT_PACKAGES += \
+	Gello
+
 # Ramdisk
 
 PRODUCT_PACKAGES += \
