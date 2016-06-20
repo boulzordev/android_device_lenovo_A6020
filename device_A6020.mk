@@ -93,7 +93,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
-	librmnetctl
+	librmnetctl \
+	libxml2
 
 # Shim
 
