@@ -153,7 +153,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
 	librmnetctl \
-	libxml2
+	libxml2 \
+	libril
 
 # Stlport
 PRODUCT_PACKAGES += \

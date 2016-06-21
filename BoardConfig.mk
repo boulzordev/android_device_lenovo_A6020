@@ -104,6 +104,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # RIL
 TARGET_RIL_VARIANT := caf
+BOARD_PROVIDES_LIBRIL := false
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
