@@ -87,6 +87,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.qcom.ril.sh \
     ueventd.qcom.rc
 
 # RIL
@@ -96,10 +97,38 @@ PRODUCT_PACKAGES += \
 	librmnetctl \
 	libxml2
 
+# Stlport
+PRODUCT_PACKAGES += \
+    libstlport
+
 # Shim
 
 PRODUCT_PACKAGES += \
 	libshim_ril
+
+# Wifi
+PRODUCT_PACKAGES += \
+    dhcpcd.conf \
+    hostapd_default.conf \
+    hostapd \
+    wpa_supplicant \
+    wpa_supplicant.conf
+
+PRODUCT_PACKAGES += \
+    p2p_supplicant_overlay.conf \
+    wpa_supplicant_overlay.conf
+
+PRODUCT_PACKAGES += \
+    WCNSS_qcom_cfg.ini
+
+PRODUCT_PACKAGES += \
+    libcurl \
+    libqsap_sdk \
+    libQWiFiSoftApCfg \
+    tcpdump \
+    wcnss_service
+
+
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_A6020
