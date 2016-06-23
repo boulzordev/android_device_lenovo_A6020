@@ -164,7 +164,8 @@ PRODUCT_PACKAGES += \
 # Shim
 
 PRODUCT_PACKAGES += \
-	libshim_ril
+	libshim_ril \
+	libshim_gui
 
 # Wifi
 PRODUCT_PACKAGES += \
