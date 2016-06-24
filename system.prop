@@ -2,6 +2,12 @@
 # system.prop for A6020
 #
 
+ro.product.model=Lenovo K5
+
+# Display
+ro.sf.lcd_density=320
+ro.lenovo.lcdsize=5
+
 # Required by our RIL blob
 ro.telephony.ril.config=simactivation
 
