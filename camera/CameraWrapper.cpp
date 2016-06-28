@@ -21,15 +21,18 @@
 *
 */
 
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #define LOG_TAG "CameraWrapper"
 #include <cutils/log.h>
 #include <cutils/properties.h>
 
-#include <utils/threads.h>
-#include <utils/String8.h>
+#include <gui/SensorManager.h>
+
 #include <hardware/hardware.h>
 #include <hardware/camera.h>
+#include <utils/threads.h>
+#include <utils/String8.h>
+
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
@@ -467,6 +470,15 @@ done:
     return ret;
 }
 
+static bool can_talk_to_sensormanager()
+{
+    android::SensorManager& sensorManager(
+            android::SensorManager::getInstanceForPackage(
+                android::String16("camera")));
+    android::Sensor const * const * sensorList;
+    return sensorManager.getSensorList(&sensorList) >= 0;
+}
+
 /*******************************************************************
  * implementation of camera_module functions
  *******************************************************************/
@@ -494,6 +506,10 @@ static int camera_device_open(const hw_module_t *module, const char *name,
         if (check_vendor_module())
             return -EINVAL;
 
+        if (!can_talk_to_sensormanager()) {
+            ALOGW("Waiting for SensorService failed.");
+            return android::NO_INIT;
+        }
         cameraid = atoi(name);
         num_cameras = gVendorModule->get_number_of_cameras();
 

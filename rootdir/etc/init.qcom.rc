@@ -45,7 +45,7 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on init
-    export LD_SHIM_LIBS /system/lib64/libril.so|libshim_ril.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libshim_gui.so
+    export LD_SHIM_LIBS /system/lib64/libril.so|libshim_ril.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libshim_gui.so:/system/vendor/lib/libmmqjpeg_codec.so|libboringssl-compat.so
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -261,10 +261,6 @@ on boot
 
     # Quiet binder logs
     write /sys/module/binder/parameters/debug_mask 0x5
-
-    # STML0XX driver parameter permissions
-    chown root mot_tcmd /sys/module/stml0xx/parameters/irq_disable
-    chmod 0660 /sys/module/stml0xx/parameters/irq_disable
 
     # charging driver parameter permissions
     chown root mot_tcmd /sys/module/fan5404x_charger/parameters/factory_kill_disable
@@ -498,13 +494,6 @@ service atvc /system/bin/dbvc_atvc_property_set
     class late_start
     user mot_atvc
     group mot_tpapi
-    oneshot
-
-# Start Sensor daemon
-service stml0xx /system/bin/stml0xx_wrapper.sh
-    class late_start
-    user compass
-    group compass misc input
     oneshot
 
 service mmi-boot-sh /system/bin/sh /init.mmi.boot.sh
@@ -800,47 +789,14 @@ on property:sys.wifi.tethering=true
     write /sys/class/net/wlan0/queues/rx-3/rps_cpus ${sys.usb.rps_mask}
 
 on charger
-    trigger early-fs
-    trigger fs
-    trigger post-fs
-    trigger post-fs-data
-    trigger moto-charger
-    class_stop main
-    class_stop late_start
+    class charger
+    start msm_irqbalance 
 
-service imsqmidaemon /system/bin/imsqmidaemon
-    class main
-    user system
-    socket ims_qmid stream 0660 system radio
-    group radio net_raw log qcom_diag
-
-service imsdatadaemon /system/bin/imsdatadaemon
-    class main
-    user system
-    socket ims_datad stream 0660 system radio
-    group system wifi radio inet net_raw log qcom_diag net_admin
+service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
+    class core
+    user root
+    group root
     disabled
-
-on property:sys.ims.QMI_DAEMON_STATUS=1
-    start imsdatadaemon
-
-service ims_rtp_daemon /system/bin/ims_rtp_daemon
-   class main
-   user system
-   socket ims_rtpd stream 0660 system radio
-   group radio net_raw diag qcom_diag log
-   disabled
-
-service imscmservice /system/bin/imscmservice
-   class main
-   user system
-   group radio net_raw diag qcom_diag log
-   disabled
-
-on property:sys.ims.DATA_DAEMON_STATUS=1
-    start ims_rtp_daemon
-    start imscmservice
-
 
 # setup_adbd will start adb once it has checked the keys
 on property:ro.debuggable=1

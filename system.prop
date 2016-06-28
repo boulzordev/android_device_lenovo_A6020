@@ -240,4 +240,6 @@ persist.ts.rtmakeup=true
 # disable CM's blacklist
 ro.telephony.cm_blklst_on=0
 
-
+#This is required for the camera
+ro.vendor.extension_library=libqti-perfd-client.so
+camera2.portability.force_api=1
