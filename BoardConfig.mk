@@ -92,6 +92,9 @@ USE_OPENGL_RENDERER := true
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072  # Just default value. Not sure
 
+# Power
+TARGET_POWERHAL_VARIANT := qcom
+
 # Properties
 
 # Qualcomm support
