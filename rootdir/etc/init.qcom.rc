@@ -95,7 +95,13 @@ on fs
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
+    # Allow subsystem (modem etc) debugging
+    write /sys/module/subsystem_restart/parameters/enable_debug ${persist.sys.ssr.enable_debug}
+    write /sys/module/pil_msa/parameters/pbl_mba_boot_timeout_ms ${persist.sys.mba_boot_timeout}
+    write /sys/module/pil_msa/parameters/modem_auth_timeout_ms ${persist.sys.modem_auth_timeout}
+    write /sys/module/peripheral_loader/parameters/proxy_timeout_ms ${persist.sys.pil_proxy_timeout}
     write /sys/kernel/boot_adsp/boot 1
+    chown root audio /sys/kernel/boot_adsp/boot
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -133,25 +139,44 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    # Create NETMGR daemon socket area
-    mkdir /dev/socket/netmgr 0750 radio radio
-
-    # Prevents permission denied error for telephony
-    chmod 0644 /proc/cmdline
-
-    mkdir /persist/bluetooth 0770 bluetooth bluetooth
+    mkdir /persist/drm 0770 system system
 
     setprop wifi.interface wlan0
+    
+ #add ota prop for mbn update 
+    setprop persist.radio.start_ota_daemon 1
+
+#   Define TCP buffer sizes for various networks
+#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    setprop net.tcp.buffersize.wifi    524288,2097152,4194304,262144,524288,1048576
+
 
     setprop ro.telephony.call_ring.multiple false
+
+    #Remove SUID bit for iproute2 ip tool
+    chmod 0755 /system/bin/ip
+
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     #For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
 
-    # Assign TCP buffer thresholds to be ceiling value of technology maximums
-    # Increased technology maximums should be reflected here.
+#   Define TCP buffer sizes for various networks
+#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    setprop net.tcp.buffersize.default 4096,87380,524288,4096,16384,110208
+    setprop net.tcp.buffersize.lte     2097152,4194304,8388608,262144,524288,1048576
+    setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.hspa    4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hsupa   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hsdpa   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.hspap   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
+    setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
+    setprop net.tcp.buffersize.evdo    4094,87380,524288,4096,16384,262144
+
+#   Assign TCP buffer thresholds to be ceiling value of technology maximums
+#   Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  8388608
     write /proc/sys/net/core/wmem_max  8388608
 
@@ -416,6 +441,20 @@ on post-fs-data
     # Create folder for mm-qcamera-daemon
     mkdir /data/camera 0770 media camera
 
+    #Create PERFD deamon related dirs
+    mkdir /data/misc/perfd 0755 root system
+    chmod 2755 /data/misc/perfd
+    mkdir /data/system/perfd 0770 root system
+    chmod 2770 /data/system/perfd
+    mkdir /persist/drm 0770 system system
+
+    # NFC local data and nfcee xml storage
+    mkdir /data/nfc 0770 nfc nfc
+    mkdir /data/nfc/param 0770 nfc nfc
+
+    # Sensor
+    mkdir /persist/sensors 0770 system system
+
     # Setup folder for native to transfer data to NativeDropBoxAgent
     mkdir /data/system/dropbox-add 0730 system diag
 
@@ -435,13 +474,11 @@ on post-fs-data
     mkdir /data/ss-ram-dumps/riva-dumps 0750 radio log
 
     # Permissions for Factory Test of Charging Paths
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_auto_enable
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_ibatt
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_itrick
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_iusb
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_usb_suspend
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_fail_clear
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_usb_otg_ctl
+    chown root system /sys/class/power_supply/bms/current_now
+    chown root system /sys/class/power_supply/bms/voltage_ocv
+    chmod 0664 /sys/class/power_supply/bms/current_now
+    chmod 0664 /sys/class/power_supply/bms/voltage_ocv
+
 
     # Setup correct permissions for dbvc
     mkdir /data/local/dbvc 0750 mot_tcmd shell
@@ -788,9 +825,30 @@ on property:sys.wifi.tethering=true
     write /sys/class/net/wlan0/queues/rx-2/rps_cpus ${sys.usb.rps_mask}
     write /sys/class/net/wlan0/queues/rx-3/rps_cpus ${sys.usb.rps_mask}
 
+on property:sys.boot_from_charger_mode=1
+    class_stop charger
+    trigger late-init
+
 on charger
+    trigger early-fs
+    trigger fs
+    trigger post-fs
+    trigger post-fs-data
+    start vm_bms
+    start msm_irqbalance
+    class_stop main
+    class_stop late_start
+
+
+service vm_bms /system/bin/vm_bms
+    class main
+    user root
+    group root
+
+service charger /sbin/healthd -c
     class charger
-    start msm_irqbalance 
+    critical
+    seclabel u:r:healthd:s0
 
 service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class core
