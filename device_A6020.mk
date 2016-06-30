@@ -87,7 +87,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8916 \
-	libboringssl-compat \
+    libboringssl-compat \
     libbson \
     Snap
 
@@ -114,7 +114,7 @@ PRODUCT_PACKAGES += \
     keystore.msm8916
 
 # Light
-PRODUCT_COPY_FILES += \
+PRODUCT_PACKAGES += \
     lights.msm8916
 
 # Media
