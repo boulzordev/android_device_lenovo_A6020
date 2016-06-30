@@ -71,7 +71,7 @@ config_bt ()
   fi
   btsoc=`getprop qcom.bluetooth.soc`
 
-  if ls /sys/class/leds/bt; then
+  if -d /sys/class/leds/bt; then
     chmod 0666 /sys/class/leds/bt/brightness
   fi
 

@@ -74,7 +74,6 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
-    audio.a2dp.default \
     audio.primary.msm8916 \
     audio.r_submix.default \
     audio.usb.default \
@@ -83,6 +82,13 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libqcompostprocbundle \
     tinymix
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    bluetooth.default.so \
+	libbt-hci \
+	libbt-vendor
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -155,6 +161,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.mmi.usb.rc \
+	init.qcom.bt.sh \
     init.qcom.ril.sh \
     ueventd.qcom.rc
 

@@ -246,3 +246,6 @@ camera2.portability.force_api=1
 
 #Stop spamming
 persist.data.qmi.adb_logmask=0
+
+#Bluetooth
+ro.qualcomm.bt.hci_transport=smd
