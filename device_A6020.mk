@@ -115,6 +115,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	Gello
 
+# GPS
+PRODUCT_PATCKAGES += \
+    gps.msm8916
+
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8916
