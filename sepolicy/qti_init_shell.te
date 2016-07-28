@@ -10,3 +10,5 @@ allow qti_init_shell utags_block_device:blk_file { open read };
 
 # Needed by init.mmi.touch.sh
 allow qti_init_shell blkid_exec:lnk_file { read };
+
+allow qti_init_shell btnvtool_exec:file { read getattr open execute execute_no_trans };
