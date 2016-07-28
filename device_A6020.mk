@@ -166,6 +166,7 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.mmi.usb.rc \
 	init.qcom.bt.sh \
+	init.qcom.rc \
     init.qcom.ril.sh \
     ueventd.qcom.rc
 
