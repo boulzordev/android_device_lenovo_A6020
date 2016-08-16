@@ -82,6 +82,7 @@ BOARD_HARDWARE_CLASS += \
     hardware/cyanogen/cmhw
 
 # Crypto
+TARGET_HW_DISK_ENCRYPTION := true
 
 # Display
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
