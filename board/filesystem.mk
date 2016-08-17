@@ -9,3 +9,6 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072  # Just default value. Not sure
+
+# Filesystem
+TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(LOCAL_PATH)/android_filesystem_config.h
