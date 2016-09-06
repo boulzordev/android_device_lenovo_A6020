@@ -73,6 +73,13 @@ void vendor_load_properties()
         property_set("ro.product.device", "A6020a40");
         property_set("ro.product.model", "Lenovo K5");
         property_set("ro.board_id", board_id);
+        gsm_properties(true);
+    } else if (ISMATCH(board_id, "S82918G1")){
+        property_set("ro.sf.lcd_density", "480");
+        property_set("ro.product.device", "A6020l37");
+        property_set("ro.product.model", "Lenovo K5 Plus");
+        property_set("ro.board_id", board_id);
+        gsm_properties(false);
     } else if (ISMATCH(board_id, "")) {
         property_set("ro.board_id", "empty");
     } else {
@@ -81,8 +88,21 @@ void vendor_load_properties()
         property_set("ro.product.device", "A6020");
         property_set("ro.product.model", "Lenovo K5 Fallback");
         property_set("ro.board_id", board_id);
+        gsm_properties(true);
     }
 
     property_get("ro.product.device", device);
     INFO("Found board id: %s. Setting device to %s\n", board_id, device);
+}
+
+void gsm_properties(bool msim)
+{
+    property_set("telephony.lteOnGsmDevice", "0");
+    property_set("ro.telephony.default_network", "9");
+    if (msim) {
+        property_set("persist.radio.multisim.config", "dsds");
+        property_set("ro.telephony.ril.config", "simactivation");
+    } else {
+        property_set("persist.radio.multisim.config", "");
+    }
 }

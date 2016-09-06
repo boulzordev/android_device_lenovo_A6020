@@ -6,9 +6,6 @@
 # Display
 ro.lenovo.lcdsize=5
 
-# Required by our RIL blob
-ro.telephony.ril.config=simactivation
-
 
 rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
@@ -25,7 +22,6 @@ persist.radio.rat_on=combine
 ril.subscription.types=RUIM
 DEVICE_PROVISIONED=1
 # Start in cdma mode
-ro.telephony.default_network=9
 ro.telephony.3g2g_network=3
 
 debug.sf.hw=0
@@ -95,8 +91,6 @@ ro.qualcomm.cabl=0
 
 #
 # System props for telephony
-# System prop to turn on CdmaLTEPhone always
-telephony.lteOnCdmaDevice=0
 
 #
 # System props for bluetooh
@@ -225,9 +219,6 @@ persist.radio.restore_mode_pref=1
 
 # hide internal OOS for 5s when modem is camping
 persist.radio.ignore_dom_time=5
-
-#set default multisim config to dsds
-persist.radio.multisim.config=dsds
 
 persist.radio.always_send_plmn=true
 
