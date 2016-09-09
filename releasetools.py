@@ -35,9 +35,15 @@ def ReplaceDeviceConfig(info):
   info.script.Mount("/system")
   #info.script.AppendExtra('run_program("/sbin/sh", "-c", "mkdir /system/etc/firmware/venus_bak);')
   #info.script.AppendExtra('run_program("/sbin/sh", "-c", "cp /system/etc/venus.* /system/etc/firmware/venus_bak");')
-  for b in ('S82918G1', 'S82918D1'):
-    info.script.AppendExtra('if getprop("ro.board_id") == "%s" then' % b)
-    info.script.AppendExtra('run_program("/sbin/sh", "-c", "mv /system/etc/firmware/venus/%s/venus* /system/etc/firmware/");' % b)
+  #S82918B1 a46
+  #S82918D1 a40
+  #S82918F1 l36
+  #S82918G1 l37
+  for b in ('default', 'A6020l36', 'A6020l37', 'A6020a40', 'A6020a46'):
+    info.script.AppendExtra('if getprop("ro.product.device") == "%s" then' % b)
+    info.script.AppendExtra('ui_print("Variant %s detected");' % b)
+    info.script.AppendExtra('run_program("/sbin/sh", "-c", "mv /system/etc/%s/venus* /system/etc/firmware/");' % b)
+    info.script.AppendExtra('run_program("/sbin/sh", "-c", "mv /system/etc/%s/thermal* /system/etc/");' % b)
     info.script.AppendExtra('endif;')
   info.script.Unmount("/system")
 
