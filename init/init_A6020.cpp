@@ -41,19 +41,16 @@
 
 void gsm_properties(bool msim);
 
-
 void vendor_load_properties()
 {
-    char platform[PROP_VALUE_MAX];
-    char device[PROP_VALUE_MAX];
+    std::string platform;
+    std::string device;
     char cmdlinebuff[CMDLINE_SIZE];
     char board_id[32];
     FILE *fp;
-    int rc;
-    rc = property_get("ro.board.platform", platform);
+    platform = property_get("ro.board.platform");
 
-    if (!rc || !ISMATCH(platform, ANDROID_TARGET)) {
-        property_set("ro.board_id", "target");
+    if (platform != ANDROID_TARGET) {
         return;
     }
 
@@ -107,10 +104,11 @@ void vendor_load_properties()
         gsm_properties(true);
     }
 
-    property_get("ro.product.variant", device);
+    device = property_get("ro.product.variant");
     //Force device to variant if not set
-    property_set("ro.product.device", device);
-    INFO("Found board id: %s. Setting device to %s\n", board_id, device);
+    property_set("ro.product.device", device.c_str());
+
+    INFO("Found board id: %s. Setting device to %s\n", board_id, device.c_str());
 }
 
 void gsm_properties(bool msim)
