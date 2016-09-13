@@ -39,8 +39,9 @@ def ReplaceDeviceConfig(info):
   #S82918D1 a40
   #S82918F1 l36
   #S82918G1 l37
+  info.script.AppendExtra('run_program("/sbin/sh", "/tmp/install/bin/get_board_id.sh");')
   for b in ('default', 'A6020l36', 'A6020l37', 'A6020a40', 'A6020a46'):
-    info.script.AppendExtra('if getprop("ro.product.device") == "%s" then' % b)
+    info.script.AppendExtra('if getprop("ro.product.variant") == "%s" then' % b)
     info.script.AppendExtra('ui_print("Variant %s detected");' % b)
     info.script.AppendExtra('run_program("/sbin/sh", "-c", "mv /system/etc/%s/venus* /system/etc/firmware/");' % b)
     info.script.AppendExtra('run_program("/sbin/sh", "-c", "mv /system/etc/%s/thermal* /system/etc/");' % b)
