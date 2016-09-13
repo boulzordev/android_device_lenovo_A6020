@@ -73,25 +73,25 @@ void vendor_load_properties()
 
     if (ISMATCH(board_id, "S82918D1")) {
         property_set("ro.sf.lcd_density", "320");
-        property_set("ro.product.device", "A6020a40");
+        property_set("ro.product.variant", "A6020a40");
         property_set("ro.product.model", "Lenovo K5");
         property_set("ro.board_id", board_id);
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918G1")){
         property_set("ro.sf.lcd_density", "480");
-        property_set("ro.product.device", "A6020l37");
+        property_set("ro.product.variant", "A6020l37");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
         gsm_properties(false);
     } else if (ISMATCH(board_id, "S82918B1")){
         property_set("ro.sf.lcd_density", "480");
-        property_set("ro.product.device", "A6020a46");
+        property_set("ro.product.variant", "A6020a46");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918F1")){
         property_set("ro.sf.lcd_density", "480");
-        property_set("ro.product.device", "A6020l36");
+        property_set("ro.product.variant", "A6020l36");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
         gsm_properties(true);
@@ -101,13 +101,15 @@ void vendor_load_properties()
     } else {
         // Default fallback
         property_set("ro.sf.lcd_density", "480");
-        property_set("ro.product.device", "A6020");
+        property_set("ro.product.variant", "A6020");
         property_set("ro.product.model", "Lenovo K5 Fallback");
         property_set("ro.board_id", "default");
         gsm_properties(true);
     }
 
-    property_get("ro.product.device", device);
+    property_get("ro.product.variant", device);
+    //Force device to variant if not set
+    property_set("ro.product.device", device);
     INFO("Found board id: %s. Setting device to %s\n", board_id, device);
 }
 

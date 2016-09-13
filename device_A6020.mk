@@ -129,6 +129,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.msm8916
 
+# Firmware patch
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/get_board_id.sh:install/bin/get_board_id.sh
+
 # Media
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
