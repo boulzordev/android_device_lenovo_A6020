@@ -15,13 +15,13 @@ if [ "$variant" = "" ]; then
     
     case "$board_id" in
         "S82918B1")
-            variant=""
+            variant="A6020a46"
             ;;
         "S82918D1")
             variant="A6020a40"
             ;;
         "S82918F1")
-            variant=""
+            variant="A6020l36"
             ;;
         "S82918G1")
             variant="A6020l37"
