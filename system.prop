@@ -232,6 +232,8 @@ ro.telephony.cm_blklst_on=0
 #This is required for the camera
 ro.vendor.extension_library=libqti-perfd-client.so
 camera2.portability.force_api=1
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true
 
 #Stop spamming
 persist.data.qmi.adb_logmask=0
