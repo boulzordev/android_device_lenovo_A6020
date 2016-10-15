@@ -252,6 +252,9 @@
          Doze dreams will run whenever the power manager is in a dozing state. -->
     <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
 
+     <!-- enable doze powersaving mode -->
+    <bool name="config_enableAutoPowerModes">true</bool>
+
      <!-- If true, the doze component is not started until after the screen has been
           turned off and the screen off animation has been performed. -->
     <bool name="config_dozeAfterScreenOff">true</bool>
