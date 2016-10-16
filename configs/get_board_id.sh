@@ -7,7 +7,8 @@ if [ "$variant" = "" ]; then
     board_id="default";
     for e in $(cat /proc/cmdline);
     do
-        if echo $e | grep "board_id";
+        tmp=$(echo $e | grep "board_id" > /dev/null);
+        if [ "0" == "$?" ];
         then
             board_id=$(echo $e |cut -d":" -f0 |cut -d"=" -f2);
         fi
@@ -15,13 +16,13 @@ if [ "$variant" = "" ]; then
     
     case "$board_id" in
         "S82918B1")
-            variant=""
+            variant="A6020a46"
             ;;
         "S82918D1")
             variant="A6020a40"
             ;;
         "S82918F1")
-            variant=""
+            variant="A6020l36"
             ;;
         "S82918G1")
             variant="A6020l37"
@@ -29,3 +30,4 @@ if [ "$variant" = "" ]; then
     esac
     setprop ro.product.variant "$variant"
 fi
+echo $variant;
