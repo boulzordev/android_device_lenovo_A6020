@@ -16,7 +16,7 @@
  */
 
 
-// #define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #include <cutils/log.h>
 
@@ -147,14 +147,13 @@ set_speaker_light_locked(struct light_device_t* dev,
 
     colorRGB = state->color;
 
-#if 0
+#if 1
     ALOGD("set_speaker_light_locked mode %d, colorRGB=%08X, onMS=%d, offMS=%d\n",
             state->flashMode, colorRGB, onMS, offMS);
 #endif
 
-    red = (colorRGB >> 16) & 0xFF;
-    green = (colorRGB >> 8) & 0xFF;
-    blue = colorRGB & 0xFF;
+    green = (colorRGB >> 16) & 0xFF;
+    red = (colorRGB >> 8) & 0xFF;
 
     if (onMS > 0 && offMS > 0) {
         /*
@@ -171,18 +170,21 @@ set_speaker_light_locked(struct light_device_t* dev,
         blink = 0;
     }
 
-    if (blink) {
-        if (red) {
-            if (write_int(RED_BLINK_FILE, blink))
-                write_int(RED_LED_FILE, 0);
-	}
-        if (green) {
-            if (write_int(GREEN_BLINK_FILE, blink))
-                write_int(GREEN_LED_FILE, 0);
-	}
+    ALOGD("RED BLINK %d\n", write_int(RED_BLINK_FILE, 0));
+    ALOGD("GREEN BLINK %d\n", write_int(GREEN_BLINK_FILE, 0));
+    ALOGD("RED LED %d\n", write_int(RED_LED_FILE, 0));
+    ALOGD("GREEN LED %d\n", write_int(GREEN_LED_FILE, 0));
+
+    if (green){
+        if (blink)
+            ALOGD("GREEN BLINK %d\n", write_int(GREEN_BLINK_FILE, blink));
+        else
+            ALOGD("GREEN LED %d\n", write_int(GREEN_LED_FILE, green));
     } else {
-        write_int(RED_LED_FILE, red);
-        write_int(GREEN_LED_FILE, green);
+        if (blink)
+            ALOGD("RED LINK %d\n", write_int(RED_BLINK_FILE, blink));
+        else
+            ALOGD("RED LED %d\n", write_int(RED_LED_FILE, red));
     }
 
     return 0;
@@ -272,6 +274,8 @@ static int open_lights(const struct hw_module_t* module, char const* name,
 {
     int (*set_light)(struct light_device_t* dev,
             struct light_state_t const* state);
+
+    ALOGD("openlights called");
 
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name))
         set_light = set_light_backlight;
