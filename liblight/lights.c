@@ -124,7 +124,7 @@ static int
 set_speaker_light_locked(struct light_device_t* dev,
         struct light_state_t const* state)
 {
-    int red, green, blue;
+    int red, green;
     int blink;
     int onMS, offMS;
     unsigned int colorRGB;
@@ -152,8 +152,8 @@ set_speaker_light_locked(struct light_device_t* dev,
             state->flashMode, colorRGB, onMS, offMS);
 #endif
 
-    green = (colorRGB >> 16) & 0xFF;
-    red = (colorRGB >> 8) & 0xFF;
+    red = (colorRGB >> 16) & 0xFF;
+    green = (colorRGB >> 8) & 0xFF;
 
     if (onMS > 0 && offMS > 0) {
         /*
