@@ -268,8 +268,17 @@ on boot
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/green/blink
     chmod 0664 /sys/class/leds/green/blink
+    chown system system /sys/class/leds/green/delay_on
+    chmod 0664 /sys/class/leds/green/delay_on
+    chown system system /sys/class/leds/green/delay_off
+    chmod 0664 /sys/class/leds/green/delay_off
+
     chown system system /sys/class/leds/red/blink
     chmod 0664 /sys/class/leds/red/blink
+    chown system system /sys/class/leds/red/delay_on
+    chmod 0664 /sys/class/leds/red/delay_on
+    chown system system /sys/class/leds/red/delay_off
+    chmod 0664 /sys/class/leds/red/delay_off
 
     # Change the ownership of the notification LED interface
     chown system system /sys/class/leds/rgb/control
