@@ -59,6 +59,19 @@ char const*const RED_BLINK_FILE
 char const*const GREEN_BLINK_FILE
         = "/sys/class/leds/green/blink";
 
+char const*const RED_DELAY_ON
+        = "/sys/class/leds/red/delay_on";
+
+char const*const GREEN_DELAY_ON
+        = "/sys/class/leds/green/delay_on";
+
+char const*const RED_DELAY_OFF
+        = "/sys/class/leds/red/delay_off";
+
+char const*const GREEN_DELAY_OFF
+        = "/sys/class/leds/green/delay_off";
+
+
 /**
  * device methods
  */
@@ -122,7 +135,7 @@ set_light_backlight(struct light_device_t* dev,
 
 static int
 set_speaker_light_locked(struct light_device_t* dev,
-        struct light_state_t const* state)
+        struct light_state_t const* state, int batt_light)
 {
     int red, green, blue;
     int blink;
@@ -145,16 +158,36 @@ set_speaker_light_locked(struct light_device_t* dev,
             break;
     }
 
+
     colorRGB = state->color;
 
 #if 1
-    ALOGD("set_speaker_light_locked mode %d, colorRGB=%08X, onMS=%d, offMS=%d\n",
-            state->flashMode, colorRGB, onMS, offMS);
+    ALOGD("set_speaker_light_locked mode %d, batt:%d colorRGB=%08X, onMS=%d, offMS=%d\n",
+            state->flashMode, batt_light, colorRGB, onMS, offMS);
 #endif
 
-    green = (colorRGB >> 16) & 0xFF;
-    red = (colorRGB >> 8) & 0xFF;
+    const char *batt_file;
+    const char *batt_led;
+    const char *batt_delay_on;
+    const char *batt_delay_off;
+    //Reset both leds
+    write_int(GREEN_BLINK_FILE, 0);
+    write_int(GREEN_LED_FILE, 0);
+    write_int(RED_BLINK_FILE, 0);
+    write_int(RED_LED_FILE, 0);
 
+
+    if (batt_light){
+        batt_file = RED_BLINK_FILE;
+        batt_led = RED_LED_FILE;
+        batt_delay_on = RED_DELAY_ON;
+        batt_delay_off = RED_DELAY_OFF;
+    }else{
+        batt_file = GREEN_BLINK_FILE;
+        batt_led = GREEN_LED_FILE;
+        batt_delay_on = GREEN_DELAY_ON;
+        batt_delay_off = GREEN_DELAY_OFF;
+    }
     if (onMS > 0 && offMS > 0) {
         /*
          * if ON time == OFF time
@@ -162,29 +195,20 @@ set_speaker_light_locked(struct light_device_t* dev,
          * else
          *   use blink mode 1
          */
-        if (onMS == offMS)
-            blink = 2;
-        else
-            blink = 1;
+        blink = 1;
     } else {
         blink = 0;
     }
 
-    ALOGD("RED BLINK %d\n", write_int(RED_BLINK_FILE, 0));
-    ALOGD("GREEN BLINK %d\n", write_int(GREEN_BLINK_FILE, 0));
-    ALOGD("RED LED %d\n", write_int(RED_LED_FILE, 0));
-    ALOGD("GREEN LED %d\n", write_int(GREEN_LED_FILE, 0));
-
-    if (green){
-        if (blink)
-            ALOGD("GREEN BLINK %d\n", write_int(GREEN_BLINK_FILE, blink));
-        else
-            ALOGD("GREEN LED %d\n", write_int(GREEN_LED_FILE, green));
+    if (blink){
+        //Set new blink values
+        write_int(batt_delay_on, onMS);
+        write_int(batt_delay_off, offMS);
+        write_int(batt_file, 1);
     } else {
-        if (blink)
-            ALOGD("RED LINK %d\n", write_int(RED_BLINK_FILE, blink));
-        else
-            ALOGD("RED LED %d\n", write_int(RED_LED_FILE, red));
+        if (is_lit(state)){
+           write_int(batt_led, 255);
+        }
     }
 
     return 0;
@@ -194,9 +218,9 @@ static void
 handle_speaker_battery_locked(struct light_device_t* dev)
 {
     if (is_lit(&g_battery)) {
-        set_speaker_light_locked(dev, &g_battery);
+        set_speaker_light_locked(dev, &g_battery, 1);
     } else {
-        set_speaker_light_locked(dev, &g_notification);
+        set_speaker_light_locked(dev, &g_notification, 0);
     }
 }
 
