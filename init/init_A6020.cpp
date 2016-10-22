@@ -89,12 +89,24 @@ void vendor_load_properties()
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
         gsm_properties(true);
+    } else if (ISMATCH(board_id, "S82918H1")){
+        property_set("ro.sf.lcd_density", "480");
+        property_set("ro.product.variant", "A6020a46");
+        property_set("ro.product.model", "Lenovo K5 Plus");
+        property_set("ro.board_id", board_id);
+        gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918F1")){
         property_set("ro.sf.lcd_density", "480");
         property_set("ro.product.variant", "A6020l36");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
         gsm_properties(true);
+    } else if (ISMATCH(board_id, "S82918E1")){
+        property_set("ro.sf.lcd_density", "320");
+        property_set("ro.product.variant", "A6020a41");
+        property_set("ro.product.model", "Lenovo K5");
+        property_set("ro.board_id", board_id);
+        gsm_properties(false);
     } else if (ISMATCH(board_id, "")) {
         property_set("ro.board_id", "default");
         property_set("ro.product.device", "default");

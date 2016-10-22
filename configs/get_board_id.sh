@@ -21,11 +21,17 @@ if [ "$variant" = "" ]; then
         "S82918D1")
             variant="A6020a40"
             ;;
+        "S82918E1")
+            variant="A6020a41"
+            ;;
         "S82918F1")
             variant="A6020l36"
             ;;
         "S82918G1")
             variant="A6020l37"
+            ;;
+        "S82918H1")
+            variant="A6020a46"
             ;;
     esac
     setprop ro.product.variant "$variant"
