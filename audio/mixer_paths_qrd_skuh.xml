@@ -49,20 +49,20 @@
     <ctl name="Voip Evrc Min Max Rate Config" id="1" value="4" />
     <ctl name="Voip Dtx Mode" value="0" />
     <ctl name="TTY Mode" value="Off" />
-    <ctl name="HPHL Volume" value="9" />
-    <ctl name="HPHR Volume" value="9" />
-    <ctl name="RX1 Digital Volume" value="94" />
-    <ctl name="RX2 Digital Volume" value="94" />
-    <ctl name="RX3 Digital Volume" value="94" />
-    <ctl name="IIR1 INP1 Volume" value="94" />
-    <ctl name="IIR1 INP2 Volume" value="94" />
-    <ctl name="IIR1 INP3 Volume" value="94" />
-    <ctl name="IIR1 INP4 Volume" value="94" />
-    <ctl name="ADC1 Volume" value="6" />
-    <ctl name="ADC2 Volume" value="6" />
-    <ctl name="ADC3 Volume" value="6" />
-    <ctl name="DEC1 Volume" value="94" />
-    <ctl name="DEC2 Volume" value="94" />
+    <ctl name="HPHL Volume" value="7" />
+    <ctl name="HPHR Volume" value="7" />
+    <ctl name="RX1 Digital Volume" value="85" />
+    <ctl name="RX2 Digital Volume" value="85" />
+    <ctl name="RX3 Digital Volume" value="85" />
+    <ctl name="IIR1 INP1 Volume" value="85" />
+    <ctl name="IIR1 INP2 Volume" value="85" />
+    <ctl name="IIR1 INP3 Volume" value="85" />
+    <ctl name="IIR1 INP4 Volume" value="85" />
+    <ctl name="ADC1 Volume" value="8" />
+    <ctl name="ADC2 Volume" value="8" />
+    <ctl name="ADC3 Volume" value="8" />
+    <ctl name="DEC1 Volume" value="85" />
+    <ctl name="DEC2 Volume" value="85" />
     <ctl name="DEC2 MUX" value="ZERO" />
     <ctl name="DEC1 MUX" value="ZERO" />
     <ctl name="ADC2 MUX" value="ZERO" />
@@ -83,7 +83,7 @@
     <ctl name="SPK DAC Switch" value="0" />
     <ctl name="EAR PA Boost" value="ENABLE" />
     <ctl name="Lineout_1 amp" value="DISABLE"/>
-    <ctl name="headset amp" value="DISABLE"/>
+    <ctl name="headset amp" value="ENABLE"/>
     <ctl name="EAR PA Gain" value="POS_1P5_DB" />
     <ctl name="MI2S_RX Channels" value="One" />
     <ctl name="MI2S_TX Channels" value="One" />
@@ -541,17 +541,17 @@
 
     <!-- These are actual sound device specific mixer settings -->
     <path name="adc1">
-    		<ctl name="ADC1 Volume" value="5" />
+    		<ctl name="ADC1 Volume" value="8" />
         <ctl name="DEC1 MUX" value="ADC1" />
     </path>
 
     <path name="adc2">
-    		<ctl name="ADC2 Volume" value="5" />
+    		<ctl name="ADC2 Volume" value="8" />
         <ctl name="DEC1 MUX" value="ADC2" />
     </path>
 
     <path name="adc3">
-    		<ctl name="ADC3 Volume" value="5" />
+    		<ctl name="ADC3 Volume" value="8" />
         <ctl name="DEC1 MUX" value="ADC2" />
         <ctl name="ADC2 MUX" value="INP3" />
     </path>
@@ -574,7 +574,7 @@
     <path name="handset">
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RDAC2 MUX" value="RX1" />
-        <ctl name="RX1 Digital Volume" value="94" />
+        <ctl name="RX1 Digital Volume" value="92" />
         <ctl name="EAR PA Gain" value="POS_6_DB" />
         <ctl name="EAR_S" value="Switch" />
     </path>
