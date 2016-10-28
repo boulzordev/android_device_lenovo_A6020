@@ -59,8 +59,8 @@ media.stagefright.enable-aac=true
 media.stagefright.enable-qcp=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
-media.msm8939hw=0
-media.msm8929hw=0
+media.msm8939hw=1
+media.msm8929hw=1
 mm.enable.smoothstreaming=true
 mmp.enable.3g2=true
 media.aac_51_output_enabled=true
@@ -240,7 +240,6 @@ persist.data.qmi.adb_logmask=0
 ro.qualcomm.bt.hci_transport=smd
 
 #Extras
-
 #Power Saving
 ro.ril.power_collapse=1
 pm.sleep_mode=1
