@@ -257,7 +257,6 @@ ro.ril.enable.amr.wideband=1
 persist.sys.use_dithering=1
 debug.performance.tuning=1
 video.accelerate.hw=1
-ro.media.codec_priority_for_thumb=so
 ro.media.enc.jpeg.quality=100
 
 #Qualcomm Specific
