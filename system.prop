@@ -24,16 +24,18 @@ DEVICE_PROVISIONED=1
 # Start in cdma mode
 ro.telephony.3g2g_network=3
 
-debug.sf.hw=0
-debug.egl.hw=0
+# Display
+debug.composition.type=c2d
+debug.sf.gpu_comp_tiling=1
+debug.mdpcomp.idletime=600
 persist.hwc.mdpcomp.enable=true
-debug.mdpcomp.logs=0
+persist.hwc.ptor.enable=true
+ro.opengles.version=196609
+debug.enable.sglscale=1
 dalvik.vm.heapsize=36m
 dalvik.vm.zygotemaxfailedboots=5
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
-debug.mdpcomp.idletime=600
-debug.enable.sglscale=1
 
 #ro.hdmi.enable=true
 #tunnel.decode=true
@@ -84,7 +86,7 @@ persist.timed.enable=true
 # system prop for opengles version
 #
 # 131072 is decimal for 0x30000 to report version 3
-ro.opengles.version=196608
+ro.opengles.version=196609
 
 # System property for cabl
 ro.qualcomm.cabl=0
@@ -162,12 +164,8 @@ ro.sys.fw.bservice_enable=true
 ro.sys.fw.bservice_limit=5
 ro.sys.fw.bservice_age=5000
 
-#min/max cpu in core control
-ro.core_ctl_min_cpu=2
-ro.core_ctl_max_cpu=4
-
 # system property for PIP support
-persist.camera.pip.support=0
+persist.camera.pip.support=1
 persist.camera.beauty=16
 #+Bug 90160 lenovo Android general property
 ro.lenovo.region=row
@@ -194,7 +192,7 @@ persist.lenovo.feedback=true
 
 ## +bug143950 dupeiyu.wt add 20160128
 ro.lenovo.lcdsize=5
-ro.lenovo.cpuinfo=MSM8929,8,1.4
+ro.lenovo.cpuinfo=MSM8929,8,1.5
 ## -bug143950 dupeiyu.wt add 20160128
 
 #fengjuan.wt, add, set default timezone
