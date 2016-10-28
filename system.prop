@@ -82,12 +82,6 @@ persist.data.netmgrd.qos.enable=true
 #system props for time-services
 persist.timed.enable=true
 
-#
-# system prop for opengles version
-#
-# 131072 is decimal for 0x30000 to report version 3
-ro.opengles.version=196609
-
 # System property for cabl
 ro.qualcomm.cabl=0
 
@@ -111,11 +105,11 @@ ro.qc.sdk.audio.ssr=false
 ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=false
+persist.audio.fluence.speaker=true
 #Set for msm8916
-tunnel.audio.encode = false
+tunnel.audio.encode = true
 #Buffer size in kbytes for compress offload playback
-audio.offload.buffer.size.kb=64
+audio.offload.buffer.size.kb=512
 #Minimum duration for offload playback in secs
 audio.offload.min.duration.secs=30
 #Enable offload audio video playback by default
@@ -200,7 +194,7 @@ persist.sys.timezone=Asia/Shanghai
 persist.radio.primarycard=true
 persist.radio.msim_swap=true
 ro.lenovo.ecc_enabled_for_nw=true
-audio.offload.disable=1
+audio.offload.disable=0
 #zhaoqf_sh add for coutry ISO 2015-12-17 default CN
 ro.lenovo.easyimage.code=fr
 
