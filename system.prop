@@ -142,8 +142,8 @@ vidc.enc.narrow.searchrange=1
 audio.dolby.ds2.enabled=true
 
 #HWUI properties
-ro.hwui.text_large_cache_height=2048
-ro.hwui.texture_cache_size=40
+ro.hwui.text_large_cache_height=3072
+ro.hwui.texture_cache_size=96
 
 # Enable DRM system property
 drm.service.enabled=1
@@ -238,3 +238,30 @@ persist.data.qmi.adb_logmask=0
 
 #Bluetooth
 ro.qualcomm.bt.hci_transport=smd
+
+#Extras
+
+#Power Saving
+ro.ril.power_collapse=1
+pm.sleep_mode=1
+wifi.supplicant_scan_interval=300000
+
+#Signal
+persist.cust.tel.eons=1
+ro.config.hw_fast_dormancy=1
+
+#Voice Quality
+ro.ril.enable.amr.wideband=1
+
+#Graphic Improvements
+persist.sys.use_dithering=1
+debug.performance.tuning=1
+video.accelerate.hw=1
+ro.media.codec_priority_for_thumb=so
+ro.media.enc.jpeg.quality=100
+
+#Qualcomm Specific
+debug.qctwa.statusbar=1
+debug.qctwa.preservebuf=1
+debug.qc.hardware=true
+com.qc.hardware=true
