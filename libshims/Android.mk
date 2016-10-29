@@ -51,9 +51,52 @@ include $(BUILD_SHARED_LIBRARY)
 
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := MediaBuffer.cpp
-LOCAL_SHARED_LIBRARIES := libstagefright_foundation libui libgui
+LOCAL_SRC_FILES := MediaBuffer.cpp ICameraClient.cpp 
+LOCAL_SHARED_LIBRARIES := libstagefright_foundation libui libgui libbinder
 LOCAL_CFLAGS := -Wno-unused-private-field
 LOCAL_MODULE := libshims_ims
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES:= \
+	camera/Camera.cpp \
+	camera/CameraMetadata.cpp \
+	camera/CaptureResult.cpp \
+	camera/CameraParameters2.cpp \
+	camera/ICamera.cpp \
+	camera/ICameraClient.cpp \
+	camera/ICameraService.cpp \
+	camera/ICameraServiceListener.cpp \
+	camera/ICameraServiceProxy.cpp \
+	camera/ICameraRecordingProxy.cpp \
+	camera/ICameraRecordingProxyListener.cpp \
+	camera/camera2/ICameraDeviceUser.cpp \
+	camera/camera2/ICameraDeviceCallbacks.cpp \
+	camera/camera2/CaptureRequest.cpp \
+	camera/camera2/OutputConfiguration.cpp \
+	camera/CameraBase.cpp \
+	camera/CameraUtils.cpp \
+	camera/VendorTagDescriptor.cpp \
+	camera/CameraParameters.cpp
+
+LOCAL_SHARED_LIBRARIES := \
+	libcutils \
+	libutils \
+	liblog \
+	libbinder \
+	libhardware \
+	libui \
+	libgui \
+	libcamera_metadata
+
+LOCAL_C_INCLUDES += \
+	$(LOCAL_PATH)/camera/include \
+	system/media/camera/include \
+	system/media/private/camera/include
+
+LOCAL_MODULE:= libshims_camera
+
+include $(BUILD_SHARED_LIBRARY)
+
