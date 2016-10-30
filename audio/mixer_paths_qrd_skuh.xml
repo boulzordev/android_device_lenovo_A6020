@@ -103,7 +103,7 @@
     <ctl name="Voice_Tx Mixer TERT_MI2S_TX_Voice" value="0" />
     <ctl name="PRI_MI2S_RX Port Mixer INT_BT_SCO_TX" value="0" />
     <!-- Voice BTSCO -->
-    <ctl name="Internal BTSCO SampleRate" value="8000" />
+    <ctl name="Internal BTSCO SampleRate" value="48000" />
     <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer CSVoice" value="0" />
     <ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer Multimedia6" value="0" />
@@ -131,7 +131,7 @@
     <!-- Voip -->
     <ctl name="PRI_MI2S_RX_Voice Mixer Voip" value="0" />
     <ctl name="Voip_Tx Mixer TERT_MI2S_TX_Voip" value="0" />
-    <ctl name="Internal BTSCO SampleRate" value="8000" />
+    <ctl name="Internal BTSCO SampleRate" value="48000" />
     <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer Voip" value="0" />
     <ctl name="Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip" value="0" />
     <!-- Voip end -->
@@ -204,7 +204,7 @@
     <!-- ADSP testfwk end-->
 
     <path name="bt-sco-wb-samplerate">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
     </path>
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
@@ -217,7 +217,7 @@
     </path>
 
     <path name="deep-buffer-playback bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
         <path name="deep-buffer-playback bt-sco" />
     </path>
 
@@ -247,7 +247,7 @@
     </path>
 
     <path name="low-latency-playback bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
         <path name="low-latency-playback bt-sco" />
     </path>
 
@@ -277,7 +277,7 @@
     </path>
 
     <path name="compress-offload-playback bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
         <path name="compress-offload-playback bt-sco" />
     </path>
 
@@ -315,7 +315,7 @@
     </path>
 
     <path name="audio-record bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
         <path name="audio-record bt-sco" />
     </path>
 
@@ -346,7 +346,7 @@
     </path>
 
     <path name="voice-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
         <path name="voice-call bt-sco" />
     </path>
 
@@ -366,7 +366,7 @@
     </path>
 
     <path name="voice2-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
         <path name="voice2-call bt-sco" />
     </path>
 
@@ -397,7 +397,7 @@
     </path>
 
     <path name="vowlan-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
         <path name="vowlan-call bt-sco" />
     </path>
 
@@ -414,7 +414,7 @@
     </path>
 
     <path name="hfp-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
         <path name="hfp-sco" />
     </path>
 
@@ -479,7 +479,7 @@
     </path>
 
    <path name="volte-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
         <path name="volte-call bt-sco" />
     </path>
 
@@ -499,7 +499,7 @@
     </path>
 
     <path name="compress-voip-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
         <path name="compress-voip-call bt-sco" />
     </path>
 
@@ -535,7 +535,7 @@
     </path>
 
     <path name="qchat-call bt-sco-wb">
-        <ctl name="Internal BTSCO SampleRate" value="16000" />
+        <ctl name="Internal BTSCO SampleRate" value="48000" />
         <path name="qchat-call bt-sco" />
     </path>
 
@@ -574,7 +574,7 @@
     <path name="handset">
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RDAC2 MUX" value="RX1" />
-        <ctl name="RX1 Digital Volume" value="92" />
+        <ctl name="RX1 Digital Volume" value="94" />
         <ctl name="EAR PA Gain" value="POS_6_DB" />
         <ctl name="EAR_S" value="Switch" />
     </path>
@@ -610,7 +610,7 @@
 
     <path name="sidetone-handset">
         <path name="sidetone-iir" />
-        <ctl name="IIR1 INP1 Volume" value="53" />
+        <ctl name="IIR1 INP1 Volume" value="52" />
         <ctl name="RX1 MIX2 INP1" value="IIR1" />
     </path>
 
@@ -618,7 +618,7 @@
         <path name="sidetone-iir" />
         <ctl name="RX1 MIX2 INP1" value="IIR1" />
         <ctl name="RX2 MIX2 INP1" value="IIR1" />
-        <ctl name="IIR1 INP1 Volume" value="53" />
+        <ctl name="IIR1 INP1 Volume" value="52" />
     </path>
 
     <path name="voice-handset">
