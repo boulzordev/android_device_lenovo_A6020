@@ -24,8 +24,10 @@ DEVICE_PROVISIONED=1
 # Start in cdma mode
 ro.telephony.3g2g_network=3
 
-# Display
-debug.composition.type=c2d
+# Graphics
+debug.sf.hw=1
+debug.egl.hw=1
+debug.composition.type=mdp
 debug.sf.gpu_comp_tiling=1
 debug.mdpcomp.idletime=600
 persist.hwc.mdpcomp.enable=true
@@ -38,11 +40,11 @@ dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 
 #ro.hdmi.enable=true
-#tunnel.decode=true
-#tunnel.audiovideo.decode=true
-#lpa.decode=false
-#lpa.use-stagefright=true
-#persist.speaker.prot.enable=false
+tunnel.decode=true
+tunnel.audiovideo.decode=true
+lpa.decode=false
+lpa.use-stagefright=true
+persist.speaker.prot.enable=true
 
 #
 # system props for the cne module
@@ -61,17 +63,24 @@ media.stagefright.enable-aac=true
 media.stagefright.enable-qcp=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
+media.stagefright.enable-record=false
+media.stagefright.enable-rtsp=true
+media.stagefright.enable-meta=true
 media.msm8939hw=1
 media.msm8929hw=1
 mm.enable.smoothstreaming=true
 mmp.enable.3g2=true
 media.aac_51_output_enabled=true
+ro.camcorder.videoModes=true
 
 #codecs:(PARSER_)AAC AC3 AMR_NB AMR_WB ASF AVI DTS FLV 3GP 3G2 MKV MP2PS MP2TS MP3 OGG QCP WAV FLAC DIVX DIVXHD
 mm.enable.qcom_parser=3407871
 
 # Default to AwesomePlayer
 media.stagefright.use-awesome=false
+
+#Auto Brightness
+persist.power.useautobrightadj=true
 
 #
 # system props for the data modules
@@ -100,22 +109,26 @@ persist.fuse_sdcard=true
 #
 #snapdragon value add features
 #
-ro.qc.sdk.audio.ssr=false
+ro.qc.sdk.audio.ssr=true
 ##fluencetype can be "fluence" or "fluencepro" or "none"
 ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
+persist.audio.fluence.mode=endfire
+persist.audio.handset.mic=digital
+ro.qc.sdk.camera.facialproc=true
 #Set for msm8916
-tunnel.audio.encode = true
+tunnel.audio.encode=true
 #Buffer size in kbytes for compress offload playback
 audio.offload.buffer.size.kb=512
 #Minimum duration for offload playback in secs
-audio.offload.min.duration.secs=30
+audio.offload.min.duration.secs=10
 #Enable offload audio video playback by default
 av.offload.enable=true
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
+ro.telephony.default_network=10
 
 #System property for FM transmitter
 ro.fm.transmitter=false
@@ -172,21 +185,21 @@ ro.lenovo.wificert=no
 ro.lenovo.series=Lenovo K5
 ro.lenovo.adb=apkctl
 ro.lenovo.signalbars=four
-ro.product.model=Lenovo A6020a40
+ro.product.model=Lenovo A6020
 ro.product.brand=Lenovo
 ro.product.manufacturer=LENOVO
 ro.lenovo.videocall=false
 ro.lenovo.vibeuistyle=true
 persist.backgrounddata.enable=false
 persist.lenovo.ltetype=CSFB
-ro.product.ota.model=Lenovo A6020a40
+ro.product.ota.model=Lenovo A6020
 ro.lenovo.cta=false
 persist.lenovo.feedback=true
 #-Bug 90160 lenovo Android general property
 
 ## +bug143950 dupeiyu.wt add 20160128
 ro.lenovo.lcdsize=5
-ro.lenovo.cpuinfo=MSM8929,8,1.5
+ro.lenovo.cpuinfo=MSM8939,8,1.5
 ## -bug143950 dupeiyu.wt add 20160128
 
 #fengjuan.wt, add, set default timezone
@@ -213,6 +226,7 @@ persist.radio.restore_mode_pref=1
 persist.radio.ignore_dom_time=5
 
 persist.radio.always_send_plmn=true
+persist.radio.add_power_save=1
 
 # enable face beautification
 persist.ts.postmakeup=true
@@ -231,8 +245,9 @@ persist.data.qmi.adb_logmask=0
 #Bluetooth
 ro.qualcomm.bt.hci_transport=smd
 
-#Extras
 #Power Saving
+ro.config.hw_quickpoweron=true
+ro.config.hw_power_saving=true
 ro.ril.power_collapse=1
 pm.sleep_mode=1
 wifi.supplicant_scan_interval=300000
@@ -245,7 +260,9 @@ ro.config.hw_fast_dormancy=1
 ro.ril.enable.amr.wideband=1
 
 #Graphic Improvements
-persist.sys.use_dithering=1
+hw3d.force=1
+ro.config.disable.hw_accel=false
+persist.sys.use_dithering=0
 debug.performance.tuning=1
 video.accelerate.hw=1
 ro.media.enc.jpeg.quality=100
@@ -255,3 +272,21 @@ debug.qctwa.statusbar=1
 debug.qctwa.preservebuf=1
 debug.qc.hardware=true
 com.qc.hardware=true
+
+#Smooth UI
+persist.service.lgospd.enable=0
+persist.service.pcsync.enable=0
+
+# OpenDNS Safe DNS Servers
+net.dns1=208.67.222.222
+net.dns2=208.67.220.220
+net.rmnet0.dns1=208.67.222.222
+net.rmnet0.dns2=208.67.220.220
+net.ppp0.dns1=208.67.222.222
+net.ppp0.dns2=208.67.220.220
+net.wlan0.dns1=208.67.222.222
+net.wlan0.dns2=208.67.220.220
+net.eth0.dns1=208.67.222.222
+net.eth0.dns2=208.67.220.220
+net.gprs.dns1=208.67.222.222
+net.gprs.dns2=208.67.220.220
