@@ -20,12 +20,12 @@ TARGET_SCREEN_HEIGHT := 1920
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := A6020
-PRODUCT_NAME := cm_A6020
+PRODUCT_NAME := A6020
 PRODUCT_RELEASE_NAME := A6020
 PRODUCT_BRAND := lenovo
 PRODUCT_MANUFACTURER := lenovo
 
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME="Lenovo Vibe K5"
+    PRODUCT_NAME="Lenovo Vibe K5+"
 
