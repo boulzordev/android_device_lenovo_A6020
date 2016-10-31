@@ -1347,12 +1347,16 @@ while (true)
 			echo "0" > /sys/devices/system/cpu/cpu3/online 
 			echo "0" > /sys/devices/system/cpu/cpu5/online
    			echo "0" > /sys/devices/system/cpu/cpu7/online
+			echo 200000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq #Fix HIGH Low Frequency
+			echo 200000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq #Fix HIGH Low Frequency
 		else
 			if  [ "$CPULOAD" -gt "30" ]; then
 			echo "1" > /sys/devices/system/cpu/cpu3/online 
 			echo "1" > /sys/devices/system/cpu/cpu5/online
 			echo "1" > /sys/devices/system/cpu/cpu7/online
+			echo 200000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq #Fix HIGH Low Frequency
+			echo 200000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq #Fix HIGH Low Frequency
 			fi
 		fi
-		sleep 0.8
+		sleep 0.85
 	done
