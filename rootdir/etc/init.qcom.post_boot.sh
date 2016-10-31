@@ -1339,6 +1339,19 @@ echo 70 > /sys/module/process_reclaim/parameters/pr_pressure_max
 echo 512 > /sys/module/process_reclaim/parameters/per_swap_size
 echo 30 > /sys/module/process_reclaim/parameters/swap_opt_eff
 
+#Some Overall System Tweaks
+echo "msm-adreno-tz" > /sys/class/kgsl/kgsl-3d0/devfreq/governor
+echo "3" > /sys/class/kgsl/kgsl-3d0/default_pwrlevel
+echo "1" > /sys/class/kgsl/kgsl-3d0/ppd/enable
+echo "noop" > /sys/block/mmcblk0/queue/scheduler
+echo "noop" > /sys/block/mmcblk1/queue/scheduler
+echo "2" > /sys/block/mmcblk0/queue/rq_affinity
+echo "2" > /sys/block/mmcblk1/queue/rq_affinity
+echo "1176" > /sys/block/mmcblk0/queue/read_ahead_kb
+echo "640" > /sys/block/mmcblk1/queue/read_ahead_kb
+echo "Y" > /sys/module/msm_thermal/parameters/enabled
+echo "Y" > /sys/module/phy_msm_usb/parameters/floated_charger_enable
+echo 176 > /sys/class/leds/lcd-backlight/max_brightness
 
 while (true)
 	do
