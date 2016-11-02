@@ -41,10 +41,50 @@
         <item>5</item>
         <item>35</item>
         <item>100</item>
+        <item>150</item>
+        <item>180</item>
+        <item>195</item>
+        <item>200</item>
+        <item>250</item>
+        <item>280</item>
         <item>300</item>
-        <item>1500</item>
-        <item>3500</item>
-        <item>5000</item>
+        <item>355</item>
+        <item>450</item>
+        <item>500</item>
+        <item>625</item>
+        <item>685</item>
+        <item>720</item>
+        <item>750</item>
+        <item>800</item>
+        <item>855</item>
+        <item>910</item>
+        <item>925</item>
+        <item>965</item>
+        <item>990</item>
+        <item>1000</item>
+        <item>1050</item>
+        <item>1100</item>
+        <item>1200</item>
+        <item>1250</item>
+        <item>1280</item>
+        <item>1325</item>
+        <item>1600</item>
+        <item>1800</item>
+        <item>2100</item>
+        <item>2150</item>
+        <item>2180</item>
+        <item>2250</item>
+        <item>3800</item>
+        <item>3900</item>
+        <item>4200</item>
+        <item>4300</item>
+        <item>4400</item>
+        <item>5100</item>
+        <item>5200</item>
+        <item>5300</item>
+        <item>5500</item>
+        <item>6000</item>
+        <item>6200</item>
         <item>7000</item>
     </integer-array>
 
@@ -55,11 +95,51 @@
     <integer-array name="config_autoBrightnessLcdBacklightValues">
         <item>10</item>
         <item>20</item>
+        <item>30</item>
+        <item>35</item>
         <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>65</item>
         <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>95</item>
+        <item>100</item>
+        <item>105</item>        
         <item>110</item>
+        <item>115</item>
+        <item>120</item>
+        <item>125</item>
+        <item>130</item>
+        <item>135</item>
+        <item>140</item>
+        <item>145</item>
+        <item>150</item>
+        <item>155</item>
         <item>160</item>
+        <item>165</item>
+        <item>170</item>
+        <item>175</item>
+        <item>180</item>
+        <item>185</item>
+        <item>190</item>
+        <item>195</item>
         <item>200</item>
+        <item>205</item>
+        <item>210</item>
+        <item>215</item>
+        <item>220</item>
+        <item>225</item>
+        <item>230</item>
+        <item>235</item>
+        <item>240</item>
+        <item>245</item>
+        <item>250</item>
         <item>255</item>
     </integer-array>
 
@@ -243,7 +323,7 @@
     <!-- Screen brightness used to dim the screen while dozing in a very low power state.
           May be less than the minimum allowed brightness setting
           that can be set by the user. -->
-    <integer name="config_screenBrightnessDoze">17</integer>
+    <integer name="config_screenBrightnessDoze">20</integer>
 
     <!-- Power Management: Specifies whether to decouple the interactive state of the
          device from the display on/off state.
