@@ -1351,8 +1351,9 @@ echo "1176" > /sys/block/mmcblk0/queue/read_ahead_kb
 echo "640" > /sys/block/mmcblk1/queue/read_ahead_kb
 echo "Y" > /sys/module/msm_thermal/parameters/enabled
 echo "Y" > /sys/module/phy_msm_usb/parameters/floated_charger_enable
-echo 176 > /sys/class/leds/lcd-backlight/max_brightness
+echo 255 > /sys/class/leds/lcd-backlight/max_brightness
 
+#This script is an generic hotplug driver to turn on and turn of CPUs at idle, generic core_ctl.ko of stock rom isn't working.
 while (true)
 	do
 		CPULOAD=$(cat /sys/devices/system/cpu/cpu0/rq-stats/cpu_normalized_load)
@@ -1371,5 +1372,5 @@ while (true)
 			echo 200000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq #Fix HIGH Low Frequency
 			fi
 		fi
-		sleep 0.85
+		sleep 0.80
 	done
