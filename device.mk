@@ -185,6 +185,7 @@ PRODUCT_PACKAGES += \
 
 # Shim
 PRODUCT_PACKAGES += \
+    libshim_boringssl \
     libshim_gui \
     libshim_ril
 
