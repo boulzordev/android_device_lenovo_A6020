@@ -38,6 +38,7 @@ dalvik.vm.heapsize=36m
 dalvik.vm.zygotemaxfailedboots=5
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
+persist.sys.composition.type=c2d
 
 #Disable Qualcomm Low Power Audio Codecs
 tunnel.decode=false
