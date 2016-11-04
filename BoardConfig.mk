@@ -1,4 +1,4 @@
-USE_CAMERA_STUB := false
+USE_CAMERA_STUB := false #device don't use camera emulation, so use physical hardware.
 
 # inherit from the proprietary version
 -include vendor/lenovo/A6020/BoardConfigVendor.mk
@@ -63,6 +63,7 @@ AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
+BOARD_USES_FLUENCE_INCALL := true 
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
@@ -89,6 +90,8 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true 
+Media TARGET_ENABLE_QC_AV_ENHANCEMENTS := true 
 
 # FM
 
@@ -127,6 +130,14 @@ BOARD_PROVIDES_LIBRIL := false
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+
+#Qcom specific
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP 
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+BOARD_USES_QCOM_HARDWARE := true 
+TARGET_USES_QCOM_BSP := true 
+USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY:= true
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno405
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
