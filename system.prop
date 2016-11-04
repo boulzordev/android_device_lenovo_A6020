@@ -39,12 +39,18 @@ dalvik.vm.zygotemaxfailedboots=5
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 
-#ro.hdmi.enable=true
-tunnel.decode=true
-tunnel.audiovideo.decode=true
+#Disable Qualcomm Low Power Audio Codecs
+tunnel.decode=false
+tunnel.audiovideo.decode=false
 lpa.decode=false
-lpa.use-stagefright=true
+lpa.use-stagefright=false
+lpa.releaselock=false
+audio.deep_buffer.media=false
 persist.speaker.prot.enable=true
+
+#Set best audio samplerate
+ro.audio.samplerate=48000
+ro.audio.pcm.samplerate=48000
 
 #
 # system props for the cne module
@@ -78,6 +84,7 @@ mm.enable.qcom_parser=3407871
 
 # Default to AwesomePlayer
 media.stagefright.use-awesome=false
+persist.sys.media.use-awesome=true
 
 #Auto Brightness
 persist.power.useautobrightadj=true
@@ -109,7 +116,9 @@ persist.fuse_sdcard=true
 #
 #snapdragon value add features
 #
+
 ro.qc.sdk.audio.ssr=true
+
 ##fluencetype can be "fluence" or "fluencepro" or "none"
 ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
@@ -118,14 +127,19 @@ persist.audio.fluence.speaker=true
 persist.audio.fluence.mode=endfire
 persist.audio.handset.mic=digital
 ro.qc.sdk.camera.facialproc=true
+
 #Set for msm8916
 tunnel.audio.encode=true
+
 #Buffer size in kbytes for compress offload playback
 audio.offload.buffer.size.kb=512
+
 #Minimum duration for offload playback in secs
 audio.offload.min.duration.secs=10
+
 #Enable offload audio video playback by default
 av.offload.enable=true
+
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
 ro.telephony.default_network=10
