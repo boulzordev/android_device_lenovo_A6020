@@ -27,7 +27,7 @@ ro.telephony.3g2g_network=3
 # Graphics
 debug.sf.hw=1
 debug.egl.hw=1
-debug.composition.type=mdp
+debug.composition.type=c2d
 debug.sf.gpu_comp_tiling=1
 debug.mdpcomp.idletime=600
 persist.hwc.mdpcomp.enable=true
