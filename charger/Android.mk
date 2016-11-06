@@ -67,7 +67,7 @@ include $(BUILD_EXECUTABLE)
 
 define _add-charger-image
 include $$(CLEAR_VARS)
-LOCAL_MODULE := system_core_charger_$(notdir $(1))
+LOCAL_MODULE := device_lenovo_A6020_charger_$(notdir $(1))
 LOCAL_MODULE_STEM := $(notdir $(1))
 _img_modules += $$(LOCAL_MODULE)
 LOCAL_SRC_FILES := $1
