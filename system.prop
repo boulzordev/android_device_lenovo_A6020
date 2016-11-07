@@ -25,9 +25,9 @@ DEVICE_PROVISIONED=1
 ro.telephony.3g2g_network=3
 
 # Graphics
-debug.sf.hw=1
-debug.egl.hw=1
-debug.composition.type=c2d
+debug.sf.hw=0
+debug.egl.hw=0
+debug.composition.type=mdp
 debug.sf.gpu_comp_tiling=1
 debug.mdpcomp.idletime=600
 persist.hwc.mdpcomp.enable=true
@@ -38,7 +38,7 @@ dalvik.vm.heapsize=36m
 dalvik.vm.zygotemaxfailedboots=5
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
-persist.sys.composition.type=c2d
+persist.sys.composition.type=mdp
 
 #Disable Qualcomm Low Power Audio Codecs
 tunnel.decode=false
@@ -275,9 +275,8 @@ ro.config.hw_fast_dormancy=1
 ro.ril.enable.amr.wideband=1
 
 #Graphic Improvements
-hw3d.force=1
 ro.config.disable.hw_accel=false
-persist.sys.use_dithering=0
+persist.sys.use_dithering=1
 debug.performance.tuning=1
 video.accelerate.hw=1
 ro.media.enc.jpeg.quality=100
