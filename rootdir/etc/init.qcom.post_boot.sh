@@ -637,7 +637,7 @@ case "$target" in
                 echo 82000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
                 echo 960000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
                 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
-                echo "98 200000:52 345600:77 400000:67 533333:74 800000:75 1113600:80 1344000:82 1459200:87 1497600:200" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+                echo "98 200000:52 345600:77 400000:67 533333:74 800000:75 1113600:80 1344000:82 1459200:87 1574400:200" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
                 echo 62000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
                 echo 15000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/sampling_down_factor
                 echo 192000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
@@ -652,7 +652,7 @@ case "$target" in
                 echo 90000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
                 echo 800000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
                 echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
-                echo "98 200000:42 249600:56 400000:58 499200:62 998400:92 1113600:95 1209600:300" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
+                echo "98 200000:42 249600:56 400000:58 499200:62 998400:92 1113600:95 1335600:300" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
                 echo 160000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
                 echo 25000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/sampling_down_factor
                 echo 200000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
