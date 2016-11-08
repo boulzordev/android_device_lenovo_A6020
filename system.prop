@@ -28,7 +28,6 @@ ro.telephony.3g2g_network=3
 debug.sf.hw=0
 debug.egl.hw=0
 debug.composition.type=mdp
-debug.sf.gpu_comp_tiling=1
 debug.mdpcomp.idletime=600
 persist.hwc.mdpcomp.enable=true
 persist.hwc.ptor.enable=true
@@ -276,14 +275,12 @@ ro.ril.enable.amr.wideband=1
 
 #Graphic Improvements
 ro.config.disable.hw_accel=false
-persist.sys.use_dithering=1
+persist.sys.use_dithering=0
 debug.performance.tuning=1
 video.accelerate.hw=1
 ro.media.enc.jpeg.quality=100
 
 #Qualcomm Specific
-debug.qctwa.statusbar=1
-debug.qctwa.preservebuf=1
 debug.qc.hardware=true
 com.qc.hardware=true
 
