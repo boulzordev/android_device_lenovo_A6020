@@ -1,5 +1,8 @@
 # system.prop for A6020
 
+# AOKP
+ro.goo.developerid=Shr3ps
+
 # Dex2oat optimisation
 dalvik.vm.boot-dex2oat-threads=8
 dalvik.vm.dex2oat-threads=4
