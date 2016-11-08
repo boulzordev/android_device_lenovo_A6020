@@ -18,9 +18,12 @@ $(call inherit-product, device/lenovo/A6020/full_A6020.mk)
 TARGET_SCREEN_WIDTH := 720
 TARGET_SCREEN_HEIGHT := 1280
 
+# Inherit some common stuff.
+$(call inherit-product, vendor/aokp/configs/common_full_phone.mk)
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := A6020
-PRODUCT_NAME := cm_A6020
+PRODUCT_NAME := aokp_A6020
 PRODUCT_RELEASE_NAME := A6020
 PRODUCT_BRAND := lenovo
 PRODUCT_MANUFACTURER := lenovo
