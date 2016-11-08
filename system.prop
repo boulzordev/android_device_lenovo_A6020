@@ -233,6 +233,11 @@ ro.telephony.cm_blklst_on=0
 ro.vendor.extension_library=libqti-perfd-client.so
 camera2.portability.force_api=1
 
+#Fix for l36 variant 1080p recording issue
+camera.disable_zsl_mode=1
+persist.camera.HAL3.enabled=0
+persist.camera.cpp.duplication=false
+
 #Stop spamming
 persist.data.qmi.adb_logmask=0
 
