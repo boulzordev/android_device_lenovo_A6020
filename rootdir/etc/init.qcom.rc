@@ -866,7 +866,7 @@ service vm_bms /system/bin/vm_bms
     user root
     group root
 
-service charger /sbin/A6020_charger -c
+service charger /charger -c
     class charger
     critical
     seclabel u:r:healthd:s0
