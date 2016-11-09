@@ -27,7 +27,6 @@ ro.telephony.3g2g_network=3
 # Graphics
 debug.sf.hw=0
 debug.egl.hw=0
-debug.composition.type=mdp
 debug.mdpcomp.idletime=600
 persist.hwc.mdpcomp.enable=true
 persist.hwc.ptor.enable=true
@@ -37,7 +36,6 @@ dalvik.vm.heapsize=36m
 dalvik.vm.zygotemaxfailedboots=5
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
-persist.sys.composition.type=mdp
 
 #Disable Qualcomm Low Power Audio Codecs
 tunnel.decode=false
@@ -253,9 +251,9 @@ ro.telephony.cm_blklst_on=0
 ro.vendor.extension_library=libqti-perfd-client.so
 camera2.portability.force_api=1
 
-#Fix for l36 variant 1080p recording issue
+#Fix for l36 variant 1080p recording issue, special thanks to marchetto96
 camera.disable_zsl_mode=1
-persist.camera.HAL3.enabled=0
+persist.camera.HAL3.enabled=1
 persist.camera.cpp.duplication=false
 
 #Stop spamming
@@ -284,25 +282,10 @@ persist.sys.use_dithering=0
 debug.performance.tuning=1
 video.accelerate.hw=1
 ro.media.enc.jpeg.quality=100
-
-#Qualcomm Specific
-debug.qc.hardware=true
-com.qc.hardware=true
+ro.hwui.texture_cache_flush_rate=0.6
+hwui.use_gpu_pixel_buffers=true
+hwui.text_gamma_correction=shader
 
 #Smooth UI
 persist.service.lgospd.enable=0
 persist.service.pcsync.enable=0
-
-# OpenDNS Safe DNS Servers
-net.dns1=208.67.222.222
-net.dns2=208.67.220.220
-net.rmnet0.dns1=208.67.222.222
-net.rmnet0.dns2=208.67.220.220
-net.ppp0.dns1=208.67.222.222
-net.ppp0.dns2=208.67.220.220
-net.wlan0.dns1=208.67.222.222
-net.wlan0.dns2=208.67.220.220
-net.eth0.dns1=208.67.222.222
-net.eth0.dns2=208.67.220.220
-net.gprs.dns1=208.67.222.222
-net.gprs.dns2=208.67.220.220
