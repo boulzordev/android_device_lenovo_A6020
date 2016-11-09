@@ -28,38 +28,21 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --------------------------------------------------------------------------*/
 
 #include <stdio.h>
-#include <string.h>
 #include <CalibrationModule.h>
-#include <sensors.h>
 
-#define LOG_TAG "sensor_cal.common"
+#define LOG_TAG "sensor_cal.akm"
 #include <utils/Log.h>
 
-#include "compass/AKFS_Device.h"
-#include "compass/AKFS_Decomp.h"
-#include "compass/AKFS_AOC.h"
-#include "compass/AKFS_Math.h"
-#include "compass/AKFS_VNorm.h"
+#include "AKFS_Device.h"
+#include "AKFS_Decomp.h"
+#include "AKFS_AOC.h"
+#include "AKFS_Math.h"
+#include "AKFS_VNorm.h"
 
 #define SENSOR_CAL_ALGO_VERSION 1
 #define AKM_MAG_SENSE                   (1.0)
 #define CSPEC_HNAVE_V   8
 #define AKFS_GEOMAG_MAX 70
-
-#define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
-
-struct sensor_vec {
-	union {
-		struct {
-			float data[4];
-		};
-		struct {
-			float x;
-			float y;
-			float z;
-		};
-	};
-};
 
 struct sensor_cal_module_t SENSOR_CAL_MODULE_INFO;
 static struct sensor_cal_algo_t algo_list[];
@@ -106,8 +89,8 @@ typedef struct _AKMPRMS{
 
 static AKMPRMS g_prms;
 
-static int convert_magnetic(sensors_event_t *raw, sensors_event_t *result,
-		struct sensor_algo_args *args __attribute__((unused)))
+static int convert_magnetic(sensors_vec_t *raw, sensors_vec_t *result,
+		struct sensor_algo_args *args)
 {
 	int16 akret;
 	int16 aocret;
@@ -120,9 +103,9 @@ static int convert_magnetic(sensors_event_t *raw, sensors_event_t *result,
 		prms->fva_hdata[i] = prms->fva_hdata[i - 1];
 	}
 
-	prms->fva_hdata[0].u.x = raw->magnetic.x;
-	prms->fva_hdata[0].u.y = raw->magnetic.y;
-	prms->fva_hdata[0].u.z = raw->magnetic.z;
+	prms->fva_hdata[0].u.x = raw->x;
+	prms->fva_hdata[0].u.y = raw->y;
+	prms->fva_hdata[0].u.z = raw->z;
 
 	/* Offset calculation is done in this function */
 	/* hdata[in] : Android coordinate, sensitivity adjusted. */
@@ -183,112 +166,15 @@ static int convert_magnetic(sensors_event_t *raw, sensors_event_t *result,
 		}
 	}
 
-	result->magnetic.x = prms->fv_hvec.u.x;
-	result->magnetic.y = prms->fv_hvec.u.y;
-	result->magnetic.z = prms->fv_hvec.u.z;
-	result->magnetic.status = prms->i16_hstatus;
+	result->x = prms->fv_hvec.u.x;
+	result->y = prms->fv_hvec.u.y;
+	result->z = prms->fv_hvec.u.z;
+	result->status = prms->i16_hstatus;
 
 	return 0;
 }
 
-static int convert_orientation(sensors_event_t *raw, sensors_event_t *result,
-		struct sensor_algo_args *args __attribute__((unused)))
-{
-	float av;
-	float pitch, roll, azimuth;
-	const float rad2deg = 180 / M_PI;
-
-	static struct sensor_vec mag, acc;
-
-	if (raw->type == SENSOR_TYPE_MAGNETIC_FIELD) {
-		mag.x = raw->magnetic.x;
-		mag.y = raw->magnetic.y;
-		mag.z = raw->magnetic.z;
-	}
-
-	if (raw->type == SENSOR_TYPE_ACCELEROMETER) {
-		acc.x = raw->acceleration.x;
-		acc.y = raw->acceleration.y;
-		acc.z = raw->acceleration.z;
-	}
-
-	av = sqrtf(acc.x*acc.x + acc.y*acc.y + acc.z*acc.z);
-	if (av >= DBL_EPSILON) {
-		pitch = asinf(-acc.y / av);
-		roll = asinf(acc.x / av);
-		result->orientation.pitch = pitch * rad2deg;
-		result->orientation.roll = roll * rad2deg;
-		azimuth = atan2(-(mag.x) * cosf(roll) + mag.z * sinf(roll),
-				mag.x*sinf(pitch)*sinf(roll) + mag.y*cosf(pitch) + mag.z*sinf(pitch)*cosf(roll));
-		result->orientation.azimuth =  azimuth * rad2deg;
-		result->orientation.status = 3;
-	}
-
-	if (raw->type != SENSOR_TYPE_MAGNETIC_FIELD)
-		return -EAGAIN;
-
-	return 0;
-
-}
-
-static int convert_rotation_vector(sensors_event_t *raw, sensors_event_t *result,
-		struct sensor_algo_args *args __attribute__((unused)))
-{
-	float av;
-	float pitch, roll, azimuth;
-	int i;
-
-	static struct sensor_vec mag, acc;
-
-	if (raw->type == SENSOR_TYPE_MAGNETIC_FIELD) {
-		mag.x = raw->magnetic.x;
-		mag.y = raw->magnetic.y;
-		mag.z = raw->magnetic.z;
-	}
-
-	if (raw->type == SENSOR_TYPE_ACCELEROMETER) {
-		acc.x = raw->acceleration.x;
-		acc.y = raw->acceleration.y;
-		acc.z = raw->acceleration.z;
-	}
-
-
-	av = sqrtf(acc.x*acc.x + acc.y*acc.y + acc.z*acc.z);
-	pitch = asinf(-acc.y / av);
-	roll = asinf(acc.x / av);
-	azimuth = atan2(-(mag.x) * cosf(roll) + mag.z * sinf(roll),
-			mag.x*sinf(pitch)*sinf(roll) + mag.y*cosf(pitch) + mag.z*sinf(pitch)*cosf(roll));
-
-	float halfAzi = azimuth / 2;
-	float halfPitch = pitch / 2;
-	float halfRoll = -roll / 2;
-
-	float c1 = cosf(halfAzi);
-	float s1 = sinf(halfAzi);
-	float c2 = cosf(halfPitch);
-	float s2 = sinf(halfPitch);
-	float c3 = cosf(halfRoll);
-	float s3 = sinf(halfRoll);
-
-	result->data[0] = c1*c2*c3 - s1*s2*s3;
-	result->data[1] = c1*s2*c3 - s1*c2*s3;
-	result->data[2] = c1*c2*s3 + s1*s2*c3;
-	result->data[3] = s1*c2*c3 + c1*s2*s3;
-
-	if (halfAzi < M_PI / 2) {
-		result->data[1] = -result->data[1];
-		result->data[3] = -result->data[3];
-	} else {
-		result->data[2] = -result->data[2];
-	}
-
-	if (raw->type != SENSOR_TYPE_MAGNETIC_FIELD)
-		return -1;
-
-	return 0;
-}
-
-static int config_magnetic(int cmd, struct sensor_algo_args *args __attribute__((unused)))
+static int config_magnetic(int cmd, struct sensor_algo_args *args)
 {
 	struct compass_algo_args *param = (struct compass_algo_args*)args;
 
@@ -306,26 +192,7 @@ static int config_magnetic(int cmd, struct sensor_algo_args *args __attribute__(
 	return 0;
 }
 
-/* The magnetic field raw data is supposed to store at the sensors_event_t:data[4~6]*/
-static int convert_uncalibrated_magnetic(sensors_event_t *raw, sensors_event_t *result,
-		struct sensor_algo_args *args __attribute__((unused)))
-{
-	if (raw->type == SENSOR_TYPE_MAGNETIC_FIELD) {
-		result->uncalibrated_magnetic.x_uncalib = raw->data[4];
-		result->uncalibrated_magnetic.y_uncalib = raw->data[5];
-		result->uncalibrated_magnetic.z_uncalib = raw->data[6];
-
-		result->uncalibrated_magnetic.x_bias = raw->data[4] - raw->data[0];
-		result->uncalibrated_magnetic.y_bias = raw->data[5] - raw->data[1];
-		result->uncalibrated_magnetic.z_bias = raw->data[6] - raw->data[2];
-
-		return 0;
-	}
-
-	return -1;
-}
-
-static int cal_init(const struct sensor_cal_module_t *module __attribute__((unused)))
+static int cal_init(const struct sensor_cal_module_t *module)
 {
 	AKMPRMS *prms = &g_prms;
 
@@ -361,43 +228,15 @@ static int cal_get_algo_list(const struct sensor_cal_algo_t **algo)
 	return 0;
 }
 
-static struct sensor_algo_methods_t compass_methods = {
+static struct sensor_algo_methods_t algo_methods = {
 	.convert = convert_magnetic,
 	.config = config_magnetic,
 };
 
-static const char* compass_match_table[] = {
-	COMPASS_NAME,
-	NULL
-};
-
-static struct sensor_algo_methods_t orientation_methods = {
-	.convert = convert_orientation,
-	.config = NULL,
-};
-
-static const char* orientation_match_table[] = {
-	ORIENTATION_NAME,
-	NULL
-};
-
-static struct sensor_algo_methods_t rotation_vector_methods = {
-	.convert = convert_rotation_vector,
-	.config = NULL,
-};
-
-static const char* rotation_vector_match_table[] = {
-	ROTATION_VECTOR_NAME,
-	NULL
-};
-
-static struct sensor_algo_methods_t mag_uncalib_methods = {
-	.convert = convert_uncalibrated_magnetic,
-	.config = NULL,
-};
-
-static const char* mag_uncalib_match_table[] = {
-	MAGNETIC_FIELD_UNCALIBRATED_NAME,
+static const char* sensor_match_table[] = {
+	"akm09911-mag",
+	"akm8963-mag",
+	"compass",
 	NULL
 };
 
@@ -406,38 +245,10 @@ static struct sensor_cal_algo_t algo_list[] = {
 		.tag = SENSOR_CAL_ALGO_TAG,
 		.version = SENSOR_CAL_ALGO_VERSION,
 		.type = SENSOR_TYPE_MAGNETIC_FIELD,
-		.compatible = compass_match_table,
+		.compatible = sensor_match_table,
 		.module = &SENSOR_CAL_MODULE_INFO,
-		.methods = &compass_methods,
+		.methods = &algo_methods,
 	},
-
-	{
-		.tag = SENSOR_CAL_ALGO_TAG,
-		.version = SENSOR_CAL_ALGO_VERSION,
-		.type = SENSOR_TYPE_ORIENTATION,
-		.compatible = orientation_match_table,
-		.module = &SENSOR_CAL_MODULE_INFO,
-		.methods = &orientation_methods,
-	},
-
-	{
-		.tag = SENSOR_CAL_ALGO_TAG,
-		.version = SENSOR_CAL_ALGO_VERSION,
-		.type = SENSOR_TYPE_ROTATION_VECTOR,
-		.compatible = rotation_vector_match_table,
-		.module = &SENSOR_CAL_MODULE_INFO,
-		.methods = &rotation_vector_methods,
-	},
-
-	{
-		.tag = SENSOR_CAL_ALGO_TAG,
-		.version = SENSOR_CAL_ALGO_VERSION,
-		.type = SENSOR_TYPE_MAGNETIC_FIELD_UNCALIBRATED,
-		.compatible = mag_uncalib_match_table,
-		.module = &SENSOR_CAL_MODULE_INFO,
-		.methods = &mag_uncalib_methods,
-	},
-
 };
 
 static struct sensor_cal_methods_t cal_methods = {
@@ -448,11 +259,11 @@ static struct sensor_cal_methods_t cal_methods = {
 
 struct sensor_cal_module_t SENSOR_CAL_MODULE_INFO = {
 	.tag = SENSOR_CAL_MODULE_TAG,
-	.id = "cal_module_common",
+	.id = "cal_module_akm",
 	.version = SENSOR_CAL_MODULE_VERSION,
-	.vendor = "common",
+	.vendor = "akm",
 	.dso = NULL,
-	.number = ARRAY_SIZE(algo_list),
+	.number = 1,
 	.methods = &cal_methods,
 	.reserved = {0},
 };

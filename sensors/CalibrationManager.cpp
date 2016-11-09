@@ -38,27 +38,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <CalibrationModule.h>
 #include "sensors.h"
 #include "CalibrationManager.h"
-#include "NativeSensorManager.h"
 
 ANDROID_SINGLETON_STATIC_INSTANCE(CalibrationManager);
-
-static int store_calibrate_params(struct sensor_t *sensor, struct sensors_event_t *bias)
-{
-	sensors_XML& sensor_XML(sensors_XML :: getInstance());
-	struct cal_result_t cal_result;
-	int err = 0;
-
-	cal_result.offset[0] = bias->data[0] ;
-	cal_result.offset[1] = bias->data[1] ;
-	cal_result.offset[2] = bias->data[2] ;
-	err = sensor_XML.write_sensors_params(sensor, &cal_result, CAL_DYNAMIC);
-	if (err < 0) {
-		ALOGE("write calibrate %s sensor error\n", sensor->name);
-		return err;
-	}
-
-	return 0;
-}
 
 int CalibrationManager::check_algo(const sensor_cal_algo_t *list)
 {
@@ -89,9 +70,7 @@ void CalibrationManager::loadCalLibs()
 	int i = 0;
 	int count;
 	int tmp;
-	struct sensor_algo_args args;
 
-	args.store_calibrate_params = store_calibrate_params;
 	algo_count = 0;
 	algo_list = NULL;
 
@@ -153,7 +132,7 @@ void CalibrationManager::loadCalLibs()
 
 		modules[i]->dso = dso;
 
-		if (modules[i]->methods->init(modules[i], &args)) {
+		if (modules[i]->methods->init(modules[i])) {
 			ALOGE("init %s failed\n", modules[i]->id);
 			modules[i] = NULL;
 			continue;

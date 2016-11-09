@@ -52,13 +52,12 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // conversion of magnetic data to uT units
 #define CONVERT_MAG				(1.0f/16.0f)
-#define CALIBRATE_ERROR_MAGIC		0.000314
 
 /*****************************************************************************/
 CompassSensor::CompassSensor(struct SensorContext *context)
 	: SensorBase(NULL, NULL, context),
 	  mEnabled(0),
-	  mInputReader(4),
+	  mInputReader(6),
 	  mHasPendingEvent(false),
 	  mEnabledTime(0),
 	  res(CONVERT_MAG)
@@ -189,61 +188,51 @@ again:
 				mPendingEvent.magnetic.z = value * res;
 			}
 		} else if (type == EV_SYN) {
-			switch (event->code) {
-				case SYN_TIME_SEC:
-					mUseAbsTimeStamp = true;
-					report_time = event->value*1000000000LL;
-					break;
-				case SYN_TIME_NSEC:
-					mUseAbsTimeStamp = true;
-					mPendingEvent.timestamp = report_time+event->value;
-					break;
-				case SYN_REPORT:
-					if (mUseAbsTimeStamp != true) {
-						mPendingEvent.timestamp = timevalToNano(event->time);
-					}
-					if (mEnabled) {
-						if (mPendingEvent.timestamp >= mEnabledTime) {
-							raw = mPendingEvent;
+			if (event->code ==  SYN_TIME_SEC) {
+				mUseAbsTimeStamp = true;
+				report_time = event->value*1000000000LL;
+			} else if (event->code ==  SYN_TIME_NSEC) {
+				mUseAbsTimeStamp = true;
+				mPendingEvent.timestamp = report_time+event->value;
+			} else if (mEnabled) {
+				if (!mUseAbsTimeStamp) {
+					ALOGE("CompassSensor: timestamp not received");
+				} else if (mPendingEvent.timestamp >= mEnabledTime) {
+					raw = mPendingEvent;
 
-							if (algo != NULL) {
-								if (algo->methods->convert(&raw, &result, NULL)) {
-									ALOGE("Calibration failed.");
-									result.magnetic.x = CALIBRATE_ERROR_MAGIC;
-									result.magnetic.y = CALIBRATE_ERROR_MAGIC;
-									result.magnetic.z = CALIBRATE_ERROR_MAGIC;
-									result.magnetic.status = 0;
-								}
-							} else {
-								result = raw;
-							}
-
-							*data = result;
-							data->version = sizeof(sensors_event_t);
-							data->sensor = mPendingEvent.sensor;
-							data->type = SENSOR_TYPE_MAGNETIC_FIELD;
-							data->timestamp = mPendingEvent.timestamp;
-
-							/* The raw data is stored inside sensors_event_t.data after
-							 * sensors_event_t.magnetic. Notice that the raw data is
-							 * required to composite the virtual sensor uncalibrated
-							 * magnetic field sensor.
-							 *
-							 * data[0~2]: calibrated magnetic field data.
-							 * data[3]: magnetic field data accuracy.
-							 * data[4~6]: uncalibrated magnetic field data.
-							 */
-							data->data[4] = mPendingEvent.data[0];
-							data->data[5] = mPendingEvent.data[1];
-							data->data[6] = mPendingEvent.data[2];
-
-							data++;
-							numEventReceived++;
+					if (algo != NULL) {
+						if (algo->methods->convert(&raw, &result, NULL)) {
+							ALOGW("Calibration in progress...");
+							result = raw;
+							result.magnetic.status = SENSOR_STATUS_UNRELIABLE;
 						}
-						count--;
-						break;
+					} else {
+						result = raw;
 					}
 
+					*data = result;
+					data->version = sizeof(sensors_event_t);
+					data->sensor = mPendingEvent.sensor;
+					data->type = SENSOR_TYPE_MAGNETIC_FIELD;
+					data->timestamp = mPendingEvent.timestamp;
+
+					/* The raw data is stored inside sensors_event_t.data after
+					 * sensors_event_t.magnetic. Notice that the raw data is
+					 * required to composite the virtual sensor uncalibrated
+					 * magnetic field sensor.
+					 *
+					 * data[0~2]: calibrated magnetic field data.
+					 * data[3]: magnetic field data accuracy.
+					 * data[4~6]: uncalibrated magnetic field data.
+					 */
+					data->data[4] = mPendingEvent.data[0];
+					data->data[5] = mPendingEvent.data[1];
+					data->data[6] = mPendingEvent.data[2];
+
+					data++;
+					numEventReceived++;
+				}
+				count--;
 			}
 		} else {
 			ALOGE("CompassSensor: unknown event (type=%d, code=%d)",
