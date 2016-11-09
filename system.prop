@@ -277,12 +277,9 @@ ro.config.hw_fast_dormancy=1
 ro.ril.enable.amr.wideband=1
 
 #Graphic Improvements
-ro.config.disable.hw_accel=false
-persist.sys.use_dithering=0
 debug.performance.tuning=1
 video.accelerate.hw=1
 ro.media.enc.jpeg.quality=100
-ro.hwui.texture_cache_flush_rate=0.6
 hwui.use_gpu_pixel_buffers=true
 hwui.text_gamma_correction=shader
 
