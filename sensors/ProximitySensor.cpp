@@ -100,7 +100,7 @@ ProximitySensor::ProximitySensor()
 }
 
 ProximitySensor::ProximitySensor(struct SensorContext *context)
-	: SensorBase(NULL, NULL, context),
+	: SensorBase(NULL, NULL),
 	  mEnabled(0),
 	  mInputReader(4),
 	  mHasPendingEvent(false),

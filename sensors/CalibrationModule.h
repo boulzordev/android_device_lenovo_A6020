@@ -71,7 +71,6 @@ enum {
 	CMD_ENABLE = 0, /* Enable status changed */
 	CMD_DELAY, /* Polling rate changed */
 	CMD_BATCH, /* Batching parameter changed */
-	CMD_INIT,
 };
 
 struct sensor_cal_algo_t;
@@ -80,18 +79,11 @@ struct sensor_cal_module_t;
 struct sensor_algo_args {
 	int enable;
 	int delay_ms;
-	struct sensor_t sensor;
-	int (*store_calibrate_params)(struct sensor_t *sensor, struct sensors_event_t *bias);
 };
 
 struct compass_algo_args {
 	struct sensor_algo_args common;
 	uint32_t reserved[16];
-};
-
-struct gyro_algo_args {
-	struct sensor_algo_args common;
-        float bias[3];
 };
 
 struct sensor_algo_methods_t {
@@ -101,7 +93,7 @@ struct sensor_algo_methods_t {
 };
 
 struct sensor_cal_methods_t {
-	int (*init)(const struct sensor_cal_module_t* module, struct sensor_algo_args *args);
+	int (*init)(const struct sensor_cal_module_t* module);
 	void (*deinit)();
 	/* Return 0 on success */
 	int (*get_algo_list)(const struct sensor_cal_algo_t **algo);

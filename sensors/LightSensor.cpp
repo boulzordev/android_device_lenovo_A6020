@@ -132,7 +132,7 @@ LightSensor::LightSensor(char *name)
 }
 
 LightSensor::LightSensor(struct SensorContext *context)
-	: SensorBase(NULL, NULL, context),
+	: SensorBase(NULL, NULL),
 	  mEnabled(0),
 	  mInputReader(4),
 	  mHasPendingEvent(false),
