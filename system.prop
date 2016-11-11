@@ -277,11 +277,13 @@ ro.config.hw_fast_dormancy=1
 ro.ril.enable.amr.wideband=1
 
 #Graphic Improvements
-debug.performance.tuning=1
 video.accelerate.hw=1
 ro.media.enc.jpeg.quality=100
 hwui.use_gpu_pixel_buffers=true
 hwui.text_gamma_correction=shader
+persist.sys.use_dithering=0
+persist.sys.use_16bpp_alpha=1
+persist.sys.ui.hw=1
 
 #Smooth UI
 persist.service.lgospd.enable=0
