@@ -213,7 +213,6 @@ persist.lenovo.feedback=true
 ro.lenovo.lcdsize=5
 ro.lenovo.cpuinfo=MSM8939,8,1.5
 ## -bug143950 dupeiyu.wt add 20160128
-
 #fengjuan.wt, add, set default timezone
 persist.sys.timezone=Asia/Shanghai
 persist.radio.primarycard=true
@@ -253,7 +252,7 @@ camera2.portability.force_api=1
 
 #Fix for l36 variant 1080p recording issue, special thanks to marchetto96
 camera.disable_zsl_mode=1
-persist.camera.HAL3.enabled=1
+persist.camera.HAL3.enabled=0
 persist.camera.cpp.duplication=false
 
 #Stop spamming
@@ -281,7 +280,7 @@ video.accelerate.hw=1
 ro.media.enc.jpeg.quality=100
 hwui.use_gpu_pixel_buffers=true
 hwui.text_gamma_correction=shader
-persist.sys.use_dithering=0
+persist.sys.use_dithering=1
 persist.sys.use_16bpp_alpha=1
 persist.sys.ui.hw=1
 
