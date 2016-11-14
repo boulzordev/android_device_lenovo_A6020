@@ -49,20 +49,20 @@
     <ctl name="Voip Evrc Min Max Rate Config" id="1" value="4" />
     <ctl name="Voip Dtx Mode" value="0" />
     <ctl name="TTY Mode" value="Off" />
-    <ctl name="HPHL Volume" value="9" />
-    <ctl name="HPHR Volume" value="9" />
-    <ctl name="RX1 Digital Volume" value="86" />
-    <ctl name="RX2 Digital Volume" value="86" />
-    <ctl name="RX3 Digital Volume" value="86" />
-    <ctl name="IIR1 INP1 Volume" value="86" />
-    <ctl name="IIR1 INP2 Volume" value="86" />
-    <ctl name="IIR1 INP3 Volume" value="86" />
-    <ctl name="IIR1 INP4 Volume" value="86" />
-    <ctl name="ADC1 Volume" value="6" />
-    <ctl name="ADC2 Volume" value="6" />
-    <ctl name="ADC3 Volume" value="6" />
-    <ctl name="DEC1 Volume" value="86" />
-    <ctl name="DEC2 Volume" value="86" />
+    <ctl name="HPHL Volume" value="8" />
+    <ctl name="HPHR Volume" value="8" />
+    <ctl name="RX1 Digital Volume" value="85" />
+    <ctl name="RX2 Digital Volume" value="85" />
+    <ctl name="RX3 Digital Volume" value="85" />
+    <ctl name="IIR1 INP1 Volume" value="85" />
+    <ctl name="IIR1 INP2 Volume" value="85" />
+    <ctl name="IIR1 INP3 Volume" value="85" />
+    <ctl name="IIR1 INP4 Volume" value="85" />
+    <ctl name="ADC1 Volume" value="8" />
+    <ctl name="ADC2 Volume" value="8" />
+    <ctl name="ADC3 Volume" value="8" />
+    <ctl name="DEC1 Volume" value="85" />
+    <ctl name="DEC2 Volume" value="85" />
     <ctl name="DEC2 MUX" value="ZERO" />
     <ctl name="DEC1 MUX" value="ZERO" />
     <ctl name="ADC2 MUX" value="ZERO" />
@@ -103,7 +103,7 @@
     <ctl name="Voice_Tx Mixer TERT_MI2S_TX_Voice" value="0" />
     <ctl name="PRI_MI2S_RX Port Mixer INT_BT_SCO_TX" value="0" />
     <!-- Voice BTSCO -->
-    <ctl name="Internal BTSCO SampleRate" value="8000" />
+    <ctl name="Internal BTSCO SampleRate" value="16000" />
     <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer CSVoice" value="0" />
     <ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer Multimedia6" value="0" />
@@ -131,7 +131,7 @@
     <!-- Voip -->
     <ctl name="PRI_MI2S_RX_Voice Mixer Voip" value="0" />
     <ctl name="Voip_Tx Mixer TERT_MI2S_TX_Voip" value="0" />
-    <ctl name="Internal BTSCO SampleRate" value="8000" />
+    <ctl name="Internal BTSCO SampleRate" value="16000" />
     <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer Voip" value="0" />
     <ctl name="Voip_Tx Mixer INTERNAL_BT_SCO_TX_Voip" value="0" />
     <!-- Voip end -->
@@ -574,7 +574,7 @@
     <path name="handset">
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RDAC2 MUX" value="RX1" />
-        <ctl name="RX1 Digital Volume" value="96" />
+        <ctl name="RX1 Digital Volume" value="95" />
         <ctl name="EAR PA Gain" value="POS_6_DB" />
         <ctl name="EAR_S" value="Switch" />
     </path>
