@@ -240,3 +240,4 @@ persist.data.qmi.adb_logmask=0
 
 #Bluetooth
 ro.qualcomm.bt.hci_transport=smd
+qcom.bluetooth.soc=smd
