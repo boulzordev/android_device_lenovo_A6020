@@ -118,7 +118,9 @@ void vendor_load_properties()
         property_set("ro.board_id", "default");
         gsm_properties(true);
     }
-    property_set("ro.product.ota.model", property_get("ro.product.model");
+    char model[PROP_VALUE_MAX];
+    property_get("ro.product.model", model);
+    property_set("ro.product.ota.model", model);
 
     property_get("ro.product.variant", device);
     //Force device to variant if not set
