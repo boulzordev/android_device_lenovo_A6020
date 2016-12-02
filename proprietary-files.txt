@@ -17,7 +17,6 @@ vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
 vendor/lib/libhwdaphal.so
 vendor/lib/libqct_resampler.so
-vendor/lib/libvoice-svc.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcreverb.so
 vendor/lib64/soundfx/libqcvirt.so
@@ -28,7 +27,6 @@ vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
 vendor/lib64/libhwdaphal.so
 vendor/lib64/libqct_resampler.so
-vendor/lib64/libvoice-svc.so
 
 # Bluetooth
 bin/btnvtool
