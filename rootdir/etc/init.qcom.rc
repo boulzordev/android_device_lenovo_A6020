@@ -498,8 +498,6 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
 service qcom-sh /system/bin/sh /system/etc/init.qcom.sh
     class late_start
     user root
-    group root
-    disabled
     oneshot
 
 service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
@@ -509,7 +507,6 @@ service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
     oneshot
 
 on property:sys.boot_completed=1
-    start qcom-sh
     start qcom-post-boot
     setprop sys.io.scheduler "bfq"
     # update cpusets now that boot is complete and we want
