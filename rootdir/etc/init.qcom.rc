@@ -172,6 +172,11 @@ on boot
     chown system graphics /sys/class/graphics/fb0/mode
     chown system graphics /sys/class/graphics/fb0/modes
 
+
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
+
     # Change ownership and permission for backlight
     chown system system /sys/class/backlight/lcd-backlight:0/brightness
     chmod 0664 /sys/class/backlight/lcd-backlight:0/brightness
