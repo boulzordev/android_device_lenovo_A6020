@@ -18,3 +18,8 @@ PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
     wificond \
     wcnss_service
+
+# WiFi HAL
+PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service
+
