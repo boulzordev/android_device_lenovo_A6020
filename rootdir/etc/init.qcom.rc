@@ -38,6 +38,9 @@ on early-init
 
     write /sys/class/leds/lcd-backlight/brightness 130
 
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
 on init
     mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
 
