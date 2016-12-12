@@ -40,6 +40,7 @@
 #define CMDLINE_SIZE 1024 
 
 void gsm_properties(bool msim);
+void set_heap_hwui_config(bool plus);
 
 void vendor_load_properties()
 {
@@ -73,46 +74,54 @@ void vendor_load_properties()
         property_set("ro.product.variant", "A6020a40");
         property_set("ro.product.model", "Lenovo K5");
         property_set("ro.board_id", board_id);
+        set_heap_hwui_config(false);
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918G1")){
         property_set("ro.sf.lcd_density", "480");
         property_set("ro.product.variant", "A6020l37");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
+        set_heap_hwui_config(true);
         gsm_properties(false);
     } else if (ISMATCH(board_id, "S82918B1")){
         property_set("ro.sf.lcd_density", "480");
         property_set("ro.product.variant", "A6020a46");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
+        set_heap_hwui_config(true);
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918H1")){
         property_set("ro.sf.lcd_density", "480");
         property_set("ro.product.variant", "A6020a46");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
+        set_heap_hwui_config(true);
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918F1")){
         property_set("ro.sf.lcd_density", "480");
         property_set("ro.product.variant", "A6020l36");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
+        set_heap_hwui_config(true);
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918E1")){
         property_set("ro.sf.lcd_density", "320");
         property_set("ro.product.variant", "A6020a41");
         property_set("ro.product.model", "Lenovo K5");
         property_set("ro.board_id", board_id);
+        set_heap_hwui_config(false);
         gsm_properties(false);
     } else if (ISMATCH(board_id, "")) {
         property_set("ro.board_id", "default");
         property_set("ro.product.device", "default");
+        set_heap_hwui_config(true);
     } else {
         // Default fallback
         property_set("ro.sf.lcd_density", "480");
         property_set("ro.product.variant", "A6020");
         property_set("ro.product.model", "Lenovo K5 Fallback");
         property_set("ro.board_id", "default");
+        set_heap_hwui_config(true);
         gsm_properties(true);
     }
     property_set("ro.product.ota.model", property_get("ro.product.model").c_str());
@@ -134,5 +143,40 @@ void gsm_properties(bool msim)
         property_set("ro.telephony.ril.config", "simactivation");
     } else {
         property_set("persist.radio.multisim.config", "");
+    }
+}
+
+void set_heap_hwui_config(bool plus){
+    if (plus){
+        /*
+         * https://github.com/CyanogenMod/android_frameworks_native/blob/cm-14.1/build/phone-xxhdpi-2048-dalvik-heap.mk
+         * https://github.com/CyanogenMod/android_frameworks_native/blob/cm-14.1/build/phone-xxhdpi-2048-hwui-memory.mk
+         */
+        property_set("ro.hwui.texture_cache_size", "72");
+        property_set("ro.hwui.layer_cache_size", "48");
+        property_set("ro.hwui.r_buffer_cache_size", "8");
+        property_set("ro.hwui.path_cache_size", "32");
+        property_set("ro.hwui.gradient_cache_size", "1");
+        property_set("ro.hwui.drop_shadow_cache_size", "6");
+        property_set("ro.hwui.texture_cache_flushrate", "0.4");
+        property_set("ro.hwui.text_small_cache_width", "1024");
+        property_set("ro.hwui.text_small_cache_height", "1024");
+        property_set("ro.hwui.text_large_cache_width", "2048");
+        property_set("ro.hwui.text_large_cache_height", "1024");
+        property_set("dalvik.vm.heapstartsize", "16m");
+        property_set("dalvik.vm.heapgrowthlimit", "192m");
+        property_set("dalvik.vm.heapsize", "512m");
+        property_set("dalvik.vm.heaptargetutilization", "0.75");
+        property_set("dalvik.vm.heapminfree", "2m");
+        property_set("dalvik.vm.heapmaxfree", "8m");
+    } else {
+        property_set("ro.hwui.text_large_cache_height", "2048");
+        property_set("ro.hwui.texture_cache_size", "40");
+        property_set("dalvik.vm.heapstartsize", "8m");
+        property_set("dalvik.vm.heapgrowthlimit", "96m");
+        property_set("dalvik.vm.heapsize", "256m");
+        property_set("dalvik.vm.heaptargetutilization", "0.75");
+        property_set("dalvik.vm.heapminfree", "2m");
+        property_set("dalvik.vm.heapmaxfree", "8m");
     }
 }
