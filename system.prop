@@ -2,11 +2,6 @@
 # system.prop for A6020
 #
 
-
-# Display
-ro.lenovo.lcdsize=5
-
-
 rild.libpath=ril-wrapper.so
 rild.libargs=-d /dev/smd0
 persist.rild.nitz_plmn=
@@ -28,7 +23,6 @@ debug.sf.hw=0
 debug.egl.hw=0
 persist.hwc.mdpcomp.enable=true
 debug.mdpcomp.logs=0
-dalvik.vm.heapsize=36m
 dalvik.vm.zygotemaxfailedboots=5
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
@@ -82,7 +76,7 @@ persist.timed.enable=true
 # system prop for opengles version
 #
 # 131072 is decimal for 0x30000 to report version 3
-ro.opengles.version=196608
+ro.opengles.version=196609
 
 # System property for cabl
 ro.qualcomm.cabl=0
@@ -139,10 +133,6 @@ vidc.enc.narrow.searchrange=1
 #property to enable DS2 dap
 audio.dolby.ds2.enabled=true
 
-#HWUI properties
-ro.hwui.text_large_cache_height=2048
-ro.hwui.texture_cache_size=40
-
 # Enable DRM system property
 drm.service.enabled=1
 #Trim properties
@@ -175,11 +165,9 @@ ro.lenovo.operator=open
 ro.lenovo.platform=qualcomm
 ro.lenovo.bqb=pass
 ro.lenovo.wificert=no
-ro.lenovo.series=Lenovo K5
+ro.lenovo.series=Lenovo VIBE K5
 ro.lenovo.adb=apkctl
 ro.lenovo.signalbars=four
-ro.product.brand=Lenovo
-ro.product.manufacturer=LENOVO
 ro.lenovo.videocall=false
 ro.lenovo.vibeuistyle=true
 persist.backgrounddata.enable=false
@@ -200,7 +188,7 @@ persist.radio.msim_swap=true
 ro.lenovo.ecc_enabled_for_nw=true
 audio.offload.disable=1
 #zhaoqf_sh add for coutry ISO 2015-12-17 default CN
-ro.lenovo.easyimage.code=fr
+ro.lenovo.easyimage.code=cn
 
 
 # Taken from vendor/default
