@@ -1,0 +1,26 @@
+[
+  {
+    "repository":  "external_bson",
+    "target_path": "external/bson",
+	"branch":      "nougat-mr1",
+	"remote":      "aoscp"
+  },
+  {
+    "repository":  "external_stlport",
+    "target_path": "external/stlport",
+	"branch":      "nougat-mr1",
+	"remote":      "aoscp"
+  },
+  {
+    "repository":  "packages_resources_Translato",
+    "target_path": "packages/resources/Translato",
+	"branch":      "nougat-mr1",
+    "remote":      "aoscp"
+  },
+  {
+    "repository":  "device_qcom_common",
+    "target_path": "device/qcom/common",
+	"branch":      "nougat-mr1",
+	"remote":      "aoscp"
+  }
+]
