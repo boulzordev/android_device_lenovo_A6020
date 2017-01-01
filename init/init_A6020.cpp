@@ -124,8 +124,6 @@ void vendor_load_properties()
         set_heap_hwui_config(true);
         gsm_properties(true);
     }
-    property_set("ro.product.ota.model", property_get("ro.product.model").c_str());
-
     device = property_get("ro.product.variant");
     //Force device to variant if not set
     property_set("ro.product.device", device.c_str());
