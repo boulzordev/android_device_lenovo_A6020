@@ -2,7 +2,6 @@
 /persist            ext4    /dev/block/bootdevice/by-name/persist        flags=mounttodecrypt
 /firmware           vfat    /dev/block/bootdevice/by-name/modem          flags=mounttodecrypt
 /data               f2fs    /dev/block/bootdevice/by-name/userdata       flags=encryptable=footer;length=-16384
-/data               ext4    /dev/block/bootdevice/by-name/userdata       flags=encryptable=footer;length=-16384
 /cache              ext4    /dev/block/bootdevice/by-name/cache
 /boot               emmc    /dev/block/bootdevice/by-name/boot
 /recovery           emmc    /dev/block/bootdevice/by-name/recovery
