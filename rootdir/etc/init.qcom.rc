@@ -860,13 +860,14 @@ on charger
     write /sys/devices/system/cpu/cpu6/online "0"
     write /sys/devices/system/cpu/cpu7/online "0"
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
+    start vm_bms
 
 service vm_bms /system/bin/vm_bms
     class main
     user root
     group root
 
-service charger /charger -c
+service charger /charger
     class charger
     critical
     seclabel u:r:healthd:s0
