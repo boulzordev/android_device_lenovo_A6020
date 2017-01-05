@@ -33,8 +33,10 @@ TARGET_BOOTLOADER_BOARD_NAME := A6020
 
 # Charger
 
+WITH_CM_CHARGER := false
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm8916
+BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/lenovo/msm8929
