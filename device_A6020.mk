@@ -106,10 +106,13 @@ PRODUCT_PACKAGES += \
 
 
 # CM
-
 PRODUCT_PACKAGES += \
 	org.cyanogenmod.platform \
 	org.cyanogenmod.platform-res
+
+# CMActions
+PRODUCT_PACKAGES += \
+    CMActions
 
 # Gello
 PRODUCT_PACKAGES += \
