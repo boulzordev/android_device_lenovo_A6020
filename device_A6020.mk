@@ -192,10 +192,6 @@ PRODUCT_PACKAGES += \
     sensors.msm8916 \
 	libcalmodule_common
 
-# Stlport
-PRODUCT_PACKAGES += \
-    libstlport
-
 # Shim
 
 PRODUCT_PACKAGES += \
