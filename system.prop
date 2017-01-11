@@ -123,11 +123,21 @@ voice.record.conc.disabled=true
 voice.voip.conc.disabled=true
 
 
+
 #property to enable user to access Google WFD settings
 persist.debug.wfd.enable=1
 #property to enable VDS WFD solution
 persist.hwc.enable_vds=1
 #property to enable narrow search range for video encoding
+
+# IMS
+persist.radio.jbims=1
+persist.radio.ROTATION_ENABLE=1
+persist.radio.VT_ENABLE=1
+persist.radio.VT_HYBRID_ENABLE=1
+persist.radio.VT_USE_MDM_TIME=0
+
+# Media
 vidc.enc.narrow.searchrange=1
 
 #property to enable DS2 dap
