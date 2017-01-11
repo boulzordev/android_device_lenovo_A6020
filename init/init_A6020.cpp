@@ -135,12 +135,13 @@ void gsm_properties(bool msim)
 {
     /* System prop to turn on CdmaLTEPhone always */
     property_set("telephony.lteOnCdmaDevice", "0");
-    property_set("ro.telephony.default_network", "9");
     if (msim) {
         property_set("persist.radio.multisim.config", "dsds");
         property_set("ro.telephony.ril.config", "simactivation");
+        property_set("ro.telephony.default_network", "9,9");
     } else {
         property_set("persist.radio.multisim.config", "");
+        property_set("ro.telephony.default_network", "9");
     }
 }
 
