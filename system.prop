@@ -245,6 +245,4 @@ persist.radio.VT_USE_MDM_TIME=0
 persist.dbg.volte_avail_ovr=1
 DEVICE_PROVISIONED=1
 ril.subscription.types=NV,RUIM
-telephony.lteOnCdmaDevice=1
 persist.volte_enalbed_by_hw=1
-ro.telephony.default_network=9,9
