@@ -74,6 +74,7 @@ void vendor_load_properties()
         property_set("ro.product.variant", "A6020a40");
         property_set("ro.product.model", "Lenovo K5");
         property_set("ro.board_id", board_id);
+        property_set("ro.build.fingerprint", "Lenovo/A6020a40/A6020a40:5.1.1/LMY47V/A6020a40_S102_161123_ROW:user/release-keys");
         set_heap_hwui_config(false);
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918G1")){
@@ -81,6 +82,7 @@ void vendor_load_properties()
         property_set("ro.product.variant", "A6020l37");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
+        property_set("ro.build.fingerprint", "Lenovo/A6020l37/A6020l37:5.1.1/LMY47V/A6020l37_S014_160402_LAS:user/release-keys");
         set_heap_hwui_config(true);
         gsm_properties(false);
     } else if (ISMATCH(board_id, "S82918B1")){
@@ -88,6 +90,7 @@ void vendor_load_properties()
         property_set("ro.product.variant", "A6020a46");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
+        property_set("ro.build.fingerprint", "Lenovo/A6020a46/A6020a46:5.1.1/LMY47V/A6020a46_S042_160516_ROW:user/release-keys");
         set_heap_hwui_config(true);
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918H1")){
@@ -95,6 +98,7 @@ void vendor_load_properties()
         property_set("ro.product.variant", "A6020a46");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
+        property_set("ro.build.fingerprint", "Lenovo/A6020a46/A6020a46:5.1.1/LMY47V/A6020a46_S105_161124_ROW:user/release-keys");
         set_heap_hwui_config(true);
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918F1")){
@@ -102,6 +106,7 @@ void vendor_load_properties()
         property_set("ro.product.variant", "A6020l36");
         property_set("ro.product.model", "Lenovo K5 Plus");
         property_set("ro.board_id", board_id);
+        property_set("ro.build.fingerprint", "Lenovo/A6020l36/A6020l36:5.1.1/LMY47V/A6020l36_S032_160401_LAS:user/release-keys");
         set_heap_hwui_config(true);
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918E1")){
@@ -109,6 +114,7 @@ void vendor_load_properties()
         property_set("ro.product.variant", "A6020a41");
         property_set("ro.product.model", "Lenovo K5");
         property_set("ro.board_id", board_id);
+        property_set("ro.build.fingerprint", "Lenovo/A6020a41/A6020a41:5.1.1/LMY47V/A6020a41_S102_161123_ROW:user/release-keys");
         set_heap_hwui_config(false);
         gsm_properties(false);
     } else if (ISMATCH(board_id, "")) {
