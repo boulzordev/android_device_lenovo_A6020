@@ -231,8 +231,7 @@ persist.data.qmi.adb_logmask=0
 ro.qualcomm.bt.hci_transport=smd
 qcom.bluetooth.soc=smd
 
-
-# IMS
+# IMS properties
 net.lte.volte_call_capable=true
 persist.ims.enableADBLogs=1
 persist.ims.enableDebugLogs=1
@@ -244,4 +243,6 @@ persist.radio.VT_ENABLE=1
 persist.radio.VT_HYBRID_ENABLE=1
 persist.radio.VT_USE_MDM_TIME=0
 persist.dbg.volte_avail_ovr=1
-
+DEVICE_PROVISIONED=1
+ril.subscription.types=NV,RUIM
+persist.volte_enalbed_by_hw=1
