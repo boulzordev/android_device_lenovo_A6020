@@ -26,6 +26,7 @@
 #
 
 import init.mmi.usb.rc
+import init.qcom-ims.rc
 import init.target.rc
 
 on early-init
