@@ -29,7 +29,7 @@
 #
 
 dir0=/data
-trigger_file=$dir0/ims_diabled
+trigger_file=$dir0/ims_disabled
 ims_disabled=`getprop persist.ims.disabled`
 target=`getprop ro.build.product`
 
@@ -38,6 +38,7 @@ target=`getprop ro.build.product`
 #else
 #
 #fi
+
 echo "$ims_disabled"
 echo "$target"
 
@@ -54,3 +55,4 @@ else
     echo "ims is enabled"
     setprop service.qti.ims.enabled 1
 fi
+
