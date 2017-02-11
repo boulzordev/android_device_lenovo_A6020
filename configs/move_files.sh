@@ -1,4 +1,5 @@
 #!/sbin/sh
 source /tmp/install/bin/get_board_id.sh
-mv /system/etc/$variant/venus* /system/etc/firmware/
-mv /system/etc/$variant/thermal* /system/etc/
+
+mv /system/etc/firmware/variant/$variant/venus* /system/etc/firmware/
+rm -rf /system/etc/firmware/variant
