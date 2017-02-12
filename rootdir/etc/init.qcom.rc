@@ -895,8 +895,16 @@ service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
     disabled
     oneshot
 
+service config_lineout /system/bin/sh /system/etc/init.lineout.sh
+    class late_start
+    user root
+    group root
+    disabled
+    oneshot
+
 on property:sys.boot_completed=1
     start qcom-post-boot
+    start config_lineout
 
 # setup_adbd will start adb once it has checked the keys
 on property:ro.debuggable=1

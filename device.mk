@@ -178,6 +178,7 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.lineout.sh \
     init.mmi.usb.rc \
     init.qcom.bt.sh \
     init.qcom.post_boot.sh \
