@@ -114,9 +114,9 @@ PRODUCT_PACKAGES += \
     CMActions
 
 # FM
-PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
+#PRODUCT_PACKAGES += \
+#    FMRadio \
+#    libfmjni
 
 # Gello
 PRODUCT_PACKAGES += \
