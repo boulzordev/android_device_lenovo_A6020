@@ -34,8 +34,8 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/lenovo/msm8929
-TARGET_KERNEL_CONFIG := wt82918-perf_defconfig
+TARGET_KERNEL_SOURCE := kernel/lenovo/msm8916
+TARGET_KERNEL_CONFIG := lineage_k5_defconfig
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android- 
 

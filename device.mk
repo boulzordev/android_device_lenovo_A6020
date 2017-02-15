@@ -17,16 +17,6 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-	PRODUCT_COPY_FILES += \
-		device/lenovo/A6020/dt.img:dt.img
-	PRODUCT_COPY_FILES += \
-    	$(LOCAL_KERNEL):kernel
-endif
-
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += device/lenovo/A6020/overlay
 
