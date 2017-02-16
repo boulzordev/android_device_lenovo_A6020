@@ -133,12 +133,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/get_board_id.sh:install/bin/get_board_id.sh \
     $(LOCAL_PATH)/configs/move_files.sh:install/bin/move_files.sh
 
-# IMS
-PRODUCT_PACKAGES += \
-    ims \
-    imssettings \
-    imscmlibrary
-
 # Media
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
@@ -150,10 +144,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
-
-# Offline Charger
-# PRODUCT_PACKAGES += \
-#    charger_res_images
 
 # OMX
 PRODUCT_PACKAGES += \
