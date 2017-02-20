@@ -246,3 +246,6 @@ persist.dbg.volte_avail_ovr=1
 DEVICE_PROVISIONED=1
 ril.subscription.types=NV,RUIM
 persist.volte_enalbed_by_hw=1
+
+# Display
+ro.sf.lcd_density=480
