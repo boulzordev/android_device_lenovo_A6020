@@ -533,3 +533,7 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     group system
     disabled
     oneshot
+
+service qcom-mem /system/bin/sh /system/etc/init.qcom.mem.sh
+    disabled
+    oneshot
