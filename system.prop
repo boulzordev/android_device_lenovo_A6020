@@ -142,9 +142,6 @@ ro.sys.fw.trim_empty_percent=100
 ro.sys.fw.trim_cache_percent=100
 ro.sys.fw.trim_enable_memory=1073741824
 
-#Factory Reset Protection
-ro.frp.pst=/dev/block/bootdevice/by-name/config
-
 #Enable B service adj transition by default
 ro.sys.fw.bservice_enable=true
 ro.sys.fw.bservice_limit=5
