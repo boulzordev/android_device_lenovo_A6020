@@ -245,7 +245,6 @@ vendor/lib64/libsmemlog.so
 bin/netmgrd
 bin/qmuxd
 bin/radish
-bin/rfs_access
 bin/rild
 bin/rmt_storage
 bin/qmi_motext_hook

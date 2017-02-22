@@ -27,6 +27,7 @@
 
 import init.mmi.usb.rc
 import init.qcom-ims.rc
+import init.qcom.power.rc
 import init.target.rc
 
 on early-init
@@ -559,13 +560,6 @@ on property:ro.secure=0
     # disable dmesg restrict for insecure builds
     write /proc/sys/kernel/dmesg_restrict 0
 
-on property:ro.debuggable=1
-    # disable dmesg restrict in eng/userdebug build
-    write /proc/sys/kernel/dmesg_restrict 0
-    # enable group read/write to /dev/log/kernel
-    chmod 0660 /dev/log/kernel
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-
 service hw_revs /system/bin/sh /system/bin/hardware_revisions.sh
     class late_start
     user system
@@ -622,9 +616,6 @@ service audiod /system/bin/audiod
 on property:persist.debug.trace=1
     mkdir /data/core 0777 root root
     write /proc/sys/kernel/core_pattern "/data/core/%E.%p.%e"
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
     write /sys/bus/coresight/devices/coresight-etm0/enable 0
     write /sys/bus/coresight/devices/coresight-etm1/enable 0
     write /sys/bus/coresight/devices/coresight-etm2/enable 0
@@ -670,16 +661,8 @@ service rmt_storage /system/bin/rmt_storage
     user root
     disabled
 
-service rfs_access /system/bin/rfs_access
-   class core
-   user root
-   group system net_raw
-
 on property:ro.boot.emmc=true
     start rmt_storage
-
-on property:ro.boot.emmc=true
-    start rfs_access
 
 on property:wc_transport.start_hci=true
     start start_hci_filter
@@ -847,19 +830,6 @@ on property:sys.boot_from_charger_mode=1
     trigger late-init
 
 on charger
-    write /sys/module/msm_thermal/core_control/enabled 0
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
-
-    write /sys/devices/system/cpu/cpu1/online 0
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/devices/system/cpu/cpu4/online 0
-    write /sys/devices/system/cpu/cpu5/online 0
-    write /sys/devices/system/cpu/cpu6/online 0
-    write /sys/devices/system/cpu/cpu7/online 0
-    write /sys/module/msm_thermal/core_control/enabled 1
-
     wait /dev/block/bootdevice/by-name/system
     mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
 
@@ -890,13 +860,14 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
     group root
     disabled
 
-service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
+service qcom-sh /system/bin/sh /system/etc/init.qcom.sh
     class late_start
     user root
+    group root
     disabled
     oneshot
 
-service config_lineout /system/bin/sh /system/etc/init.lineout.sh
+service lineout-sh /system/bin/sh /system/etc/init.lineout.sh
     class late_start
     user root
     group root
@@ -904,8 +875,8 @@ service config_lineout /system/bin/sh /system/etc/init.lineout.sh
     oneshot
 
 on property:sys.boot_completed=1
-    start qcom-post-boot
-    start config_lineout
+    start qcom-sh
+    start lineout-sh
 
 # setup_adbd will start adb once it has checked the keys
 on property:ro.debuggable=1
