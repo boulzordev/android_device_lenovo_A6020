@@ -15,7 +15,7 @@
 #
 
 # Inherit from A6020 device
-$(call inherit-product, device/lenovo/A6020/device_A6020.mk)
+$(call inherit-product, device/lenovo/A6020/device.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := A6020

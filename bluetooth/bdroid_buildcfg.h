@@ -17,17 +17,7 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#include <cutils/properties.h>
-#include <string.h>
-
-inline const char* BtmGetDefaultName()
-{
-	return "Lenovo K5";
-}
-
-#define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
-#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
+#define BTM_DEF_LOCAL_NAME "Lenovo K5"
 #define BLUETOOTH_QTI_SW TRUE
-#define MAX_L2CAP_CHANNELS    16
-#define BLE_VND_INCLUDED   TRUE
+#define BLE_VND_INCLUDED TRUE
 #endif

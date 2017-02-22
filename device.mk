@@ -38,6 +38,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -52,9 +53,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.print.xml:system/etc/permissions/android.software.print.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml 
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -67,8 +66,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Audio config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
-    $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-	$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/audio/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
 
 # Audio
@@ -87,8 +85,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     bluetooth.default.so \
-	libbt-hci \
-	libbt-vendor
+    libbt-hci \
+    libbt-vendor
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -104,11 +102,10 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8916 \
     memtrack.msm8916
 
-
 # CM
 PRODUCT_PACKAGES += \
-	org.cyanogenmod.platform \
-	org.cyanogenmod.platform-res
+    org.cyanogenmod.platform \
+    org.cyanogenmod.platform-res
 
 # CMActions
 PRODUCT_PACKAGES += \
@@ -121,7 +118,7 @@ PRODUCT_PACKAGES += \
 
 # Gello
 PRODUCT_PACKAGES += \
-	Gello
+    Gello
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -178,9 +175,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8916
 
-
 # Ramdisk
-
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.mmi.usb.rc \
@@ -193,7 +188,6 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 # RIL
-
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     librmnetctl \
@@ -202,7 +196,6 @@ PRODUCT_PACKAGES += \
     ril-wrapper
 
 # Sensors
-
 PRODUCT_PACKAGES += \
     sensors.msm8916 \
 	libcalmodule_common
