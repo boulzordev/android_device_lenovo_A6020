@@ -18,6 +18,10 @@ $(call inherit-product, device/lenovo/A6020/full_A6020.mk)
 TARGET_SCREEN_WIDTH := 720
 TARGET_SCREEN_HEIGHT := 1280
 
+# Time Zone data for recovery
+PRODUCT_COPY_FILES += \
+    bionic/libc/zoneinfo/tzdata:root/system/usr/share/zoneinfo/tzdata
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_MODEL := A6020
 PRODUCT_NAME := lineage_A6020
@@ -27,6 +31,4 @@ PRODUCT_MANUFACTURER := lenovo
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="Lenovo Vibe K5"
-
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST += ro.product.model
 
