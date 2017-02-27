@@ -23,6 +23,10 @@ PAC_BOOTANIMATION_NAME := 720
 # Inherit some common PAC stuff.
 $(call inherit-product, vendor/pac/config/common_full_phone.mk)
 
+# Time Zone data for recovery
+PRODUCT_COPY_FILES += \
+    bionic/libc/zoneinfo/tzdata:root/system/usr/share/zoneinfo/tzdata
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := A6020
 PRODUCT_NAME := pac_A6020
