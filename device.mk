@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += device/lenovo/A6020/overlay
 
@@ -94,19 +91,14 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8916 \
     memtrack.msm8916
 
-# CM
-PRODUCT_PACKAGES += \
-    org.cyanogenmod.platform \
-    org.cyanogenmod.platform-res
-
 # CMActions
 PRODUCT_PACKAGES += \
     CMActions
 
 # FM
-#PRODUCT_PACKAGES += \
-#    FMRadio \
-#    libfmjni
+PRODUCT_PACKAGES += \
+    FMRadio \
+    libfmjni
 
 # Gello
 PRODUCT_PACKAGES += \
@@ -185,25 +177,20 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     sensors.msm8916 \
-	libcalmodule_common
+    libcalmodule_common
 
 # Stlport
 PRODUCT_PACKAGES += \
     libstlport
 
 # Shim
-
 PRODUCT_PACKAGES += \
-	libshim_ril \
-	libshim_gui
-
-# Telephony-ext
-PRODUCT_PACKAGES += telephony-ext
-PRODUCT_BOOT_JARS += telephony-ext
+    libshim_gui \
+    libshim_ril
 
 # Thermal
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
+    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -221,21 +208,10 @@ PRODUCT_PACKAGES += \
     WCNSS_qcom_cfg.ini
 
 PRODUCT_PACKAGES += \
-    libcurl \
     libqsap_sdk \
     libQWiFiSoftApCfg \
-    tcpdump \
     wcnss_service
 
 # IMSEnabler
 PRODUCT_PACKAGES += \
     IMSEnabler
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_A6020
-PRODUCT_DEVICE := A6020
-
-$(call inherit-product-if-exists, vendor/lenovo/A6020/A6020-vendor.mk)
-
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product-if-exists, vendor/cm/config/common_full_phone.mk)

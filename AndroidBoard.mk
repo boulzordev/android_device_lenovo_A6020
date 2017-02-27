@@ -2,10 +2,6 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-ALL_PREBUILT += $(INSTALLED_KERNEL_TARGET)
-
-include $(CLEAR_VARS)
-
 IMS_LIBS := libimscamera_jni.so libimsmedia_jni.so
 
 IMS_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR_APPS)/ims/lib/arm64/,$(notdir $(IMS_LIBS)))

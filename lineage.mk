@@ -14,6 +14,9 @@
 
 $(call inherit-product, device/lenovo/A6020/full_A6020.mk)
 
+# Inherit some common LineageOS stuff.
+$(call inherit-product-if-exists, vendor/cm/config/common_full_phone.mk)
+
 # Boot animation
 TARGET_SCREEN_WIDTH := 720
 TARGET_SCREEN_HEIGHT := 1280
@@ -23,7 +26,6 @@ PRODUCT_MODEL := A6020
 PRODUCT_NAME := lineage_A6020
 PRODUCT_BRAND := lenovo
 PRODUCT_MANUFACTURER := lenovo
-
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="Lenovo Vibe K5"

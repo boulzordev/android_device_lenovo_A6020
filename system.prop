@@ -1,6 +1,33 @@
-#
 # system.prop for A6020
-#
+
+# Art
+dalvik.vm.dex2oat-flags=--no-watch-dog
+ro.sys.fw.dex2oat_thread_count=4
+
+# Audio
+ro.qc.sdk.audio.fluencetype=fluence
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.speaker=true
+use.voice.path.for.pcm.voip=true
+vidc.enc.narrow.searchrange=1
+
+# Audio offload
+audio.offload.buffer.size.kb=64
+audio.offload.gapless.enabled=true
+audio.offload.min.duration.secs=30
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=false
+audio.offload.video=true
+av.streaming.offload.enable=true
+
+# Bluetooth
+ro.qualcomm.bt.hci_transport=smd
+qcom.bluetooth.soc=smd
+bluetooth.hfp.client=1
+
+# Camera
+persist.camera.cpp.duplication=false
 
 # Display
 debug.sf.hw=0
@@ -15,11 +42,12 @@ debug.enable.sglscale=1
 sys.hwc.gpu_perf_mode=1
 ro.opengles.version=196609
 
-# CNE module
+# CNE|DPM module
 persist.cne.feature=1
-
-# DPM module
 persist.dpm.feature=7
+
+# DRM
+drm.service.enabled=1
 
 # Media
 media.msm8939hw=1
@@ -30,51 +58,14 @@ mm.enable.qcom_parser=3407871
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
 
-# Data modules
-ro.use_data_netmgrd=true
-persist.data.netmgrd.qos.enable=true
+# Perf
+ro.vendor.extension_library=libqti-perfd-client.so
 
-# time-services
-persist.timed.enable=true
-
-# CABL
+# Qualcomm
+persist.data.qmi.adb_logmask=0
 ro.qualcomm.cabl=0
 
-# SDcard
-persist.fuse_sdcard=true
-
-# Audio
-ro.qc.sdk.audio.fluencetype=fluence
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=true
-av.streaming.offload.enable=true
-audio.offload.buffer.size.kb=64
-audio.offload.gapless.enabled=true
-audio.offload.min.duration.secs=30
-audio.offload.pcm.16bit.enable=true
-audio.offload.pcm.24bit.enable=false
-audio.offload.video=true
-use.voice.path.for.pcm.voip=true
-
-# DRM
-drm.service.enabled=1
-vidc.enc.narrow.searchrange=1
-
-# Camera
-ro.vendor.extension_library=libqti-perfd-client.so
-media.stagefright.legacyencoder=true
-media.stagefright.less-secure=true
-persist.camera.cpp.duplication=false
-
-# QMI
-persist.data.qmi.adb_logmask=0
-
-#Bluetooth
-ro.qualcomm.bt.hci_transport=smd
-qcom.bluetooth.soc=smd
-bluetooth.hfp.client=1
-
+# Radio Configuration 
 # IMS
 net.lte.volte_call_capable=true
 persist.ims.enableADBLogs=1
@@ -86,26 +77,22 @@ persist.radio.ROTATION_ENABLE=1
 persist.radio.VT_ENABLE=1
 persist.radio.VT_HYBRID_ENABLE=1
 persist.radio.VT_USE_MDM_TIME=0
+persist.volte_enabled_by_hw=1
 persist.dbg.volte_avail_ovr=1
 
 # RIL
 DEVICE_PROVISIONED=1
+persist.data.netmgrd.qos.enable=true
+persist.radio.apm_sim_not_pwdn=1
+persist.radio.rat_on=combine
 rild.libpath=ril-wrapper.so
 rild.libargs=-d /dev/smd0
-ro.telephony.call_ring.multiple=false
-
-persist.rild.nitz_plmn=
-persist.rild.nitz_long_ons_0=
-persist.rild.nitz_long_ons_1=
-persist.rild.nitz_long_ons_2=
-persist.rild.nitz_long_ons_3=
-persist.rild.nitz_short_ons_0=
-persist.rild.nitz_short_ons_1=
-persist.rild.nitz_short_ons_2=
-persist.rild.nitz_short_ons_3=
-
-persist.radio.rat_on=combine
 ril.subscription.types=NV,RUIM
-persist.volte_enalbed_by_hw=1
-persist.radio.apm_sim_not_pwdn=1
+ro.telephony.call_ring.multiple=false
+ro.use_data_netmgrd=true
 
+# SDcard
+persist.fuse_sdcard=true
+
+# Time
+persist.timed.enable=true
