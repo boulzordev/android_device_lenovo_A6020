@@ -169,6 +169,10 @@ etc/firmware/a300_pm4.fw
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
+# Perf
+bin/msm_irqbalance
+vendor/bin/perfd
+vendor/lib/libqti-perfd-client.so
 
 # Media
 lib/libdivxdrmdecrypt.so
@@ -177,8 +181,8 @@ lib64/libdivxdrmdecrypt.so
 lib64/libOmxVdecHevc.so
 vendor/lib/libDivxDrm.so
 vendor/lib64/libDivxDrm.so
--vendor/lib/libHevcSwDecoder.so
--vendor/lib64/libHevcSwDecoder.so
+vendor/lib/libHevcSwDecoder.so
+vendor/lib64/libHevcSwDecoder.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libmmosal.so
 vendor/lib/libmm-color-convertor.so
