@@ -38,6 +38,9 @@ ro.qualcomm.bt.hci_transport=smd
 # Camera
 persist.camera.cpp.duplication=false
 
+# Charger
+persist.sys.chgdisabled=0
+
 # Display
 debug.sf.hw=0
 debug.egl.hw=0
@@ -92,7 +95,8 @@ persist.dbg.volte_avail_ovr=1
 # RIL
 DEVICE_PROVISIONED=1
 persist.data.netmgrd.qos.enable=true
-persist.radio.apm_sim_not_pwdn=1
+persist.data.mode=concurrent
+persist.radio.apm_sim_not_pwdn=0
 persist.radio.rat_on=combine
 rild.libpath=ril-wrapper.so
 rild.libargs=-d /dev/smd0
@@ -100,8 +104,11 @@ ril.subscription.types=NV,RUIM
 ro.telephony.call_ring.multiple=false
 ro.use_data_netmgrd=true
 
-# SDcard
-persist.fuse_sdcard=true
+# SDcardFS
+ro.sys.sdcardfs=true
 
 # Time
 persist.timed.enable=true
+
+# WiFi
+wifi.interface=wlan0
