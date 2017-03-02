@@ -169,11 +169,6 @@ etc/firmware/a300_pm4.fw
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
-# Perf
-bin/msm_irqbalance
-vendor/bin/perfd
-vendor/lib/libqti-perfd-client.so
-
 # Media
 lib/libdivxdrmdecrypt.so
 lib/libOmxVdecHevc.so
@@ -204,6 +199,11 @@ vendor/lib64/libwfdcommonutils.so
 bin/batt_health
 bin/dbvc_atvc_property_set
 bin/hardware_revisions.sh
+
+# Perf
+bin/msm_irqbalance
+vendor/bin/perfd
+vendor/lib/libqti-perfd-client.so
 
 # Qualcomm framework
 bin/irsc_util
