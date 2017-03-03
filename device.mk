@@ -166,6 +166,7 @@ PRODUCT_PACKAGES += \
     init.lineout.sh \
     init.mmi.usb.rc \
     init.qcom.bt.sh \
+    init.qcom.fm.sh \
     init.qcom.post_boot.sh \
     init.qcom.rc \
     init.qcom-ims.rc \
