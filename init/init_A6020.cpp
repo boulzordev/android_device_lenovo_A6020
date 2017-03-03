@@ -37,7 +37,7 @@
 
 #define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
-#define CMDLINE_SIZE 1024 
+#define CMDLINE_SIZE 1024
 
 void gsm_properties(bool msim);
 void set_heap_hwui_config(bool plus);
@@ -66,7 +66,7 @@ void vendor_load_properties()
     char *boardindex = strstr(cmdlinebuff, "board_id=");
     if (boardindex != NULL) {
         strncpy(board_id, strtok(boardindex + 9, ":"), 32);
-    }    
+    }
     fclose(fp);
 
     if (ISMATCH(board_id, "S82918D1")) {
