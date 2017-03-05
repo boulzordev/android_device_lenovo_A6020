@@ -46,6 +46,8 @@ on early-init
 
     symlink /data/tombstones /tombstones
 
+    write /sys/class/leds/lcd-backlight/brightness 130
+
 on init
     export LD_SHIM_LIBS /system/lib64/libril.so|libshim_ril.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libshim_gui.so:/system/vendor/lib/libmmqjpeg_codec.so|libboringssl-compat.so
 
