@@ -304,58 +304,7 @@ on boot
     mkdir /data/local/moodle 0770 graphics mot_tcmd
 
 on post-fs
-    mkdir /persist/camera 0755 mot_tcmd mot_tcmd
-    mkdir /persist/camera/ledcal 0755 camera mot_tcmd
-    mkdir /persist/factory 0755 mot_tcmd mot_tcmd
-    mkdir /persist/public 0755 mot_tcmd mot_tcmd
-    mkdir /persist/public/atvc 0770 mot_atvc shell
-    mkdir /persist/public/battd 0755 mot_accy mot_tcmd
-    mkdir /persist/public/hiddenmenu 0755 radio radio
-    mkdir /persist/public/hiddenmenu/data 0775 system mot_tcmd
-    mkdir /persist/public/locale 0700 system system
-    mkdir /persist/public/omadm 0700 radio radio
-    mkdir /persist/public/svcs 0770 system system
-    mkdir /persist/wifi 0755 mot_tcmd mot_tcmd
-    mkdir /persist/bt 0755 mot_tcmd bluetooth
-    mkdir /persist/wmdrm 0775 mot_drm mot_drm
-    mkdir /persist/security 02770 mot_tpapi mot_tpapi
-    mkdir /persist/batt_health 0755 mot_pwric mot_pwric
-    mkdir /persist/mdm 0770 radio radio
-
-    chown system mot_tcmd /persist/public/hiddenmenu/life_calls
-    chown system mot_tcmd /persist/public/hiddenmenu/life_timer
-    chown system mot_tcmd /persist/public/hiddenmenu/data/mobile_data_tx
-    chown system mot_tcmd /persist/public/hiddenmenu/data/mobile_data_rx
-    chown system mot_tcmd /persist/public/hiddenmenu/data/wifi_data_tx
-    chown system mot_tcmd /persist/public/hiddenmenu/data/wifi_data_rx
-    chown system mot_tcmd /persist/public/hiddenmenu/data/pri_rate_intfc
-    chown system mot_tcmd /persist/public/hiddenmenu/data/refurb_date
-    chown system mot_tcmd /persist/public/hiddenmenu/data/refurb_status
-    chown system mot_tcmd /persist/public/hiddenmenu/data/activation_date
-
-    chmod 0664 /persist/public/hiddenmenu/life_calls
-    chmod 0664 /persist/public/hiddenmenu/life_timer
-    chmod 0664 /persist/public/hiddenmenu/data/mobile_data_tx
-    chmod 0664 /persist/public/hiddenmenu/data/mobile_data_rx
-    chmod 0664 /persist/public/hiddenmenu/data/wifi_data_tx
-    chmod 0664 /persist/public/hiddenmenu/data/wifi_data_rx
-    chmod 0644 /persist/public/hiddenmenu/data/pri_rate_intfc
-    chmod 0644 /persist/public/hiddenmenu/data/refurb_date
-    chmod 0644 /persist/public/hiddenmenu/data/refurb_status
-    chmod 0664 /persist/public/hiddenmenu/data/activation_date
-
-    chown mot_tcmd mot_tcmd /persist/factory/fti
-    chmod 0660 /persist/factory/fti
-    chown mot_tcmd mot_tcmd /persist/factory/byte
-    chmod 0660 /persist/factory/byte
-    chmod 0660 /persist/wifi/wlan_mac.bin
-    chown mot_tcmd mot_tcmd /persist/bt/bt_bdaddr
-    chmod 0664 /persist/bt/bt_bdaddr
-    chmod 0600 /persist/whisper/whisper_only/vector0.bin
-
-    swapon_all fstab.qcom
-    write /proc/sys/vm/page-cluster 0
-    write /proc/sys/vm/swappiness 100
+    symlink /sdcard /storage/sdcard0
 
 # msm specific files that need to be created on /data
 on post-fs-data
