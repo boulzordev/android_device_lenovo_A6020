@@ -800,7 +800,7 @@ on charger
 service vm_bms /system/bin/vm_bms
     class main
     user root
-    group root
+    group root wakelock
 
 service charger /charger
     class charger
