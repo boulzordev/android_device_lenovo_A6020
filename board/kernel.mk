@@ -1,3 +1,6 @@
+# Cpusets
+ENABLE_CPUSETS := true
+
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/lenovo/msm8916
 TARGET_KERNEL_CONFIG := A6020_defconfig
