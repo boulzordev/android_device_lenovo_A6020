@@ -94,6 +94,7 @@ rild.libargs=-d /dev/smd0
 ril.subscription.types=NV,RUIM
 ro.telephony.call_ring.multiple=false
 ro.use_data_netmgrd=true
+telephony.lteOnCdmaDevice=0
 
 # SDcardFS
 ro.sys.sdcardfs=true
