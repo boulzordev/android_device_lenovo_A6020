@@ -128,6 +128,7 @@ lib/drm/libdrmwvmplugin.so
 lib/hw/camera.vendor.msm8916.so
 lib/hw/keystore.default.so
 lib/hw/keystore.qcom.so
+lib/hw/sensors.msm8916.so
 lib/libarcsoft_beautyshot.so
 lib/libarcsoft_face_detection.so
 lib/libarcsoft_face_tracking.so
@@ -141,6 +142,7 @@ lib/libOmxVdecHevc.so
 lib/libqomx_core.so
 lib64/hw/keystore.default.so
 lib64/hw/keystore.qcom.so
+lib64/hw/sensors.msm8916.so
 lib64/libdivxdrmdecrypt.so
 lib64/libloc_api_v02.so
 lib64/libloc_ds_api.so
@@ -282,6 +284,7 @@ vendor/lib/libadiertac.so
 vendor/lib/libbccQTI.so
 vendor/lib/libbtnv.so
 vendor/lib/libcalmodule_akm.so
+vendor/lib/libcalmodule_common.so
 vendor/lib/libcalmodule_gyroscope.so
 vendor/lib/libnetmgr.so
 vendor/lib/libcneapiclient.so
@@ -412,6 +415,7 @@ vendor/lib64/libadiertac.so
 vendor/lib64/libbccQTI.so
 vendor/lib64/libbtnv.so
 vendor/lib64/libcalmodule_akm.so
+vendor/lib64/libcalmodule_common.so
 vendor/lib64/libcalmodule_gyroscope.so
 vendor/lib64/libcalmodule_senodia.so
 vendor/lib64/libcneapiclient.so
