@@ -58,14 +58,9 @@ bin/rmt_storage
 bin/thermal-engine
 bin/time_daemon
 bin/vm_bms
-vendor/bin/audioflacapp
-vendor/bin/hbtp_daemon
 vendor/bin/perfd
 
 # Config Files
-etc/bluetooth/auto_pair_devlist.conf
-etc/bluetooth/bt_did.conf
-etc/bluetooth/bt_stack.conf
 etc/data/dsi_config.xml
 etc/data/netmgr_config.xml
 etc/data/qmi_config.xml
@@ -79,7 +74,6 @@ etc/wifi/WCNSS_qcom_cfg.ini
 etc/xtwifi.conf
 vendor/etc/calmodule.cfg
 vendor/etc/msm_irqbalance.conf
-etc/firmware/hbtp/hbtp_rohm_ql1500_np.cfg
 
 # Firmware
 etc/firmware/a225_pfp.fw
@@ -95,7 +89,6 @@ etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw
-etc/firmware/hbtp/hbtp_rohm_ql1500_np.dat
 etc/firmware/ice40.bin
 etc/firmware/leia_pfp_470.fw
 etc/firmware/leia_pm4_470.fw
@@ -106,8 +99,6 @@ etc/firmware/venus.b03
 etc/firmware/venus.b04
 etc/firmware/venus.mbn
 etc/firmware/venus.mdt
-etc/firmware/wcd9306/wcd9306_anc.bin
-etc/firmware/wcd9306/wcd9306_mbhc.bin
 etc/firmware/widevine.b00
 etc/firmware/widevine.b01
 etc/firmware/widevine.b02
