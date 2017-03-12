@@ -105,7 +105,7 @@ void vendor_load_properties()
         property_set("ro.product.device", "A6020a40");
         property_set("ro.build.fingerprint", "Lenovo/A6020a40/A6020a40:5.1.1/LMY47V/A6020a40_S102_161123_ROW:user/release-keys");
         set_model_config(false);
-        gsm_properties(false);
+        gsm_properties(true);
     }
 }
 
