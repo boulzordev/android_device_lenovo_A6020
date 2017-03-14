@@ -1,1 +1,2 @@
 qualcomm.bt.                     u:object_r:bluetooth_prop:s0
+net.lte.ims.data.enabled         u:object_r:qcom_ims_prop:s0
