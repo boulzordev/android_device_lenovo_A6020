@@ -126,6 +126,7 @@ lib/libarcsoft_face_tracking.so
 lib/libdivxdrmdecrypt.so
 lib/libloc_api_v02.so
 lib/libloc_ds_api.so
+lib/libmm-qcamera.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmpbase.so
