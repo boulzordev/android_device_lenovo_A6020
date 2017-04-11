@@ -37,7 +37,7 @@
 
 #define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
-#define CMDLINE_SIZE 1024 
+#define CMDLINE_SIZE 1024
 
 void gsm_properties(bool msim);
 void set_model_config(bool plus);
@@ -48,6 +48,7 @@ void vendor_load_properties()
     std::string device;
     char cmdlinebuff[CMDLINE_SIZE];
     char board_id[32];
+    char panel_id[32];
     FILE *fp;
     platform = property_get("ro.board.platform");
 
@@ -66,14 +67,25 @@ void vendor_load_properties()
     char *boardindex = strstr(cmdlinebuff, "board_id=");
     if (boardindex != NULL) {
         strncpy(board_id, strtok(boardindex + 9, ":"), 32);
-    }    
+    }
+    char *panelindex = strstr(cmdlinebuff, "panel=");
+    if (panelindex != NULL) {
+        strncpy(panel_id, strtok(panelindex + 28, ":"), 32);
+    }
     fclose(fp);
 
     if (ISMATCH(board_id, "S82918B1")){
-        property_set("ro.build.product", "A6020a46");
-        property_set("ro.product.device", "A6020a46");
-        property_set("ro.build.fingerprint", "Lenovo/A6020a46/A6020a46:5.1.1/LMY47V/A6020a46_S042_160516_ROW:user/release-keys");
-        set_model_config(true);
+        if (ISMATCH(panel_id, "ili9881c_720p_video")) {
+            property_set("ro.build.product", "A6020a40"); // HW39
+            property_set("ro.product.device", "A6020a40");
+            property_set("ro.build.fingerprint", "Lenovo/A6020a40/A6020a40:5.1.1/LMY47V/A6020a40_S007_161128_ROW:user/release-keys");
+            set_model_config(false); // 720p
+        } else { // panel_id = "otm1901a_tm_1080p_video" for A6020a46
+            property_set("ro.build.product", "A6020a46");
+            property_set("ro.product.device", "A6020a46");
+            property_set("ro.build.fingerprint", "Lenovo/A6020a46/A6020a46:5.1.1/LMY47V/A6020a46_S042_160516_ROW:user/release-keys");
+            set_model_config(true); // 1080p
+        }
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918E1")){
         property_set("ro.build.product", "A6020a41");
@@ -100,7 +112,7 @@ void vendor_load_properties()
         set_model_config(true);
         gsm_properties(true);
     } else {
-        //Use A6020a40 as default
+        // Use A6020a40 as default - board_id = "S82918D1"
         property_set("ro.build.product", "A6020a40");
         property_set("ro.product.device", "A6020a40");
         property_set("ro.build.fingerprint", "Lenovo/A6020a40/A6020a40:5.1.1/LMY47V/A6020a40_S102_161123_ROW:user/release-keys");
