@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device.mk
+    $(LOCAL_DIR)/full_A6020.mk

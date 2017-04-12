@@ -21,11 +21,5 @@ DEVICE_PACKAGE_OVERLAYS += device/lenovo/A6020/overlay
 # Include package config fragments
 include $(LOCAL_PATH)/product/*.mk
 
-# Stlport
-PRODUCT_PACKAGES += \
-    libstlport
+$(call inherit-product-if-exists, vendor/lenovo/A6020/A6020-vendor.mk)
 
-# Shim
-PRODUCT_PACKAGES += \
-    libshim_gui \
-    libshim_ril
