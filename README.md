@@ -30,10 +30,10 @@ Variant | Codename
 -------:|:--------
 Lenovo Vibe K5 (EU) (Dual SIM) | A6020a40
 Lenovo Vibe K5 (EU) (Single SIM) | A6020a41
-Lenovo K5 Plus (India) | A6020a40 (HW39)
-Lenovo K5 Plus (India) | A6020a46 (2GB RAM)
-Lenovo K5 Plus (India) | A6020a46 (3GB RAM)
-Lenovo K5 Plus (LA) (Dual SIM) | A6020l36
-Lenovo K5 Plus (LA) (Single SIM) | A6020l37
+Lenovo Vibe K5 (India) | A6020a40 (HW39)
+Lenovo Vibe K5 Plus (India) | A6020a46 (2GB RAM)
+Lenovo Vibe K5 Plus (India) | A6020a46 (3GB RAM)
+Lenovo Vibe K5 Plus (LA) (Dual SIM) | A6020l36
+Lenovo Vibe K5 Plus (LA) (Single SIM) | A6020l37
 Lenovo Lemon 3 (CN/Asia) | K32C36
 
