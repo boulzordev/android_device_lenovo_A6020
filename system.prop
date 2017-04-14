@@ -55,9 +55,6 @@ media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
 persist.media.treble_omx=false
 
-# Perf
-ro.vendor.extension_library=libqti-perfd-client.so
-
 # Qualcomm
 persist.data.qmi.adb_logmask=0
 ro.qualcomm.cabl=0

@@ -302,13 +302,6 @@ on post-fs-data
     # Create folder for mm-qcamera-daemon
     mkdir /data/camera 0770 media camera
 
-    #Create PERFD deamon related dirs
-    mkdir /data/misc/perfd 0755 root system
-    chmod 2755 /data/misc/perfd
-    mkdir /data/system/perfd 0770 root system
-    chmod 2770 /data/system/perfd
-    mkdir /persist/drm 0770 system system
-
     # Sensor
     mkdir /persist/sensors 0775 system system
     chmod 664 /persist/sensors/sensors_settings
@@ -366,12 +359,6 @@ service qseecomd /system/bin/qseecomd
    class core
    user root
    group root
-   writepid /dev/cpuset/system-background/tasks
-
-service perfd /system/vendor/bin/perfd
-   class main
-   user root
-   disabled
    writepid /dev/cpuset/system-background/tasks
 
 service thermal-engine /system/bin/thermal-engine
