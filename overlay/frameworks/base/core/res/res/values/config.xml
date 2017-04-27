@@ -277,4 +277,7 @@
         <item>LPPE_UP_TECHNOLOGY=0</item>
     </string-array>
 
+    <!-- Whether device supports double tap to wake -->
+    <bool name="config_supportDoubleTapWake">true</bool>
+
 </resources>
