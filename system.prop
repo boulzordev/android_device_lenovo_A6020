@@ -5,10 +5,10 @@ dalvik.vm.dex2oat-flags=--no-watch-dog
 ro.sys.fw.dex2oat_thread_count=4
 
 # Audio
-ro.qc.sdk.audio.fluencetype=fluence
+ro.qc.sdk.audio.fluencetype=none
 ro.qc.sdk.audio.ssr=false
 persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
+persist.audio.fluence.voicerec=true
 persist.audio.fluence.speaker=false
 use.voice.path.for.pcm.voip=true
 vidc.enc.narrow.searchrange=1
