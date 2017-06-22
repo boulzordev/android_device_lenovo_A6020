@@ -306,8 +306,8 @@ on post-fs-data
     chmod 2770 /data/system/perfd
     mkdir /persist/drm 0770 system system
     rm /data/system/perfd/default_values
-    setprop ro.min_freq_0 960000
-    setprop ro.min_freq_4 800000
+    setprop ro.min_freq_0 533333
+    setprop ro.min_freq_4 499200
     start perfd
 
     # Sensor
@@ -546,6 +546,7 @@ service init-power-sh /system/bin/sh /system/etc/init.power.sh
     oneshot
 
 on property:sys.boot_completed=1
+    write /proc/sys/kernel/sched_boost 0
     # update cpusets now that boot is complete and we want better load balancing
     # reserve CPU 7 for the top app and camera daemon
     write /dev/cpuset/foreground/cpus 0-6
