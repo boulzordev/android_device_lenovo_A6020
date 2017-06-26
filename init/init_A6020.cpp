@@ -75,7 +75,7 @@ void vendor_load_properties()
     fclose(fp);
 
     if (ISMATCH(board_id, "S82918B1")){
-        if (ISMATCH(panel_id, "ili9881c_720p_video")) {
+        if (ISMATCH(panel_id, "ili9881c_720p_video") || ISMATCH(panel_id, "hx8394f_boe_720p_video")) {
             property_set("ro.build.product", "A6020a40"); // HW39
             property_set("ro.product.device", "A6020a40");
             property_set("ro.build.fingerprint", "Lenovo/A6020a40/A6020a40:5.1.1/LMY47V/A6020a40_S007_161128_ROW:user/release-keys");
