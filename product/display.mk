@@ -19,3 +19,6 @@ PRODUCT_PACKAGES += \
 # RenderScript HAL
 PRODUCT_PACKAGES += \
      android.hardware.renderscript@1.0-impl
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.use_buffer_age=false
