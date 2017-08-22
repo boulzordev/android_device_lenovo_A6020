@@ -98,6 +98,9 @@ on boot
 
     mkdir /dev/socket/netmgr 0750 radio radio
 
+    # Prevent permission denied error for telephony
+    chmod 0644 /proc/cmdline
+
     setprop ro.telephony.call_ring.multiple false
 
     #Remove SUID bit for iproute2 ip tool
