@@ -9,3 +9,6 @@ PRODUCT_PACKAGES += \
     init.qcom.mem.sh \
     init.qcom.ril.sh \
     ueventd.qcom.rc
+
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
