@@ -17,7 +17,8 @@ PRODUCT_PACKAGES += \
     libqsap_sdk \
     libQWiFiSoftApCfg \
     wificond \
-    wcnss_service
+    wcnss_service \
+    libwpa_client
 
 # WiFi HAL
 PRODUCT_PACKAGES += \
