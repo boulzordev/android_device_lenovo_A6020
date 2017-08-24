@@ -16,7 +16,8 @@ PRODUCT_PACKAGES += \
     WCNSS_qcom_cfg.ini
 
 PRODUCT_PACKAGES += \
-    wcnss_service
+    wcnss_service \
+    libwpa_client
 
 # WiFi HAL
  PRODUCT_PACKAGES += \
