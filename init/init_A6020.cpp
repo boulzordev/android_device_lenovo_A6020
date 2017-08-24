@@ -32,33 +32,19 @@
 #include <sys/_system_properties.h>
 #include <stdio.h>
 
-#include "vendor_init.h"
+#include <android-base/properties.h>
 #include "property_service.h"
+#include "vendor_init.h"
 #include "log.h"
-#include "util.h"
 
 
 using android::base::GetProperty;
 using android::base::SetProperty;
-using android::base::Split;
-using android::base::ReadFileToString;
 
 #define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
 #define CMDLINE_SIZE 1024
 
-void import_kernel_cmdline(bool in_qemu,
-                           const std::function<void(const std::string&, const std::string&, bool)>& fn) {
-    std::string cmdline;
-    ReadFileToString("/proc/cmdline", &cmdline);
-
-    for (const auto& entry : Split(android::base::Trim(cmdline), " ")) {
-        std::vector<std::string> pieces = Split(entry, "=");
-        if (pieces.size() == 2) {
-            fn(pieces[0], pieces[1], in_qemu);
-        }
-    }
-}
 
 
 void property_override(char const prop[], char const value[])
