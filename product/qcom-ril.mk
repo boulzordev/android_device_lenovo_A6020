@@ -5,4 +5,5 @@ PRODUCT_PACKAGES += \
     libshim_ril \
     libxml2 \
     libril \
+    rild_socket \
     ril-wrapper
