@@ -1,2 +1,0 @@
-allow cameraserver proc:file read;
-allow cameraserver system_file:file execmod;

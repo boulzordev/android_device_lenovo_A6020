@@ -26,7 +26,7 @@
 #include <cutils/log.h>
 #include <cutils/properties.h>
 
-#include <gui/SensorManager.h>
+#include <sensor/SensorManager.h>
 
 #include <hardware/hardware.h>
 #include <hardware/camera.h>

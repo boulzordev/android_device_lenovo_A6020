@@ -434,7 +434,7 @@ on property:hw.fm.init=1
 service qmuxd /system/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps qcom_diag
+    group radio audio bluetooth gps diag
 
 service netmgrd /system/bin/netmgrd
     class main
@@ -465,18 +465,18 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
-    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -d \
-    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
-    #   we will start as root and wpa_supplicant will switch to user wifi
-    #   after setting up the capabilities required for WEXT
-    #   user wifi
-    #   group wifi inet keystore
+     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -d \
+     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
+     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
+      #   we will start as root and wpa_supplicant will switch to user wifi
+      #   after setting up the capabilities required for WEXT
+      #   user wifi
+      #   group wifi inet keystore
     class main
-    socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
+     socket wpa_wlan0 dgram 660 wifi wifi
+     disabled
+     oneshot
+ 
 service hostapd /system/bin/hostapd -dd /data/hostapd/hostapd.conf
     class late_start
     user root
@@ -486,11 +486,11 @@ service hostapd /system/bin/hostapd -dd /data/hostapd/hostapd.conf
 
 service ril-daemon2 /system/bin/rild -c 2
     class main
-    socket rild2 stream 660 root radio
-    socket rild-debug2 stream 660 radio system
-    user root
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
+     socket rild2 stream 660 root radio
+     socket rild-debug2 stream 660 radio system
+     user root
+     disabled
+     group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
 
 service rild2-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
     class late_start

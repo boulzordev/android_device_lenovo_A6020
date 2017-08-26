@@ -37,9 +37,29 @@
 #include "log.h"
 #include "util.h"
 
+
+using android::base::GetProperty;
+using android::base::SetProperty;
+using android::base::Split;
+using android::base::ReadFileToString;
+
 #define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
 #define CMDLINE_SIZE 1024
+
+void import_kernel_cmdline(bool in_qemu,
+                           const std::function<void(const std::string&, const std::string&, bool)>& fn) {
+    std::string cmdline;
+    ReadFileToString("/proc/cmdline", &cmdline);
+
+    for (const auto& entry : Split(android::base::Trim(cmdline), " ")) {
+        std::vector<std::string> pieces = Split(entry, "=");
+        if (pieces.size() == 2) {
+            fn(pieces[0], pieces[1], in_qemu);
+        }
+    }
+}
+
 
 void property_override(char const prop[], char const value[])
 {
@@ -63,7 +83,7 @@ void vendor_load_properties()
     char board_id[32];
     char panel_id[32];
     FILE *fp;
-    platform = property_get("ro.board.platform");
+    platform = GetProperty("ro.board.platform");
 
     if (platform != ANDROID_TARGET) {
         return;
@@ -137,18 +157,18 @@ void vendor_load_properties()
 void gsm_properties(bool msim)
 {
     if (msim) {
-        property_set("persist.radio.multisim.config", "dsds");
-        property_set("ro.telephony.ril.config", "simactivation");
-        property_set("ro.telephony.default_network", "9,9");
+        SetProperty("persist.radio.multisim.config", "dsds");
+        SetProperty("ro.telephony.ril.config", "simactivation");
+        SetProperty("ro.telephony.default_network", "9,9");
     } else {
-        property_set("persist.radio.multisim.config", "");
-        property_set("ro.telephony.default_network", "9");
+        SetProperty("persist.radio.multisim.config", "");
+        SetProperty("ro.telephony.default_network", "9");
     }
 }
 
 void set_model_config(bool plus){
     if (plus){
-        property_set("ro.sf.lcd_density", "480");
+        SetProperty("ro.sf.lcd_density", "480");
         property_override("ro.product.model", "Vibe K5 Plus");
         property_override("ro.product.name", "Vibe K5 Plus");
 
@@ -156,14 +176,14 @@ void set_model_config(bool plus){
          *
          * https://github.com/CyanogenMod/android_frameworks_native/blob/cm-14.1/build/phone-xxhdpi-2048-dalvik-heap.mk
          */
-        property_set("dalvik.vm.heapstartsize", "16m");
-        property_set("dalvik.vm.heapgrowthlimit", "192m");
-        property_set("dalvik.vm.heapsize", "512m");
-        property_set("dalvik.vm.heaptargetutilization", "0.75");
-        property_set("dalvik.vm.heapminfree", "2m");
-        property_set("dalvik.vm.heapmaxfree", "8m");
+        SetProperty("dalvik.vm.heapstartsize", "16m");
+        SetProperty("dalvik.vm.heapgrowthlimit", "192m");
+        SetProperty("dalvik.vm.heapsize", "512m");
+        SetProperty("dalvik.vm.heaptargetutilization", "0.75");
+        SetProperty("dalvik.vm.heapminfree", "2m");
+        SetProperty("dalvik.vm.heapmaxfree", "8m");
     } else {
-        property_set("ro.sf.lcd_density", "320");
+        SetProperty("ro.sf.lcd_density", "320");
         property_override("ro.product.model", "Vibe K5");
         property_override("ro.product.name", "Vibe K5");
 
@@ -171,11 +191,11 @@ void set_model_config(bool plus){
          *
          * https://github.com/CyanogenMod/android_frameworks_native/blob/cm-14.1/build/phone-xhdpi-2048-dalvik-heap.mk
          */
-        property_set("dalvik.vm.heapstartsize", "8m");
-        property_set("dalvik.vm.heapgrowthlimit", "192m");
-        property_set("dalvik.vm.heapsize", "512m");
-        property_set("dalvik.vm.heaptargetutilization", "0.75");
-        property_set("dalvik.vm.heapminfree", "512k");
-        property_set("dalvik.vm.heapmaxfree", "8m");
+        SetProperty("dalvik.vm.heapstartsize", "8m");
+        SetProperty("dalvik.vm.heapgrowthlimit", "192m");
+        SetProperty("dalvik.vm.heapsize", "512m");
+        SetProperty("dalvik.vm.heaptargetutilization", "0.75");
+        SetProperty("dalvik.vm.heapminfree", "512k");
+        SetProperty("dalvik.vm.heapmaxfree", "8m");
     }
 }
