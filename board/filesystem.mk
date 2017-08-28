@@ -9,4 +9,4 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Filesystem
-TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(LOCAL_PATH)/android_filesystem_config.h
+TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
