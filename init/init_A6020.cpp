@@ -32,10 +32,11 @@
 #include <sys/_system_properties.h>
 #include <stdio.h>
 
-#include "vendor_init.h"
+#include <android-base/properties.h>
 #include "property_service.h"
-#include "log.h"
-#include "util.h"
+#include "vendor_init.h"
+
+using android::base::GetProperty;
 
 #define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
@@ -63,7 +64,7 @@ void vendor_load_properties()
     char board_id[32];
     char panel_id[32];
     FILE *fp;
-    platform = property_get("ro.board.platform");
+    platform = GetProperty("ro.board.platform", "");
 
     if (platform != ANDROID_TARGET) {
         return;
@@ -179,3 +180,4 @@ void set_model_config(bool plus){
         property_set("dalvik.vm.heapmaxfree", "8m");
     }
 }
+
