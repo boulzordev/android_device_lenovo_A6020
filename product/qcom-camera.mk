@@ -1,7 +1,7 @@
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8916 \
-    libboringssl-compat \
+#   libboringssl-compat \
     libbson \
     libshim_gui \
     Snap
