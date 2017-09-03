@@ -5,4 +5,4 @@ BOARD_HARDWARE_CLASS += \
     hardware/cyanogen/cmhw
 
 # Qualcomm support
-BOARD_USES_QCOM_HARDWARE := true
+# BOARD_USES_QCOM_HARDWARE := true
