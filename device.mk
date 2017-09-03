@@ -18,6 +18,8 @@
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += device/lenovo/A6020/overlay
 
+PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8x09/kernel-headers
+
 # Include package config fragments
 include $(LOCAL_PATH)/product/*.mk
 
