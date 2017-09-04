@@ -132,6 +132,7 @@ lib/libmmjpeg_interface.so
 lib/libmpbase.so
 lib/libOmxVdecHevc.so
 lib/libqomx_core.so
+lib/libstlport.so
 lib64/hw/keystore.default.so
 lib64/hw/keystore.qcom.so
 lib64/hw/sensors.msm8916.so
@@ -139,6 +140,7 @@ lib64/libdivxdrmdecrypt.so
 lib64/libloc_api_v02.so
 lib64/libloc_ds_api.so
 lib64/libOmxVdecHevc.so
+lib64/libstlport.so
 
 #
 # Vendor Libs (32 Bits)
