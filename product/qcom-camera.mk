@@ -7,5 +7,5 @@ PRODUCT_PACKAGES += \
     Snap
 
 # Stlport
-PRODUCT_PACKAGES += \
-    libstlport
+#PRODUCT_PACKAGES += \
+#    libstlport
