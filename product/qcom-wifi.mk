@@ -3,6 +3,8 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     hostapd_default.conf \
     hostapd \
+    wificond \
+    wifilogd \
     wpa_supplicant \
     wpa_supplicant.conf
 
@@ -16,10 +18,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libqsap_sdk \
     libQWiFiSoftApCfg \
-    wificond \
-    wcnss_service
+    wcnss_service \
+    libwpa_client
 
 # WiFi HAL
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service
-
