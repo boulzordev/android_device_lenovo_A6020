@@ -1,0 +1,2 @@
+allow kernel vfat:file { getattr open };
+allow kernel domain:process setsched;
