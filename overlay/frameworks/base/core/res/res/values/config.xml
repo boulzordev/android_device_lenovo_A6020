@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
@@ -236,8 +235,8 @@
     <integer name="config_doubleTapOnHomeBehavior">0</integer>
 
     <!-- Disable button brightness settings -->
-    <add-resource name="config_buttonBrightnessSettingDefault" type="integer"/>
-    <integer name="config_buttonBrightnessSettingDefault">0</integer>
+    
+    <!-- <integer name="config_buttonBrightnessSettingDefault">0</integer> -->
 
     <!-- Screen brightness used to dim the screen while dozing in a very low power state.
           May be less than the minimum allowed brightness setting

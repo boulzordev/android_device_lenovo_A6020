@@ -70,7 +70,7 @@ void vendor_load_properties()
     char board_id[32];
     char panel_id[32];
     FILE *fp;
-    platform = GetProperty("ro.board.platform");
+    platform = GetProperty("ro.board.platform", "");
 
     if (platform != ANDROID_TARGET) {
         return;
