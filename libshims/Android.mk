@@ -33,3 +33,12 @@ LOCAL_MODULE := libshim_gui
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := lenovo_atomic.cpp
+LOCAL_SHARED_LIBRARIES := libcutils
+LOCAL_MODULE := libshim_atomic
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_SHARED_LIBRARY)
