@@ -144,7 +144,7 @@ extern char* get_timestamp(char* str, unsigned long buf_size);
 
 
 // Used for logging callflow from Android Framework
-#define ENTRY_LOG_CALLFLOW() LOG_I(FROM_AFW, __FUNCTION___, %s, "")
+#define ENTRY_LOG_CALLFLOW() LOG_I(FROM_AFW, __FUNCTION__, %s, "")
 // Used for logging callflow to Modem
 #define EXIT_LOG_CALLFLOW(SPEC, VAL) LOG_I(TO_MODEM, __FUNCTION__, SPEC, VAL)
 // Used for logging callflow from Modem(TO_MODEM, __func__, %s, "")

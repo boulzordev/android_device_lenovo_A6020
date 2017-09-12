@@ -7,7 +7,6 @@ PRODUCT_PACKAGES += \
     libshim_gui \
     libshim_atomic \
     Snap \
-#   libboringssl-compat \
 
 # libboringssl-compat
 
