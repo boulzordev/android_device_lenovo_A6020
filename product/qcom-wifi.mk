@@ -3,6 +3,8 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     hostapd_default.conf \
     hostapd \
+    wificond \
+    wifilogd \
     wpa_supplicant \
     wpa_supplicant.conf
 
