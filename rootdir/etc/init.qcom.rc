@@ -43,7 +43,7 @@ on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
-    export LD_SHIM_LIBS /system/lib64/libril.so|libshim_ril.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libshim_gui.so:/system/vendor/lib/libmmqjpeg_codec.so|libboringssl-compat.so
+    export LD_SHIM_LIBS /system/lib64/libril.so|libshim_ril.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libshim_gui.so:/system/vendor/lib/libmmqjpeg_codec.so|libboringssl-compat.so:/system/vendor/lib/libmmcamera2_stats_modules.so|libshim_atomic.so
 
     # Enable power-on alarm
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
