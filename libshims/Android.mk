@@ -28,7 +28,7 @@ include $(BUILD_SHARED_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := lenovo_gui.c
-LOCAL_SHARED_LIBRARIES := liblog libcutils libgui libbinder libutils
+LOCAL_SHARED_LIBRARIES := liblog libcutils libsensor libbinder libutils
 LOCAL_MODULE := libshim_gui
 LOCAL_MODULE_TAGS := optional
 
