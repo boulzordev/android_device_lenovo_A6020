@@ -36,8 +36,7 @@
 #include "property_service.h"
 #include "vendor_init.h"
 
-namespace android {
-namespace init {
+using android::base::GetProperty;
 
 #define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
@@ -65,7 +64,7 @@ void vendor_load_properties()
     char board_id[32];
     char panel_id[32];
     FILE *fp;
-    platform = android::base::GetProperty("ro.board.platform", "");
+    platform = GetProperty("ro.board.platform", "");
 
     if (platform != ANDROID_TARGET) {
         return;
@@ -182,5 +181,3 @@ void set_model_config(bool plus){
     }
 }
 
-}
-}
