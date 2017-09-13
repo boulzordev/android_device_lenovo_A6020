@@ -30,7 +30,7 @@
 #include <hardware/camera.h>
 #include <utils/threads.h>
 #include <utils/String8.h>
-
+#include <sensor/SensorManager.h>
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
@@ -111,6 +111,14 @@ static int check_vendor_module()
     if (rv)
         ALOGE("failed to open vendor camera module");
     return rv;
+}
+
+static bool can_talk_to_sensormanager()
+{
+    SensorManager& sensorManager(
+            SensorManager::getInstanceForPackage(String16("camera")));
+    Sensor const * const * sensorList;
+    return sensorManager.getSensorList(&sensorList) >= 0;
 }
 
 static char *camera_fixup_getparams(int id, const char *settings)
@@ -528,6 +536,12 @@ static int camera_device_open(const hw_module_t *module, const char *name,
     if (name != NULL) {
         if (check_vendor_module())
             return -EINVAL;
+
+        if (!can_talk_to_sensormanager()) {
+            ALOGE("Waiting for sensor service failed.");
+            return NO_INIT;
+        }
+
 
         cameraid = atoi(name);
         num_cameras = gVendorModule->get_number_of_cameras();
