@@ -6,10 +6,8 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.rc \
     init.qcom.sh \
-    init.qcom-ims.rc \
     init.qcom.mem.sh \
     init.qcom.ril.sh \
-    init.qti.ims.sh \
     ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \
