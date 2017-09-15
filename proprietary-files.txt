@@ -53,7 +53,6 @@ bin/netmgrd
 bin/qmuxd
 bin/qseecomd
 bin/radish
-bin/rild
 bin/rmt_storage
 bin/thermal-engine
 bin/time_daemon
