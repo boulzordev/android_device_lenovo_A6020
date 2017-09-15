@@ -61,9 +61,6 @@ mm.enable.qcom_parser=3407871
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
 
-# Perf
-ro.vendor.extension_library=libqti-perfd-client.so
-
 # Qualcomm
 persist.data.qmi.adb_logmask=0
 ro.qualcomm.cabl=0

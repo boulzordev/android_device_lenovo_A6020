@@ -58,7 +58,6 @@ bin/rmt_storage
 bin/thermal-engine
 bin/time_daemon
 bin/vm_bms
-vendor/bin/perfd
 
 # Config Files
 etc/data/dsi_config.xml
