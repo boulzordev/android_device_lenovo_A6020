@@ -1,0 +1,4 @@
+service usb-hal-1-0 /system/vendor/bin/hw/android.hardware.usb@1.0-service.A6020
+    class hal
+    user system
+    group system
