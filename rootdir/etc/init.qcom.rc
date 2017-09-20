@@ -519,6 +519,11 @@ service qcom-sh /system/bin/sh /system/etc/init.qcom.sh
     oneshot
 
 on property:sys.boot_completed=1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 533333
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 499200
+
     start qcom-sh
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
