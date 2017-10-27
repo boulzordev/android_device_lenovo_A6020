@@ -11,8 +11,8 @@ on enable-low-power
     write /proc/sys/kernel/sched_ravg_hist_size 5
 
     # HMP Task packing settings for 8939, 8929
-    write /proc/sys/kernel/sched_small_task 20
-    write /proc/sys/kernel/sched_mostly_idle_load 30
+    write /proc/sys/kernel/sched_small_task 40
+    write /proc/sys/kernel/sched_mostly_idle_load 40
     write /proc/sys/kernel/sched_mostly_idle_nr_run 3
 
     write /proc/sys/kernel/sched_prefer_idle 0
@@ -40,7 +40,7 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1113600
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "1 960000:85 1113600:90 1344000:80"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "800000:85 1113600:90 1344000:95"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 50000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 960000
 
@@ -49,11 +49,11 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
     restorecon_recursive /sys/devices/system/cpu # must restore after interactive
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay "25000 800000:50000"
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load 90
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load 85
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq 998400
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy 0
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "1 800000:90"
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "35 800000:65 998400:80"
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 800000
 
@@ -74,8 +74,16 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu4/core_ctl/not_preferred 1
 
     # HMP scheduler (big.Little cluster related) settings
-    write /proc/sys/kernel/sched_upmigrate 75
-    write /proc/sys/kernel/sched_downmigrate 60
+    write /proc/sys/kernel/sched_upmigrate 60
+    write /proc/sys/kernel/sched_downmigrate 35
+
+    # Enable sched guided freq control
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load 1
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_migration_notif 1
+    write /proc/sys/kernel/sched_freq_inc_notify 50000
+    write /proc/sys/kernel/sched_freq_dec_notify 50000
 
     # Bring up all cores online
     write /sys/devices/system/cpu/cpu1/online 1
@@ -115,7 +123,7 @@ on charger
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
 
-on class_start:late_start
+on property:sys.boot_completed=1
     trigger enable-low-power
 
 on property:init.svc.recovery=running
