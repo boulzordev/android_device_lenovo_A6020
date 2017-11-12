@@ -1,7 +1,7 @@
 on enable-low-power
     start qcom-mem
 
-    write /proc/sys/kernel/sched_boost 1
+    write /proc/sys/kernel/sched_boost 0
 
     # RPS mask
     write /sys/class/net/rmnet0/queues/rx-0/rps_cpus 10
