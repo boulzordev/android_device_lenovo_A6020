@@ -516,6 +516,10 @@ on property:sys.boot_completed=1
     write /dev/cpuset/background/cpus 0
     write /dev/cpuset/system-background/cpus 4-5
 
+on property:init.svc.surfaceflinger=restarting
+    stop hwcomposer-2-1
+    start hwcomposer-2-1
+
 service qcom-mem /system/vendor/bin/sh /system/etc/init.qcom.mem.sh
     disabled
     oneshot
