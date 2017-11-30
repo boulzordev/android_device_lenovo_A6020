@@ -167,36 +167,16 @@ on boot
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
-
-    # Change ownership and permission for backlight
-    chown system system /sys/class/backlight/lcd-backlight:0/brightness
-    chmod 0664 /sys/class/backlight/lcd-backlight:0/brightness
-    chown system system /sys/class/backlight/lcd-backlight:0/max_brightness
-    chmod 0664 /sys/class/backlight/lcd-backlight:0/max_brightness
-    chmod 0664 /sys/class/leds/lcd-backlight/brightness
-    chown system system /sys/class/leds/green/blink
-    chmod 0664 /sys/class/leds/green/blink
-    chown system system /sys/class/leds/green/delay_on
-    chmod 0664 /sys/class/leds/green/delay_on
-    chown system system /sys/class/leds/green/delay_off
-    chmod 0664 /sys/class/leds/green/delay_off
-
+    # LED permissions
     chown system system /sys/class/leds/red/blink
-    chmod 0664 /sys/class/leds/red/blink
-    chown system system /sys/class/leds/red/delay_on
-    chmod 0664 /sys/class/leds/red/delay_on
-    chown system system /sys/class/leds/red/delay_off
-    chmod 0664 /sys/class/leds/red/delay_off
-
-    # Change the ownership of the notification LED interface
-    chown system system /sys/class/leds/rgb/control
-    chmod 0664 /sys/class/leds/rgb/control
-
-    # Change the ownership of the charging LED interface
-    chown system system /sys/class/leds/charging/brightness
-    chmod 0664 /sys/class/leds/charging/brightness
-    chown system system /sys/class/leds/charging/trigger
-    chmod 0664 /sys/class/leds/charging/trigger
+    chown system system /sys/class/leds/red/led_time
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/green/led_time
+    chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/blue/blink
+    chown system system /sys/class/leds/blue/led_time
+    chown system system /sys/class/leds/blue/brightness
 
 on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
