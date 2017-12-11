@@ -37,6 +37,7 @@
 #include "vendor_init.h"
 
 using android::base::GetProperty;
+using android::init::property_set;
 
 #define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
