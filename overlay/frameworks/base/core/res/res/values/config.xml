@@ -219,7 +219,6 @@
             8 - Last app
          This needs to match the constants in
          services/core/java/com/android/server/policy/PhoneWindowManager.java -->
-    <integer name="config_longPressOnAppSwitchBehavior">8</integer>
 
     <!-- Control the behavior when the user double-taps the home button.
             0 - Nothing
@@ -232,8 +231,6 @@
          policy/src/com/android/internal/policy/impl/PhoneWindowManager.java -->
     <integer name="config_doubleTapOnHomeBehavior">0</integer>
 
-    <!-- Disable button brightness settings -->
-    <!--integer name="config_buttonBrightnessSettingDefault">0</integer>-->
 
     <!-- Screen brightness used to dim the screen while dozing in a very low power state.
           May be less than the minimum allowed brightness setting
