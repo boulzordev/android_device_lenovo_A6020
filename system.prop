@@ -55,6 +55,7 @@ media.aac_51_output_enabled=true
 mm.enable.qcom_parser=3407871
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
+persist.media.treble_omx=false
 
 # Qualcomm
 persist.data.qmi.adb_logmask=0

@@ -159,6 +159,10 @@ on boot
     chown radio radio /data/misc/radio/copy_complete
     chmod 0660 /data/misc/radio/copy_complete
 
+    # Wake Gestures
+    chown system radio /sys/android_touch/doubletap2wake
+    chmod 0660 /sys/android_touch/doubletap2wake
+
     # Display
     chown system graphics /sys/class/graphics/fb0/dyn_pu
     chmod 0664 /sys/class/graphics/fb0/dyn_pu
@@ -519,6 +523,11 @@ service qcom-sh /system/bin/sh /system/etc/init.qcom.sh
     oneshot
 
 on property:sys.boot_completed=1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 533333
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 499200
+
     start qcom-sh
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
