@@ -6,11 +6,4 @@ PRODUCT_PACKAGES += \
     libbson \
     libshim_gui \
     libshim_atomic \
-    Snap \
-#   libboringssl-compat \
-
-# libboringssl-compat
-
-# Stlport
-#PRODUCT_PACKAGES += \
-#    libstlport
+    Snap\
