@@ -12,5 +12,3 @@ PRODUCT_PACKAGES += \
     init.qti.ims.sh \
     ueventd.qcom.rc
 
-PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
