@@ -1,6 +1,3 @@
-# Cpusets
-ENABLE_CPUSETS := true
-
 # Framework boost sched
 ENABLE_SCHED_BOOST := true
 
