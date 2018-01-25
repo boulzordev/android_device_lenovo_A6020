@@ -351,11 +351,6 @@ service time_daemon /system/bin/time_daemon
    group root
    writepid /dev/cpuset/system-background/tasks
 
-service audiod /system/bin/audiod
-   class late_start
-   user system
-   group system
-
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
