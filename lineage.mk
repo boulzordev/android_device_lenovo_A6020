@@ -24,3 +24,6 @@ TARGET_SCREEN_HEIGHT := 1920
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := A6020
 PRODUCT_NAME := lineage_A6020
+
+# Unofficial build ID
+TARGET_UNOFFICIAL_BUILD_ID := HYPER
