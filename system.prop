@@ -5,13 +5,17 @@ dalvik.vm.dex2oat-flags=--no-watch-dog
 ro.sys.fw.dex2oat_thread_count=4
 
 # Audio
-ro.qc.sdk.audio.fluencetype=none
+ro.qc.sdk.audio.fluencetype=fluence
 ro.qc.sdk.audio.ssr=false
 persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=true
+persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=false
 use.voice.path.for.pcm.voip=true
 vidc.enc.narrow.searchrange=1
+tunnel.audio.encode = false
+voice.playback.conc.disabled=true
+voice.record.conc.disabled=true
+voice.voip.conc.disabled=true
 
 # Audio offload
 audio.offload.buffer.size.kb=64
@@ -20,7 +24,8 @@ audio.offload.min.duration.secs=30
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=false
 audio.offload.video=true
-av.streaming.offload.enable=true
+audio.offload.disable=1
+av.offload.enable=true
 
 # Bluetooth
 qcom.bluetooth.soc=smd
@@ -36,9 +41,13 @@ persist.camera.cpp.duplication=false
 persist.sys.chgdisabled=0
 
 # Display
+debug.sf.hw=0
+debug.egl.hw=0
 debug.composition.type=c2d
 debug.enable.sglscale=1
 debug.mdpcomp.idletime=600
+debug.mdpcomp.logs=0
+dev.pm.dyn_samplingrate=1
 persist.hwc.mdpcomp.enable=true
 persist.hwc.ptor.enable=true
 ro.opengles.version=196609
@@ -73,7 +82,18 @@ persist.radio.VT_USE_MDM_TIME=0
 persist.volte_enabled_by_hw=1
 persist.dbg.volte_avail_ovr=1
 
-# Radio
+# NITZ
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+
+# RIL
 DEVICE_PROVISIONED=1
 persist.data.netmgrd.qos.enable=true
 persist.data.mode=concurrent
