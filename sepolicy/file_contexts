@@ -1,0 +1,2 @@
+# Persist
+/dev/block/platform/soc.0/7824900.sdhci/by-name/persist    u:object_r:persist_block_device:s0
