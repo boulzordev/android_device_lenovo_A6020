@@ -1,5 +1,0 @@
-allow init vfat:file read;
-allow init vfat:file { getattr open };
-allow init debugfs:file write;
-
-allow init proc:lnk_file { setattr };
