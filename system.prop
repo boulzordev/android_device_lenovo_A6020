@@ -6,27 +6,28 @@ dalvik.vm.dex2oat-threads=4
 dalvik.vm.image-dex2oat-threads=4
 
 # Audio
-ro.qc.sdk.audio.fluencetype=fluence
-ro.qc.sdk.audio.ssr=false
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=true
-persist.audio.fluence.speaker=false
-use.voice.path.for.pcm.voip=true
+ro.vendor.audio.sdk.fluencetype=fluence
+ro.vendor.audio.sdk.ssr=false
+persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicerec=true
+persist.vendor.audio.fluence.speaker=false
+vendor.voice.path.for.pcm.voip=true
 vidc.enc.narrow.searchrange=1
-tunnel.audio.encode = false
-voice.playback.conc.disabled=true
-voice.record.conc.disabled=true
-voice.voip.conc.disabled=true
+vendor.audio.tunnel.encode = false
+vendor.voice.playback.conc.disabled=true
+vendor.voice.record.conc.disabled=true
+vendor.voice.voip.conc.disabled=true
 
 # Audio offload
-audio.offload.buffer.size.kb=64
-audio.offload.gapless.enabled=true
+vendor.audio.offload.buffer.size.kb=64
+vendor.audio.offload.gapless.enabled=true
 audio.offload.min.duration.secs=30
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=false
 audio.offload.video=true
 audio.offload.disable=1
 av.offload.enable=true
+vendor.audio.dolby.ds2.enabled=true
 
 # Bluetooth
 qcom.bluetooth.soc=smd
@@ -98,12 +99,11 @@ DEVICE_PROVISIONED=1
 persist.data.netmgrd.qos.enable=true
 persist.data.mode=concurrent
 persist.radio.apm_sim_not_pwdn=0
-persist.radio.rat_on=combine
+persist.vendor.radio.rat_on=combine
 rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
 ril.subscription.types=NV,RUIM
 ro.telephony.call_ring.multiple=false
-ro.use_data_netmgrd=true
 telephony.lteOnCdmaDevice=0
 
 # SDcardFS
@@ -120,4 +120,3 @@ persist.dbg.wfc_avail_ovr=1
 
 # WiFi Display
 persist.debug.wfd.enable=1
-persist.sys.wfd.virtual=0
