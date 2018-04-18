@@ -338,6 +338,9 @@ on enable-low-power
     setprop ro.min_freq_0 400000
     setprop ro.min_freq_4 800000
 
+    # change GPU initial power level from 400Mhz(level 2) to 220MHz(level 3)
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 3
+
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
