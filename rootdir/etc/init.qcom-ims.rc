@@ -26,6 +26,8 @@
 #
 
 on init
+    # Enable IMS
+    setprop service.qti.ims.enabled 1
 
 service imsqmidaemon /system/bin/imsqmidaemon
     class main
@@ -62,8 +64,3 @@ service imscmservice /system/bin/imscmservice
 on property:sys.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
     start imscmservice
-
-service ims_trigger /init.qti.ims.sh
-    class main
-    user root
-    oneshot

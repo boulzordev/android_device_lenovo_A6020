@@ -9,6 +9,5 @@ PRODUCT_PACKAGES += \
     init.qcom.mem.sh \
     init.qcom.ril.sh \
     init.qcom.post_boot.sh \
-    init.qti.ims.sh \
     ueventd.qcom.rc
 
