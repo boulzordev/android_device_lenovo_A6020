@@ -452,11 +452,11 @@ service ril-daemon2 /vendor/bin/hw/rild -c 2
     group radio cache inet misc audio log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
  
-service rild2-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
-    class late_start
-    user root
-    group root
-    oneshot
+multisim=`getprop persist.radio.multisim.config`
+
+if [ "$multisim" = "dsds" ] || [ "$multisim" = "dsda" ]; then
+    start ril-daemon2
+fi
 
 on charger
     wait /dev/block/bootdevice/by-name/system
@@ -515,13 +515,6 @@ on property:sys.boot_completed=1
     write /dev/cpuset/foreground/cpus 0-2
     write /dev/cpuset/background/cpus 0
     write /dev/cpuset/system-background/cpus 4-5
-
-service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
-    class late_start
-    user root
-    group system
-    disabled
-    oneshot
 
 service qcom-mem /system/bin/sh /system/etc/init.qcom.mem.sh
     disabled
