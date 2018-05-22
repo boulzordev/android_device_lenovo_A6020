@@ -471,6 +471,9 @@ service qcom-sh /system/vendor/bin/sh /system/etc/init.qcom.sh
 
 on property:sys.boot_completed=1
     start qcom-sh
+    start qcom-post-boot
+    setprop sys.io.scheduler "bfq"
+    restart cameraserver
 
 on property:init.svc.surfaceflinger=restarting
     stop hwcomposer-2-1
