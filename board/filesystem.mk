@@ -10,3 +10,5 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
+
+TARGET_EXFAT_DRIVER := exfat
