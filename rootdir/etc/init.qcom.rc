@@ -339,7 +339,7 @@ on enable-low-power
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/camera-daemon/cpus 4-7
 
-    setprop ro.min_freq_0 400000
+    setprop ro.min_freq_0 200000
     setprop ro.min_freq_4 800000
 
     # change GPU initial power level from 400Mhz(level 2) to 220MHz(level 3)
