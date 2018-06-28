@@ -1,0 +1,2 @@
+# Power
+TARGET_PROVIDES_POWERHAL := true
