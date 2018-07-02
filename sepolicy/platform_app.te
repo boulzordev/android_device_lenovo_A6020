@@ -1,0 +1,2 @@
+allow platform_app system_app_data_file:dir getattr;
+get_prop(platform_app, qemu_hw_mainkeys_prop)

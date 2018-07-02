@@ -1,0 +1,2 @@
+allow toolbox init:fifo_file { write getattr };
+allow toolbox init:unix_stream_socket { connectto };

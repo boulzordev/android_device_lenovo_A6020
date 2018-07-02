@@ -1,0 +1,2 @@
+allow mm-qcamerad vendor_file:file execmod;
+allow mm-qcamerad system_data_file:dir { add_name write };

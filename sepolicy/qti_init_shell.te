@@ -1,0 +1,2 @@
+allow qti_init_shell toolbox_exec:file { getattr execute read open execute_no_trans };
+allow qti_init_shell proc_touchpanel:dir { rw_dir_perms setattr };
