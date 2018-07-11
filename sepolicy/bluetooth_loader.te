@@ -1,0 +1,4 @@
+allow bluetooth_loader vendor_shell_exec:file entrypoint;
+allow bluetooth_loader toolbox_exec:file { execute getattr read open execute_no_trans};
+allow bluetooth_loader persist_bluetooth_file:dir search;
+allow bluetooth_loader persist_bluetooth_file:file { open read };
