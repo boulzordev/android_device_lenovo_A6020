@@ -1,7 +1,9 @@
 [
   {
-    "repository":  "android_kernel_lenovo_msm8916",
-    "target_path": "kernel/lenovo/msm8916"
+    "remote":      "github",
+    "repository":  "boulzordev/android_kernel_lenovo_msm8916",
+    "target_path": "kernel/lenovo/msm8916",
+    "branch":      "oreo-mr1"
   },
   {
     "repository": "android_external_bson",
