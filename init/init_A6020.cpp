@@ -97,20 +97,20 @@ void vendor_load_properties()
 
     if (ISMATCH(board_id, "S82918B1")){
         if (ISMATCH(panel_id, "ili9881c_720p_video") || ISMATCH(panel_id, "hx8394f_boe_720p_video")) {
-            property_override_dual("ro.build.product", "ro.vendor.build.product", "A6020a40"); // HW39
-            property_override_dual("ro.product.device", "ro.vendor.product.device" , "A6020a40");
+            property_override_dual("ro.build.product", "ro.vendor.build.product", "a6020a40");
+            property_override_dual("ro.product.device", "ro.vendor.product.device" , "a6020a40");
             property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "Lenovo/A6020a40/A6020a40:5.1.1/LMY47V/A6020a40_S007_161128_ROW:user/release-keys");
             set_model_config(false); // 720p
         } else { // panel_id = "otm1901a_tm_1080p_video" for A6020a46
-            property_override_dual("ro.build.product", "ro.vendor.build.product", "A6020a46");
-            property_override_dual("ro.product.device", "ro.vendor.product.device" , "A6020a46");
+            property_override_dual("ro.build.product", "ro.vendor.build.product", "a6020a46");
+            property_override_dual("ro.product.device", "ro.vendor.product.device" , "a6020a46");
             property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "Lenovo/A6020a46/A6020a46:5.1.1/LMY47V/A6020a46_S042_160516_ROW:user/release-keys");
             set_model_config(true); // 1080p
         }
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918E1")){
-        property_override_dual("ro.build.product", "ro.vendor.build.product", "A6020a41");
-        property_override_dual("ro.product.device", "ro.vendor.product.device" , "A6020a41");
+        property_override_dual("ro.build.product", "ro.vendor.build.product", "a6020a41");
+        property_override_dual("ro.product.device", "ro.vendor.product.device" , "a6020a41");
         property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "Lenovo/A6020a41/A6020a41:5.1.1/LMY47V/A6020a41_S102_161123_ROW:user/release-keys");
         set_model_config(false);
         gsm_properties(false);
@@ -121,21 +121,21 @@ void vendor_load_properties()
         set_model_config(true);
         gsm_properties(true);
     } else if (ISMATCH(board_id, "S82918G1")){
-        property_override_dual("ro.build.product", "ro.vendor.build.product", "A6020l37");
-        property_override_dual("ro.product.device", "ro.vendor.product.device" , "A6020l37");
+        property_override_dual("ro.build.product", "ro.vendor.build.product", "a6020l37");
+        property_override_dual("ro.product.device", "ro.vendor.product.device" , "a6020l37");
         property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "Lenovo/A6020l37/A6020l37:5.1.1/LMY47V/A6020l37_S014_160402_LAS:user/release-keys");
         set_model_config(true);
         gsm_properties(false);
     } else if (ISMATCH(board_id, "S82918H1")){
-        property_override_dual("ro.build.product", "ro.vendor.build.product", "A6020a46");
-        property_override_dual("ro.product.device", "ro.vendor.product.device" , "A6020a46");
+        property_override_dual("ro.build.product", "ro.vendor.build.product", "a6020a46");
+        property_override_dual("ro.product.device", "ro.vendor.product.device" , "a6020a46");
         property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "Lenovo/A6020a46/A6020a46:5.1.1/LMY47V/A6020a46_S105_161124_ROW:user/release-keys");
         set_model_config(true);
         gsm_properties(true);
     } else {
         // Use A6020a40 as default - board_id = "S82918D1"
-        property_override_dual("ro.build.product", "ro.vendor.build.product", "A6020a40");
-        property_override_dual("ro.product.device", "ro.vendor.product.device" , "A6020a40");
+        property_override_dual("ro.build.product", "ro.vendor.build.product", "a6020a40");
+        property_override_dual("ro.product.device", "ro.vendor.product.device" , "a6020a40");
         property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "Lenovo/A6020a40/A6020a40:5.1.1/LMY47V/A6020a40_S102_161123_ROW:user/release-keys");
         set_model_config(false);
         gsm_properties(true);
