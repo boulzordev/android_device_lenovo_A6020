@@ -170,6 +170,10 @@ void set_model_config(bool plus){
         property_set("dalvik.vm.heaptargetutilization", "0.75");
         property_set("dalvik.vm.heapminfree", "2m");
         property_set("dalvik.vm.heapmaxfree", "8m");
+
+        // Cached apps limit
+        property_set("ro.vendor.qti.sys.fw.bg_apps_limit", "25");
+
     } else {
         property_set("ro.sf.lcd_density", "320");
         property_override_dual("ro.product.model", "ro.vendor.product.model", "Vibe K5");
@@ -185,6 +189,10 @@ void set_model_config(bool plus){
         property_set("dalvik.vm.heaptargetutilization", "0.75");
         property_set("dalvik.vm.heapminfree", "512k");
         property_set("dalvik.vm.heapmaxfree", "8m");
+
+        // Cached apps limit
+        property_set("ro.vendor.qti.sys.fw.bg_apps_limit", "17");
+
     }
 }
 
