@@ -16,4 +16,4 @@
 
 /devices/soc.0/7864900.sdhci/mmc_host*       auto              auto    nosuid,nodev                                                                                     voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/platform/msm_hsusb*                 auto              auto    nosuid,nodev                                                                                     voldmanaged=usb:auto
-/dev/block/zram0                             none              swap    defaults                                                                      zramsize=573741824,max_comp_streams=4
+/dev/block/zram0                             none              swap    defaults                                                                      max_comp_streams=4

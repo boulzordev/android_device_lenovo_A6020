@@ -30,6 +30,7 @@
 #include <stdlib.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
+#include <sys/sysinfo.h>
 #include <stdio.h>
 
 #include <android-base/properties.h>
@@ -62,6 +63,26 @@ void property_override_dual(char const system_prop[], char const vendor_prop[], 
 
 void gsm_properties(bool msim);
 void set_model_config(bool plus);
+
+void set_zram_size(void)
+{
+    FILE *f = fopen("/sys/block/zram0/disksize", "wb");
+    int MB = 1024 * 1024;
+    std::string zram_disksize;
+    struct sysinfo si;
+    // Check if zram exist
+    if (f == NULL) {
+        return;
+    }
+    // Initialize system info
+    sysinfo(&si);
+    // Set zram disksize (divide RAM size by 3)
+    zram_disksize = std::to_string(si.totalram / MB / 3);
+    // Write disksize to sysfs
+    fprintf(f, "%sM", zram_disksize.c_str());
+    // Close opened file
+    fclose(f);
+}
 
 void vendor_load_properties()
 {
@@ -140,6 +161,8 @@ void vendor_load_properties()
         set_model_config(false);
         gsm_properties(true);
     }
+
+    set_zram_size();
 }
 
 void gsm_properties(bool msim)
