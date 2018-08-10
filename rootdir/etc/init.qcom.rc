@@ -508,7 +508,7 @@ service qcom-post-boot /system/vendor/bin/sh /system/etc/init.qcom.post_boot.sh
 
 on property:sys.boot_completed=1
     start qcom-post-boot
-    setprop sys.io.scheduler "bfq"
+    setprop sys.io.scheduler "cfq"
     # update cpusets now that boot is complete and we want
     # better load balancing
     write /dev/cpuset/top-app/cpus 0-7
