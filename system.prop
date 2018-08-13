@@ -43,7 +43,6 @@ persist.sys.chgdisabled=0
 # Display
 debug.sf.hw=0
 debug.egl.hw=0
-debug.composition.type=c2d
 debug.enable.sglscale=1
 debug.mdpcomp.idletime=600
 debug.mdpcomp.logs=0
