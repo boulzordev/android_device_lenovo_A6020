@@ -400,7 +400,6 @@ service hciattach /system/vendor/bin/sh /system/etc/init.qcom.bt.sh
     user bluetooth
     group bluetooth net_bt_admin
     disabled
-    seclabel u:r:bluetooth_loader:s0
     oneshot
 
 on property:bluetooth.hciattach=true
@@ -487,7 +486,6 @@ service vm_bms /system/vendor/bin/vm_bms
 service charger /charger
     class charger
     group system graphics
-    seclabel u:r:charger:s0
 
 service msm_irqbalance /system/vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class core

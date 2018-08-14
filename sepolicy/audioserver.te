@@ -1,1 +1,0 @@
-allow audioserver sysfs:dir { read open };
