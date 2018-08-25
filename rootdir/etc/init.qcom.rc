@@ -280,7 +280,7 @@ service hciattach /system/vendor/bin/sh /system/etc/init.qcom.bt.sh
     disabled
     oneshot
 
-on property:bluetooth.hciattach=true
+on property:vendor.bluetooth.hciattach=true
     start hciattach
 
 on property:bluetooth.hciattach=false
