@@ -83,7 +83,7 @@ case "$target" in
             echo "20000 800000:40000 960000:65000 1113600:50000" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
             echo 99 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
             echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-            echo 960000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
+            echo 1113600 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
             echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
             echo "80 800000:80 960000:85 1113600:95" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
             echo 50000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
@@ -190,13 +190,20 @@ case "$target" in
             echo "19000 800000:39000 960000:65000 1113600:50000" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
             echo 99 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
             echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-            echo 960000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
+            echo 1113600 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
             echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
             echo "80 800000:80 960000:85 1113600:90 1344000:80" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
             echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
             echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/sampling_down_factor
             echo 200000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
+            # Bring up all cores online
+            echo 1 > /sys/devices/system/cpu/cpu1/online
+            echo 1 > /sys/devices/system/cpu/cpu2/online
+            echo 1 > /sys/devices/system/cpu/cpu3/online
+            echo 1 > /sys/devices/system/cpu/cpu5/online
+            echo 1 > /sys/devices/system/cpu/cpu6/online
+            echo 1 > /sys/devices/system/cpu/cpu7/online
 
             # enable governor for power cluster
             echo 1 > /sys/devices/system/cpu/cpu4/online
@@ -220,14 +227,6 @@ case "$target" in
             # HMP scheduler (big.Little cluster related) settings
             echo 93 > /proc/sys/kernel/sched_upmigrate
             echo 83 > /proc/sys/kernel/sched_downmigrate
-
-            # Bring up all cores online
-            echo 1 > /sys/devices/system/cpu/cpu1/online
-            echo 1 > /sys/devices/system/cpu/cpu2/online
-            echo 1 > /sys/devices/system/cpu/cpu3/online
-            echo 1 > /sys/devices/system/cpu/cpu5/online
-            echo 1 > /sys/devices/system/cpu/cpu6/online
-            echo 1 > /sys/devices/system/cpu/cpu7/online
 
             # Enable sched guided freq control
             echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load
