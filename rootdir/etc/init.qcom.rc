@@ -26,7 +26,6 @@
 #
 
 import init.qcom.usb.rc
-import init.qcom-ims.rc
 
 on early-init
     mkdir /firmware 0771 system system
