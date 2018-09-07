@@ -6,3 +6,6 @@ PRODUCT_PACKAGES += \
     libshim_atomic \
     libshim_mutexdestroy \
     Snap\
+
+PRODUCT_COPY_FILES += \
+     $(LOCAL_PATH)/configs/external_camera_config.xml:system/etc/external_camera_config.xml
