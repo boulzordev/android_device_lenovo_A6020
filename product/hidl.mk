@@ -13,10 +13,6 @@ PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl \
     android.hardware.soundtrigger@2.0-impl
 
-#Bluetooth
-PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0-impl
-
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
