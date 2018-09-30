@@ -4,7 +4,6 @@ PRODUCT_PACKAGES += \
     libbson \
     libshim_gui \
     libshim_atomic \
-    libshim_mutexdestroy \
     Snap\
 
 PRODUCT_COPY_FILES += \
