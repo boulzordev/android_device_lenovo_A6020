@@ -80,12 +80,12 @@ case "$target" in
             # enable governor for perf cluster
             echo 1 > /sys/devices/system/cpu/cpu0/online
             echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-            echo "20000 800000:40000 960000:50000 1113600:65000" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
-            echo 85 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
+            echo "20000 400000:27000 800000:40000 960000:50000 1113600:65000" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+            echo 97 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
             echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-            echo 1113600 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
+            echo 998400 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
             echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
-            echo "1 960000:85 1113600:95" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+            echo "5 400000:35 800000:65 960000:85 1113600:95" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
             echo 50000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
             echo 50000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/sampling_down_factor
             echo 200000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
@@ -96,7 +96,7 @@ case "$target" in
             echo "25000 800000:50000" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay
             echo 90 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
             echo 40000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
-            echo 998400 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
+            echo 800000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
             echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
             echo "1 800000:90" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
             echo 40000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
@@ -187,12 +187,12 @@ case "$target" in
             # enable governor for perf cluster
             echo 1 > /sys/devices/system/cpu/cpu0/online
             echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-            echo "19000 800000:39000 960000:50000 1113600:60000" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
-            echo 90 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
+            echo "19000 400000:25000 800000:39000 960000:50000 1113600:60000" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+            echo 97 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
             echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-            echo 1113600 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
+            echo 998400 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
             echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
-            echo "1 960000:85 1113600:90 1344000:80" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+            echo "5 400000:30 800000:60 960000:85 1113600:90 1344000:95" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
             echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
             echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/sampling_down_factor
             echo 200000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
