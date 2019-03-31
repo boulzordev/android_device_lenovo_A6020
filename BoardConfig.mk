@@ -193,8 +193,8 @@ TARGET_RIL_VARIANT := caf
 BOARD_PROVIDES_LIBRIL := false
 
 # SELinux
-#include device/qcom/sepolicy/sepolicy.mk
-#include device/qcom/sepolicy/legacy-sepolicy.mk
+include device/qcom/sepolicy-legacy/sepolicy.mk
+
 #BOARD_SEPOLICY_DIRS += \
 #    device/lenovo/A6020/sepolicy
 
